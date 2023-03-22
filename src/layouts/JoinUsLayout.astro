@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import JobCard from "@/components/job/job_card.astro";
+
+import HommeClavierReference from "@static/homme-clavier.png";
+
+import { getCollection } from "astro:content";
+const allJobEntries = await getCollection('job');
+---
+
+<BaseLayout title="Rejoignez-nous">
+    <section class="relative w-full my-20">
+        <div class="absolute top-[16rem] lg:top-2 lg:bottom-0 left-[30vw] lg:left-[45vw]">
+            <img class="h-[32rem]" src={HommeClavierReference} alt="Homme avec un clavier" />
+        </div>
+        <div class="flex flex-col lg:flex-row">
+            <div class="flex w-full justify-center lg:justify-end items-center bg-black text-white">
+                <div class="flex flex-col font-extrabold text-5xl lg:text-7xl lg:py-24 px-6 pt-12 pb-80 lg:pr-[10vw]">
+                    <div class="flex flex-row">
+                        <svg class="w-auto h-32 mr-2 fill-blue-log" viewBox="0 0 305.98 195.2"><path d="M32.24 106.4V17.49H10.19v109.25h71.72V106.4H32.24zm150.23-54.95c-2.58-6.65-6.3-12.54-11.05-17.51-4.77-4.98-10.61-8.94-17.38-11.78-6.75-2.82-14.37-4.26-22.65-4.26s-15.83 1.41-22.63 4.2c-6.82 2.79-12.75 6.71-17.62 11.65-4.86 4.93-8.68 10.8-11.37 17.45-2.69 6.64-4.05 13.93-4.05 21.67s1.31 14.91 3.88 21.57c2.59 6.7 6.33 12.6 11.12 17.53 4.8 4.94 10.64 8.88 17.35 11.7 6.72 2.83 14.29 4.26 22.51 4.26s15.83-1.43 22.65-4.26c6.81-2.82 12.75-6.75 17.65-11.69 4.89-4.93 8.74-10.82 11.43-17.51 2.68-6.67 4.04-13.94 4.04-21.61s-1.31-14.81-3.88-21.42zm-16.76 21.42c0 4.91-.82 9.63-2.42 14.02-1.6 4.37-3.92 8.26-6.89 11.57-2.95 3.28-6.62 5.92-10.93 7.84-8.5 3.8-20.85 3.91-29.43-.04-4.25-1.96-7.88-4.61-10.8-7.9-2.93-3.3-5.2-7.18-6.74-11.54-1.55-4.41-2.34-9.11-2.34-13.96s.85-9.5 2.51-13.89c1.66-4.37 4.04-8.24 7.07-11.52 3.02-3.27 6.75-5.92 11.08-7.89 4.3-1.95 9.2-2.94 14.56-2.94s10.28 1 14.47 2.97c4.22 1.99 7.85 4.67 10.77 7.96 2.94 3.31 5.2 7.18 6.74 11.5 1.55 4.38 2.34 9.02 2.34 13.8zm108.94-52.64v11.19l-2.02-1.92c-2.81-2.48-5.95-4.61-9.35-6.32-3.39-1.71-7-3.03-10.73-3.92a49.72 49.72 0 0 0-11.52-1.34c-7.71 0-14.85 1.44-21.22 4.29-6.35 2.84-11.87 6.77-16.39 11.69-4.51 4.9-8.05 10.74-10.52 17.34-2.46 6.59-3.71 13.73-3.71 21.24s1.27 15.11 3.76 21.83c2.51 6.74 6.08 12.68 10.62 17.65 4.56 4.99 10.08 8.94 16.41 11.75 9.53 4.23 21.21 5.59 32.64 2.84 3.84-.93 7.54-2.3 11-4.08 3.49-1.8 6.69-4.04 9.53-6.66.52-.48 1.03-.98 1.52-1.49 0 6.93-.56 13.29-1.65 18.9-1.06 5.4-2.86 10.05-5.37 13.81-2.46 3.69-5.67 6.47-9.8 8.49-4.14 2.03-9.52 3.06-15.99 3.06-4.15 0-8.17-.61-11.93-1.81-3.73-1.19-7.07-2.94-9.95-5.18-2.84-2.21-5.17-4.95-6.94-8.16-1.75-3.17-2.79-6.83-3.1-10.86l-.21-2.85h-21.37l.26 3.32c.57 7.24 2.38 13.74 5.38 19.32s6.97 10.31 11.77 14.08c4.78 3.74 10.34 6.59 16.54 8.47 6.12 1.86 12.7 2.8 19.55 2.8 7.63 0 14.82-1.21 21.37-3.61 6.64-2.43 12.47-6.22 17.31-11.27 4.81-5.02 8.61-11.47 11.29-19.16 2.65-7.6 3.99-16.71 3.99-27.06V20.23h-21.14zm.6 51.44c0 5.02-.73 9.89-2.17 14.46-1.42 4.51-3.54 8.53-6.3 11.97-2.72 3.38-6.12 6.12-10.09 8.12-7.74 3.9-19.13 4.04-27.37 0-4.09-2.02-7.62-4.74-10.48-8.09-2.9-3.39-5.16-7.33-6.73-11.71-1.58-4.4-2.38-9.02-2.38-13.74 0-5.13.77-9.96 2.29-14.38 1.5-4.36 3.69-8.19 6.49-11.39 2.78-3.18 6.21-5.71 10.18-7.53 3.96-1.82 8.52-2.74 13.55-2.74s9.53.92 13.56 2.75c4.05 1.82 7.54 4.35 10.39 7.5 2.88 3.18 5.13 6.92 6.69 11.12 1.57 4.23 2.37 8.82 2.37 13.66z"/></svg>
+                        <h1 class="pt-4">GEZ</h1>
+                    </div>
+                    <h1>VOUS !</h1>
+                </div>
+            </div>
+            <div class="flex w-full bg-gray-log text-black text-center lg:text-left">
+                <div class="flex flex-col gap-6 lg:gap-20 px-4 pt-48 pb-8 lg:pl-[12vw] lg:pr-[15vw] lg:py-24 z-0">
+                    <p class="text-2xl mb-4 bg-gray-log">
+                        Vous avez envie de rejoindre une équipe dynamique, experte et engagée ?
+                        <br />
+                        Vous souhaitez mettre vos compétences au service de xxxx
+                    </p>
+                    <p class="font-bold text-3xl">
+                        Rejoignez la tribu des loggers !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative px-4 sm:px-0 sm:max-w-sm md:max-w-4xl lg:max-w-8xl mx-auto my-20">
+        <div class="flex flex-col gap-20 items-center justify-center text-center mb-20">
+            <h1 class="font-bold text-4xl">NOS OFFRES D'EMPLOI</h1>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {allJobEntries.map((job) => (
+                <div>
+                    <JobCard
+                        title={job.data.title}
+                        description="Soleo saepe ante oculos ponere, idque libenter crebis usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
+                        href={`/jobs/${job.slug}`}
+                    />
+                </div>
+            ))}
+        </div>
+    </section>
+</BaseLayout>
