@@ -5,7 +5,7 @@ module.exports = {
 		extend: {
 			colors: {
 				blue: {
-					log: '#71ce8e2',
+					log: '#71cee2',
 				},
 				green: {
 					log: '#61bda5',
@@ -16,6 +16,12 @@ module.exports = {
 				yellow: {
 					log: '#fff042',
 				},
+				gray: {
+					log: '#ededed',
+				}
+			},
+			maxWidth: {
+				'8xl': '90rem',
 			},
 		},
 	},

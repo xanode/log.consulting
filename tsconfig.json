@@ -6,7 +6,8 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
-    }
+      "@static/*": ["src/static/*"],
+    },
   },
   "extends": "astro/tsconfigs/strict"
 }
