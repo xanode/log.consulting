@@ -1,0 +1,22 @@
+service: logconsulting
+provider:
+  name: scaleway
+  scwToken: ${env:SCW_SECRET_KEY}
+  scwProject: ${env:SCW_PROJECT_ID}
+  scwRegion: ${env:SCW_REGION}
+
+plugins:
+  - serverless-scaleway-functions
+
+package:
+  patterns:
+    - 'public/'
+
+custom:
+  containers:
+    wearelog:
+      directory: .
+      minScale: 1
+      maxScale: 1
+      memoryLimit: 128
+      port: 80
