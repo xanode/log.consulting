@@ -1,0 +1,33 @@
+stages:
+ - build
+ - deploy
+
+build:
+ stage: build
+ image: node:latest
+ script:
+  - yarn
+  - yarn astro build --experimental-integrations
+ artifacts:
+  paths:
+   - dist
+  expire_in: 15 minutes
+ only:
+  - main
+
+deploy:
+ stage: deploy
+ image: docker:latest
+ services:
+  - docker:dind
+ variables:
+  SCW_SECRET_KEY: $SCW_SECRET_KEY
+  SCW_PROJECT_ID: $SCW_PROJECT_ID
+ before_script:
+  - apk add --update npm
+  - npm install serverless -g
+  - npm install serverless-scaleway-functions
+ script:
+  - serverless deploy
+ only:
+  - main
