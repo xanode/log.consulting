@@ -14,7 +14,7 @@ package:
 
 custom:
   containers:
-    wearelog:
+    logconsulting:
       directory: .
       minScale: 1
       maxScale: 1
