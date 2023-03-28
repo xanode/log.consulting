@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     container: 
       image: node:latest
@@ -24,26 +24,6 @@ jobs:
       - name: Build project
         run: yarn astro build --experimental-integrations 
 
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build 
-          path: dist 
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    container: 
-      image: node:latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Use Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: latest
-      
       - name: Serverless deploy
         uses: serverless/github-action@v3.1
         with:
