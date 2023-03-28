@@ -14,7 +14,7 @@ RUN chmod 0644 /etc/nginx/conf.d/expires.inc
 COPY ./dist /usr/share/nginx/html
 
 # Set up environment variables
-# ENV NGINX_HOST=log.consulting
+ENV NGINX_HOST=log.consulting
 
 # Open port
-# EXPOSE 80
+EXPOSE 80
