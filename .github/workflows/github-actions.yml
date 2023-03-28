@@ -12,19 +12,19 @@ jobs:
       image: node:latest #utiliser l'image docker pour exécuter la tâche
     steps:
       - name: Checkout code #etape 1
-        uses: actions/checkout@v2 #récupérer les fichiers de GitHUb, 
+      - uses: actions/checkout@v2 #récupérer les fichiers de GitHUb, 
 
       - name: Install dependencies #etape 2
-        uses: actions/setup-node@v2 #configurer l'environnement Node.js pour notre workflow, 
+      - uses: actions/setup-node@v2 #configurer l'environnement Node.js pour notre workflow, 
         with:
           node-version: '14.x'
-        run: yarn #installer les dépendances du projets 
+      - run: yarn #installer les dépendances du projets 
 
       - name: Build project
         run: yarn astro build --experimental-integrations #execution de la commande pour construire le projet astro
 
       - name: Archive artifacts #etape 4
-        uses: actions/upload-artifact@v2 #enrengistrer les fichiers build en tant qu'artifacts
+      - uses: actions/upload-artifact@v2 #enrengistrer les fichiers build en tant qu'artifacts
         with:
           name: build #le nommer build
           path: dist #le stocker dans ce chemin
@@ -36,13 +36,13 @@ jobs:
       image: docker:latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Install dependencies
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-        run: npm install -g serverless serverless-scaleway-functions  # Installer les dépendances Serverless et Serverless Scaleway Functions.
+      - run: npm install -g serverless serverless-scaleway-functions  # Installer les dépendances Serverless et Serverless Scaleway Functions.
 
       - name: Deploy project #etape 3
         env:
