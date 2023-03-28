@@ -43,7 +43,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-      - run: npm install -g serverless serverless-scaleway-functions  
+
+      - name: Install Serverless Framework
+        run: npm install -g serverless serverless-scaleway-functions  
 
       - name: Deploy project
         env:
