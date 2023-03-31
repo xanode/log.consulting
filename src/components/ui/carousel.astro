@@ -1,0 +1,15 @@
+---
+interface Props {
+    arrow: boolean;
+}
+
+const { arrow } = Astro.props as Props;
+---
+
+<div class="flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+    {arrow && <span class="text-4xl">&#11207;</span>}
+    <div class="overflow-x-auto snap-center snap-mandatory scroll-smooth flex gap-[50px] max-w-7xl">
+        <slot />
+    </div>
+    {arrow && <span class="text-4xl">&#11208;</span>}
+</div>
