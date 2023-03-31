@@ -22,3 +22,6 @@ location ~* \.(?:css|js)$ {
   access_log off;
   add_header Cache-Control "public";
 }
+
+# Enable gzip
+gzip on;
