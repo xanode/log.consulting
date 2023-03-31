@@ -14,7 +14,7 @@ const { frontmatter }: Props = Astro.props;
 <BaseLayout title="Offre d'emploi - LOG">
     <TitleBanner title={frontmatter.title}></TitleBanner>
     <div class="flex flex-col gap-24 max-w-[88rem] mx-auto mb-12">
-        <div class="flex flex-row gap-18">
+        <div class="flex flex-col lg:flex-row items-center gap-18">
             <Description>
                 <p class="text-2xl mb-16" slot="description">
                     Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
@@ -56,9 +56,10 @@ const { frontmatter }: Props = Astro.props;
                 telework="Partiel possible"
                 hr="Laetitia BASTIANI"
                 hr_email="email@log.consulting"
+                hr_phone="+33.0.00.00.00.00"
             />
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col items-center px-4 lg:px-0">
             <div class="flex flex-row gap-4 items-center">
                 <h2 class="font-bold text-3xl">
                     Entreprise

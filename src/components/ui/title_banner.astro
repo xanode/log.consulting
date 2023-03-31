@@ -5,17 +5,17 @@ interface Props {
 const { title }: Props = Astro.props;
 ---
 
-<header class="w-full h-28 flex items-end mb-24">
-  <div class="flex-grow h-[88px] bg-gray-log flex justify-end items-start">
+<header class="flex flex-row items-end w-full h-28 mb-24">
+  <div class="hidden lg:flex flex-grow items-start justify-end h-[88px] bg-gray-log">
     <div class="bg-transparent border-l-2 border-b-2 rounded-bl-3xl border-black w-[44px] h-[44px]">
     </div>
   </div>
-  <div class="w-[1024px] h-full rounded-t-3xl bg-blue-log flex justify-center items-center">
-    <h1 class="uppercase text-white font-bold text-4xl px-12 tracking-wider">
+  <div class="flex items-center justify-center w-full lg:w-[53vw] h-full rounded-t-3xl bg-blue-log">
+    <h1 class="uppercase text-white font-bold text-center text-3xl lg:text-4xl px-4 py-2 lg:py-0 tracking-wider">
       {title}
     </h1>
   </div>
-  <div class="flex-grow h-[88px] bg-black flex justify-start items-end">
+  <div class="hidden lg:flex flex-grow items-end justify-start h-[88px] bg-black">
     <div class="bg-transparent border-r-2 border-t-2 rounded-tr-3xl border-white w-[44px] h-[44px]">
     </div>
   </div>

@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="top-0 w-full flex-none mb-56 lg:mb-0">
+<div class="top-0 w-full flex-none">
     <div class="max-w-7xl mx-auto">
         <div class="py-4 mx-4">
             <div class="relative flex justify-between items-start lg:items-center">
@@ -11,34 +11,56 @@
                 </a>
 
                 <div class="relative flex items-center ml-auto">
-                    <details class="group" open>
-                        <summary class="list-none lg:hidden cursor-pointer">
+                    <div class="hidden lg:block relative bg-white">
+                        <ul class="flex flex-row text-lg space-x-8 leading-8 text-center">
+                            <li>
+                                <a class="hover:text-blue-log" href="#">Expertise</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-blue-log" href="#">Métiers</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-blue-log" href="#">Engagements</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-blue-log" href="#">Les Loggers</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-blue-log" href="/joinus">Nous rejoindre</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-blue-log" href="#">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <details class="group lg:hidden">
+                        <summary class="list-none cursor-pointer">
                             <span class="sr-only">Menu de navigation</span>
-                            <div class="flex flex-col pt-2.5 lg:hidden hover:scale-110 duration-150 ease-in-out">
+                            <div class="flex flex-col pt-2.5">
                                 <span class="block relative mb-4 group-open:mb-0 bg-red-log h-2 w-16 group-open:top-4 group-open:-rotate-45"></span>
                                 <span class="block relative group-open:invisible mb-4 bg-yellow-log h-2 w-16"></span>
                                 <span class="block relative bg-blue-log h-2 w-16 group-open:bottom-4 group-open:rotate-45"></span>
                             </div>
                         </summary>
-                        <div class="absolute -left-[77vw] pl-4 lg:pl-0 lg:left-auto top-20 lg:top-auto lg:relative w-screen lg:w-auto z-40 bg-white opacity-90">
-                            <ul class="flex flex-col lg:flex-row text-lg lg:space-x-8 space-y-2 lg:space-y-0 leading-8 text-center">
+                        <div class="absolute right-0 top-20 z-40 bg-white border border-black rounded-lg px-4">
+                            <ul class="flex flex-col text-lg space-y-2 leading-8 text-center">
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2 lg:border-0 lg:px-0" href="#">Expertise</a>
+                                    <a class="hover:text-blue-log" href="#">Expertise</a>
                                 </li>
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2" href="#">Métiers</a>
+                                    <a class="hover:text-blue-log" href="#">Métiers</a>
                                 </li>
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2" href="#">Engagements</a>
+                                    <a class="hover:text-blue-log" href="#">Engagements</a>
                                 </li>
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2" href="#">Les Loggers</a>
+                                    <a class="hover:text-blue-log" href="#">Les Loggers</a>
                                 </li>
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2" href="/joinus">Nous rejoindre</a>
+                                    <a class="hover:text-blue-log" href="/joinus">Nous rejoindre</a>
                                 </li>
                                 <li>
-                                    <a class="hover:text-blue-log focus:text-blue-log focus:rounded-lg focus:px-2" href="#">Blog</a>
+                                    <a class="hover:text-blue-log" href="#">Blog</a>
                                 </li>
                             </ul>
                         </div>

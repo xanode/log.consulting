@@ -9,7 +9,7 @@ interface Props {
 const { title, description, class: className }: Props = Astro.props;
 ---
 
-<div class={className + " overflow-hidden flex-col lg:w-[24rem] border-2 border-black rounded-t-[20px] font-mono"}>
+<div class={className + " overflow-hidden flex-col max-w-sm border-2 border-black rounded-t-[20px] font-mono"}>
     <img src={ArticleBlogReference} alt="Image d'un article" />
     <p class="bg-red-log border-y-2 border-y-black text-white text-2xl px-8 py-2">{title}</p>
     <p class="text-xl px-4 pt-6 pb-3">{description}</p>

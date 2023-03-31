@@ -12,6 +12,7 @@ interface Props {
     telework: string;
     hr: string;
     hr_email: string;
+    hr_phone: string;
 }
 const {
     salary,
@@ -24,11 +25,12 @@ const {
     telework,
     hr,
     hr_email,
+    hr_phone,
 }: Props = Astro.props;
 ---
 
 <div class="flex flex-col gap-10">
-    <div class="overflow-hidden max-w-[25vw] flex flex-col border-4 border-blue-log rounded-[42px]">
+    <div class="overflow-hidden max-w-[480px] flex flex-col border-4 border-blue-log rounded-[42px]">
         <img class="w-full" src={PosteReference} alt="Poste de référence" />
         <h1 class="text-2xl font-bold px-4 py-4">LE POSTE</h1>
         <ul class="text-xl leading-10 px-4">
@@ -65,11 +67,11 @@ const {
             </li>
         </ul>
     </div>
-    <h1 class="bg-blue-log rounded-xl text-center font-extrabold text-white text-3xl py-4">Postulez</h1>
+    <a class="bg-blue-log rounded-xl text-center font-extrabold text-white text-3xl py-4" href={`mailto:${hr_email}`}>Postulez</a>
     <div class="bg-blue-log rounded-[42px] text-center text-white font-extrabold pt-12 pb-8 px-8">
         <h2 class="text-2xl mb-8">Responsable de l'offre</h2>
         <p class="text-3xl mb-8">{hr}</p>
-        <p class="font-normal text-lg">00.00.00.00.00</p>
-        <p class="font-normal text-lg">{hr_email}</p>
+        <a class="font-normal text-lg hover:underline hover:underline-offset-4" href={`tel:${hr_phone}`}>{hr_phone.replaceAll('.', ' ')}</a><br />
+        <a class="font-normal text-lg hover:underline hover:underline-offset-4" href={`mailto:${hr_email}`}>{hr_email}</a>
     </div>
 </div>
