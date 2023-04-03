@@ -1,0 +1,28 @@
+backend:
+  name: github 
+  repo: xanode/log.consulting
+  branch: main
+  #auth_type: pkce
+  #app_id: 9c6c97a320e175cf664ff87f8c3dd1ded3894317c7aa34d5d3619a7d9f79d763 
+publish_mode: editorial_workflow
+media_folder: "static/images/uploads"
+collections:
+  - name: "job"
+    label: "Offre d'emploi"
+    folder: "src/content/job"
+    create: true
+    fields:
+      - { label: 'Titre', name: 'titre', widget: 'string'}
+      - { label: 'Descriptif du poste', name: 'descriptif', widget: 'text' }
+      - { label: 'Profil recherché', name: 'profile', widget: 'text' }
+      - { label: 'Le poste', name: 'poste', widget: 'text' }
+      - { label: 'Salaire', name: 'salary', widget: 'string' }
+      - { label: 'Prise de poste', name: 'starting_date', widget: 'datetime' }
+      - { label: 'Expérience', name: 'experience', widget: 'string' }
+      - { label: 'Métier', name: 'job', widget: 'string' }
+      - { label: 'Statud du poste', name: 'job_status', widget: 'string' }
+      - { label: 'Zone de déplacement', name: 'travel-area', widget: 'string' }
+      - { label: 'Secteur d'activité du post', name: 'job_sector', widget: 'string' }
+      - { label: 'Télétravail', name: 'telework', widget: 'string' }
+
+
