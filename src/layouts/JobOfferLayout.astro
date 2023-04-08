@@ -1,6 +1,4 @@
 ---
-import type { CollectionEntry } from "astro:content";
-
 import BaseLayout from "./BaseLayout.astro";
 
 import Description from "@/components/job/description.astro";
@@ -11,40 +9,20 @@ interface Props {
     frontmatter: any;
 }
 const { frontmatter }: Props = Astro.props;
+const description: string = frontmatter.description.join("\n\n");
+const profile: string = frontmatter.profile.join("\n\n");
 ---
 
 <BaseLayout title="Offre d'emploi - LOG">
     <TitleBanner title={frontmatter.title}></TitleBanner>
     <div class="flex flex-col gap-24 max-w-[88rem] mx-auto mb-12">
-        <div class="flex flex-col lg:flex-row items-center gap-18">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-18">
             <Description>
-                <p class="text-2xl mb-16" slot="description">
-                    Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
-                    <br /><br />
-                    Auditer les environnements Legacy pour définir leur évolution vers le Cloud
-                    <br /><br />
-                    Conduire des RPF et sélecionner des partenaires
-                    <br /><br />
-                    Piloter la mise en place des plateformes Cloud (public, privé, hybride)
-                    <br /><br />
-                    Bâtir les plans de migraion, planifier et piloter les migrations applicatives
-                    <br /><br />
-                    Favoriser le développement de l'accélération des bonnes pratiques Cloud et DevOps
+                <p class="text-2xl mb-16 whitespace-pre-line text-justify" slot="description">
+                    {description}
                 </p>
-                <p class="text-2xl" slot="profile">
-                    Diplômé(e) de formation Ingénieur (BAC +5), dans le domaine de la gestion de projet, les infrastructures IT et des technologies Cloud
-                    <br /><br />
-                    Bonne connaissance de la gestion de projet IT, notamment migration d'environnements
-                    <br /><br />
-                    Bonne connaissance des infrastructures IT (Système, Stockage, Réseau, Virtualisation)
-                    <br /><br />
-                    Sensibilité à la culture DevOps : automatisation, orchestration, conteneurisation, pipeline CI/CD...
-                    <br /><br />
-                    Tempérament rigoureux, capacité à prendre du recul et à être force de proposition
-                    <br /><br />
-                    Esprit d'équipe, très bon relationnel et excellent rédactionnel
-                    <br /><br />
-                    Bon niveau d'anglais indispensable
+                <p class="text-2xl whitespace-pre-line text-justify" slot="profile">
+                    {profile}
                 </p>
             </Description>
             <Position
