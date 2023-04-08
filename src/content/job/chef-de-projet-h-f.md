@@ -14,6 +14,7 @@ hr_phone: +33 0 00 00 00 00
 description:
   - Piloter les projets de transformation Cloud de nos clients et favoriser
     l'adoption de la culture DevOps au sein de leurs organisations
-  - Auditer les environnements Legacy pour définir leur évolution vers le Cloud
+  - "Auditer les environnements Legacy pour définir leur évolution vers le Cloud
+    : tati"
 profile: dfngjksfdhgljkehguiernjkdfhguiengjkdshgierngl
 ---
