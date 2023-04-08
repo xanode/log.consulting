@@ -15,6 +15,8 @@ const jobCollection = defineCollection({
         hr_name: z.string(),
         hr_email: z.string().email(),
         hr_phone: z.string(),
+        description: z.array(z.string()),
+        profile: z.array(z.string()),
     })
 });
 // 3. Export a single `collections` object to register your collection(s)
