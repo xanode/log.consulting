@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 import Description from "@/components/job/description.astro";
 import Position from "@/components/job/position.astro";
@@ -9,8 +9,8 @@ interface Props {
     frontmatter: any;
 }
 const { frontmatter }: Props = Astro.props;
-const description: string = frontmatter.description.join("\n\n");
-const profile: string = frontmatter.profile.join("\n\n");
+const description: string = frontmatter.description.join("<br /><br />");
+const profile: string = frontmatter.profile.join("<br /><br />");
 ---
 
 <BaseLayout title="Offre d'emploi - LOG">
@@ -18,11 +18,11 @@ const profile: string = frontmatter.profile.join("\n\n");
     <div class="flex flex-col gap-24 max-w-[88rem] mx-auto mb-12">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-18">
             <Description>
-                <p class="text-2xl mb-16 whitespace-pre-line text-justify" slot="description">
-                    {description}
+                <p class="text-2xl mb-16 text-justify" slot="description">
+                    <Fragment set:html={description} />
                 </p>
-                <p class="text-2xl whitespace-pre-line text-justify" slot="profile">
-                    {profile}
+                <p class="text-2xl text-justify" slot="profile">
+                    <Fragment set:html={profile} />
                 </p>
             </Description>
             <Position
