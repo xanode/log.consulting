@@ -1,0 +1,30 @@
+backend:
+  name: github 
+  repo: xanode/log.consulting
+  branch: dev
+  #auth_type: pkce
+  #app_id: 9c6c97a320e175cf664ff87f8c3dd1ded3894317c7aa34d5d3619a7d9f79d763 
+publish_mode: editorial_workflow
+media_folder: "static/uploads"
+collections:
+  - name: "job"
+    label: "Offre d'emploi"
+    folder: "src/content/job"
+    create: true
+    fields:
+      - { label: "Titre", name: "title", widget: "string"}
+      - { label: "Salaire", name: "salary", widget: "string" }
+      - { label: "Prise de poste", name: "starting_date", widget: "datetime" }
+      - { label: "Expérience", name: "experience", widget: "string" }
+      - { label: "Métier", name: "job_name", widget: "string" }
+      - { label: "Status du poste", name: "job_status", widget: "string" }
+      - { label: "Zone de déplacement", name: "travel_area", widget: "string" }
+      - { label: "Secteur d'activité du post", name: "job_sector", widget: "string" }
+      - { label: "Télétravail", name: "telework", widget: "string" }
+      - { label: "Responsable de l'offre", name: "hr_name", widget: "string" }
+      - { label: "Email du responsable de l'offre", name: "hr_email", widget: "string" }
+      - { label: "Téléphone du responsable de l'offre", name: "hr_phone", widget: "string" }
+      - { label: "Description du poste", name: "description", widget: "list", field: {label: "Élément descriptif", name: "decription_item", widget: "text"} }
+      - { label: "Profil recherché", name: "profile", widget: "text" }
+
+
