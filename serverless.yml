@@ -20,3 +20,5 @@ custom:
       maxScale: 1
       memoryLimit: 128
       port: 80
+      custom_domains:
+        - log.consulting
