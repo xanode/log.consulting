@@ -16,7 +16,10 @@ const { title } = Astro.props;
     </head>
     <body class="text-black bg-white">
         <Header />
-        <slot />
-        <Footer />
+        <div class="space-y-40">
+            <slot />
+            <div class="grow invisible"></div>
+            <Footer />
+        </div>
     </body>
 </html>

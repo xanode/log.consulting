@@ -10,7 +10,7 @@ interface Props {
 const { title, subtitle, description, color, image } = Astro.props as Props;
 ---
 
-<section class="relative w-full mt-20 mb-40">
+<section class="relative w-full mt-20">
     <div class="flex flex-col lg:flex-row items-center ">
         <div class="bg-gray-log w-full lg:w-[50vw] h-[25vw]">
             <div class={`absolute rounded-2xl bg-${color} h-[calc(100%-2rem)] w-[25vw] -top-[2rem] left-[calc(25vw-2rem)]`}></div>
