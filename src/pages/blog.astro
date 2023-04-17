@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ArticleCard from "@components/ui/article_card.astro";
+import TitleBanner from "@components/ui/title_banner.astro";
+import { Color } from "@libs/types";
+---
+
+<BaseLayout title="Le blog">
+    <TitleBanner title="Le blog" />
+    <section class="relative flex w-full">
+        <div class="flex flex-grow">
+            <div class="bg-neutral-800 text-white lg:w-[25vw] h-full px-10">
+                <ul class="flex flex-col">
+                    <li class="mt-8">
+                        <details open>
+                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
+                                <span class="hover:underline hover:underline-offset-4">Architecture</span>
+                            </summary>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a class="pl-4 hover:border-l border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
+                                </li>
+                                <li>
+                                    <a class="pl-4 hover:border-l border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
+                                </li>
+                                <li>
+                                    <a class="pl-4 hover:border-l border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li class="mt-8">
+                        <details>
+                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
+                                <span class="hover:underline hover:underline-offset-4">DevOps</span>
+                            </summary>
+                        </details>
+                    </li>
+                    <li class="mt-8">
+                        <details>
+                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
+                                <span class="hover:underline hover:underline-offset-4">Développement</span>
+                            </summary>
+                        </details>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-10 items-center py-10 bg-black text-white lg:w-[75vw] h-full">
+                <p class="font-mono text-2xl">
+                    <span class="text-yellow-log">Log</span>:~$ `<span class="text-blue-log">echo</span> 'hkwngv Lqw ku Gtgxv !' | tr f-x d-ua | sed "<span class="text-red-log">smumgmg</span>"`
+                </p>
+                <div class="grid grid-cols-3 gap-10">
+                    {Array(9).fill(0).map((_, i) => (
+                        <ArticleCard
+                            title="Titre article blog"
+                            description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus,"
+                            class="lg:flex"
+                            color={Color.BLUE}
+                            dark={false}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
