@@ -23,7 +23,12 @@ module.exports = {
 			maxWidth: {
 				'8xl': '90rem',
 			},
+			minWidth: {
+				'xl': '36rem',
+			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 }
