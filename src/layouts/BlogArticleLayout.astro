@@ -1,0 +1,41 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TitleBanner from "@components/ui/title_banner.astro";
+
+import DeveloppeurInformatiqueReference from "@static/developpeur-informatique.avif";
+
+import { getCollection } from "astro:content";
+const allBlogEntries = await getCollection("blog");
+
+interface Props {
+    frontmatter: any
+}
+const { frontmatter } = Astro.props as Props;
+---
+
+<BaseLayout title={frontmatter.title}>
+    <TitleBanner title={frontmatter.title} />
+    <section class="relative max-w-8xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20">
+            <article class="prose prose-neutral prose-lg lg:prose-xl text-justify lg:max-w-4xl px-3 lg:pr-0">
+                <slot />
+            </article>
+            <div class="flex flex-col gap-6 text-center max-w-md px-3 lg:pl-0">
+                <a class="font-bold text-white text-2xl rounded-2xl bg-blue-log px-4 py-2" href="/blog">Voir tous les articles</a>
+                <h3 class="text-2xl font-bold mt-6">Derniers articles</h3>
+                <ul class="flex flex-col gap-2">
+                    {allBlogEntries.slice(0, 3).map((entry) => {
+                        return (
+                            <li>
+                                <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
+                                    <img src={DeveloppeurInformatiqueReference} alt="Image article" />
+                                    <a class="bg-blue-log text-white font-bold text-xl py-2 w-full" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
