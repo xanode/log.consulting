@@ -16,7 +16,7 @@ const { title } = Astro.props;
     </head>
     <body class="text-black bg-white">
         <Header />
-        <div class="space-y-40">
+        <div class={`flex flex-col ${title !== "Le blog" && "space-y-40"}`}>
             <slot />
             <div class="grow invisible"></div>
             <Footer />
