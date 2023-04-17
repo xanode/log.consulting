@@ -3,6 +3,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import ArticleCard from "@components/ui/article_card.astro";
 import TitleBanner from "@components/ui/title_banner.astro";
 import { Color } from "@libs/types";
+
+import { getCollection } from "astro:content";
+const allBlogEntries = await getCollection("blog");
 ---
 
 <BaseLayout title="Le blog">
@@ -50,13 +53,14 @@ import { Color } from "@libs/types";
                     <span class="text-yellow-log">Log</span>:~$ `<span class="text-blue-log">echo</span> 'hkwngv Lqw ku Gtgxv !' | tr f-x d-ua | sed "<span class="text-red-log">smumgmg</span>"`
                 </p>
                 <div class="grid grid-cols-3 gap-10">
-                    {Array(9).fill(0).map((_, i) => (
+                    {allBlogEntries.map((article) => (
                         <ArticleCard
-                            title="Titre article blog"
-                            description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus,"
+                            title={article.data.title}
+                            description={article.data.description}
                             class="lg:flex"
                             color={Color.BLUE}
                             dark={false}
+                            href={`/blog/${article.slug}`}
                         />
                     ))}
                 </div>
