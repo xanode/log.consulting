@@ -3,6 +3,7 @@ export enum Color {
     BLUE = 'blue-log',
     GREEN = 'green-log',
     YELLOW = 'yellow-log',
-    BLACK = 'black-log',
+    BLACK = 'black',
     GRAY = 'gray-log',
+    WHITE = 'white',
 }
