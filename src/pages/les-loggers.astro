@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionTeam from "@components/homepage/section_team.astro";
 import Banner from "@components/ui/banner.astro";
+import CallToAction from "@components/ui/call_to_action.astro";
+import SectionTeam from "@components/homepage/section_team.astro";
 import { Color } from "@libs/types";
 
 import LoggersBannerReference from "@static/loggers-banner.avif";
@@ -37,21 +38,14 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
             </div>
         </div>
     </section>
-    <section class="relative max-w-8xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center">
-            <div class="bg-gray-log lg:w-[50vw] h-[548px]">
-                <div class="absolute overflow-hidden -top-[2rem] right-[38.6vw] border-[3px] rounded-3xl border-black h-[calc(100%+4rem)] w-[32vw]">
-                    <img class="before:flex before:items-center before:justify-center before:text-xl before:h-full h-full w-full" src="#" alt="Photo" />
-                </div>
-            </div>
-            <div class="flex flex-col p-20 bg-black text-white justify-center lg:w-[50vw]">
-                <div class="flex flex-col gap-12 max-w-lg">
-                    <h1 class="font-bold text-4xl uppercase tracking-wide">Pourquoi rejoindre LOG ?</h1>
-                    <p class="font-medium text-xl">Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos</p>
-                    <a class="p-4 bg-yellow-log rounded-xl text-xl text-black w-1/2" href="/nous-rejoindre">Voir les offres d'emploi</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <CallToAction
+        title="Pourquoi rejoindre LOG ?"
+        text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
+        button="Voir les offres d'emploi"
+        image="#"
+        color={Color.YELLOW}
+        button_color={Color.BLACK}
+        href="/nous-rejoindre"
+    />
     <SectionTeam />
 </BaseLayout>

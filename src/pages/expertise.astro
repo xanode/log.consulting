@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
+import CallToAction from "@components/ui/call_to_action.astro";
 import { Color } from "@libs/types";
 
 import EcosystemeTechnologiqueReference from "@static/expertise-technos.avif";
@@ -113,20 +114,12 @@ import DatacenterReference from "@static/datacenter.avif";
             </div>
         </div>
     </section>
-    <section class="relative max-w-8xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center">
-            <div class="bg-gray-log lg:w-[50vw] h-[548px]">
-                <div class="absolute overflow-hidden -top-[2rem] right-[38.6vw] border-[3px] rounded-3xl border-black h-[calc(100%+4rem)] w-[32vw]">
-                    <img class="before:flex before:items-center before:justify-center before:text-xl before:h-full h-full w-full" src="#" alt="Photo" />
-                </div>
-            </div>
-            <div class="flex flex-col p-20 bg-black text-white justify-center lg:w-[50vw]">
-                <div class="flex flex-col gap-12 max-w-lg">
-                    <h1 class="font-bold text-4xl uppercase tracking-wide">Titre</h1>
-                    <p class="font-medium text-xl">Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos</p>
-                    <a class="p-4 bg-red-log rounded-xl text-xl w-1/2" href="#">Bouton</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <CallToAction
+        title="Titre"
+        text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
+        button="Bouton"
+        image="#"
+        color={Color.RED}
+        href="#"
+    />
 </BaseLayout>
