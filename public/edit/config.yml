@@ -27,7 +27,7 @@ collections:
       - { label: "Description du poste", name: "description", widget: "list", field: {label: "Élément descriptif", name: "decription_item", widget: "text"} }
       - { label: "Profil recherché", name: "profile", widget: "text" }
   - name: "blog"
-    label: "Le blog"
+    label: "Blog"
     folder: "src/content/blog"
     create: true
     fields:
