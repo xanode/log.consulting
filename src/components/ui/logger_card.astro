@@ -1,15 +1,18 @@
 ---
 interface Props {
+    id?: string;
     name: string;
     position: string;
     pictureReference?: string;
+    pictureHoverReference?: string;
 }
-const { name, position, pictureReference = "#" }: Props = Astro.props;
+const { id = "", name, position, pictureReference = "#", pictureHoverReference = pictureReference }: Props = Astro.props;
 ---
 
-<div class="snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
-    <a class="bg-blue-log w-64 h-64 mb-10 rounded-[24px] border-2 border-black" href="#">
-        <img src={pictureReference} alt="Photo d'un logger">
+<div id={id} class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
+    <a class="overflow-visible group bg-blue-log w-64 h-64 mb-10 rounded-[24px] border-2 border-black flex place-content-end items-end" href="#">
+        <img class="group-hover:hidden self-end" src={pictureReference} alt="Photo d'un logger">
+        <img class="hidden group-hover:block self-end z-50" src={pictureHoverReference} alt="Photo d'un logger">
     </a>
     <h2 class="font-bold text-2xl">{name}</h2>
     <p class="text-xl">{position}</p>

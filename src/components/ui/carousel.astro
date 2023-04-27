@@ -1,15 +1,93 @@
 ---
 interface Props {
-    arrow: boolean;
+    arrows?: boolean;
+    name: string;
+    visibleElements: Array<{breakpoint: number, items: number}>;
 }
 
-const { arrow } = Astro.props as Props;
+const { arrows = true, name, visibleElements } = Astro.props as Props;
+
+// Transform visibleElements map to have pixel values instead of screen width names
+// Breakpoints are from https://tailwindcss.com/docs/responsive-design
+
+const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items }) => {
+  acc[breakpoint] = items;
+  return acc;
+}, {});
 ---
 
-<div class="flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    {arrow && <span class="text-4xl">&#11207;</span>}
-    <div class="overflow-x-auto snap-center snap-mandatory scroll-smooth flex gap-[50px] max-w-7xl">
+<div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+    {arrows && <button id={`${name}_left`} class="text-4xl">&#11207;</button>}
+    <div id={`${name}_grid`} class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
         <slot />
     </div>
-    {arrow && <span class="text-4xl">&#11208;</span>}
+    {arrows && <button id={`${name}_right`} class="text-4xl">&#11208;</button>}
 </div>
+
+<script define:vars={{ name, visibleElementsPx }}>
+    // Define an array of HTML elements to display in the carousel
+    const cards = [...document.querySelectorAll(`[id^="${name}_card_"]`)];
+
+    // Define the starting index (the number of cards to display in the carousel is given by visibleElements)
+    let currentIndex = 0;
+
+    // Get a subarray of the carousel array, it has to have a circular behavior
+    function* getSubArray(array, begin, offset) {
+        let counter = begin;
+        for (let i = begin; i < begin + offset; i++) {
+            yield array[i % array.length];
+            counter++;
+            if (counter >= begin + offset) break;
+        }
+    }
+
+    // Define a function to update the carousel display
+    const updateCarousel = (direction) => {
+        let maxVisibleWidth = 0;
+        let visibleElementCount = 1;
+
+        // Loop through each entry in the visibleElements map
+        for (const [width, count] of Object.entries(visibleElementsPx)) {
+            const widthNum = parseInt(width, 10);
+            if (window.innerWidth >= widthNum && widthNum > maxVisibleWidth) {
+                // If the screen width is greater than or equal to the current map width
+                // and the map width is greater than the previous maximum, set the visible element count
+                maxVisibleWidth = widthNum;
+                visibleElementCount = count;
+            }
+        }
+
+        // Update the current index based on the direction
+        if (currentIndex + direction >= 0 && currentIndex + direction + visibleElementCount <= cards.length) {
+            currentIndex += direction;
+        }
+
+        // Get the subarray of cards to display in the carousel, limited by the current index and the visible element count
+        const displayCards = cards.slice(currentIndex, currentIndex + visibleElementCount);
+        
+        // Set the display style of the cards
+        cards.forEach((card, index) => {
+            if (displayCards.includes(card)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Attach click handlers to the left and right arrow buttons
+    document.getElementById(`${name}_right`).addEventListener('click', () => {
+        updateCarousel(1);
+    });
+    document.getElementById(`${name}_left`).addEventListener('click', () => {
+        updateCarousel(-1);
+    });
+
+    // Initialize the carousel display
+    updateCarousel(0);
+
+    // Attach a resize handler to the window
+    window.addEventListener('resize', () => {
+        updateCarousel(0);
+    });
+</script>

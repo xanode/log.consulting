@@ -1,16 +1,40 @@
 ---
 import Carousel from "@components/ui/carousel.astro";
 import LoggerCard from "@components/ui/logger_card.astro";
+
+import AlexandreBHoverReference from '@static/loggers/Alexandre_B_hover.avif';
+import AlexandreBReference from '@static/loggers/Alexandre_B.avif';
+import AlexandreMHoverReference from '@static/loggers/Alexandre_M_hover.avif';
+import AlexandreMReference from '@static/loggers/Alexandre_M.avif';
+import BouchraHoverReference from '@static/loggers/Bouchra_hover.avif';
+import BouchraReference from '@static/loggers/Bouchra.avif';
+import GuillaumeTHoverReference from '@static/loggers/Guillaume_T_hover.avif';
+import GuillaumeTReference from '@static/loggers/Guillaume_T.avif';
+import RayanHoverReference from '@static/loggers/Rayan_hover.avif';
+import RayanReference from '@static/loggers/Rayan.avif';
+import ValentinHoverReference from '@static/loggers/Valentin_hover.avif';
+import ValentinReference from '@static/loggers/Valentin.avif';
+
+// Breakpoints for the carousel, got from https://tailwindcss.com/docs/responsive-design
+const visibleElements = [ // Default is 1
+  { breakpoint: 1536, items: 4 }, // 2xl
+  { breakpoint: 1280, items: 4 }, // xl
+  { breakpoint: 1024, items: 4 }, // lg
+  { breakpoint: 768, items: 2 }, // md
+  { breakpoint: 640, items: 1 } // sm
+];
 ---
 
 <section class="relative w-full text-center">
     <div class="flex flex-row gap-12 justify-center py-8">
         <h1 class="font-bold text-4xl uppercase tracking-wide my-8">Notre équipe de loggers</h1>
     </div>
-    <Carousel arrow={true}>
-        <LoggerCard name="Prénom" position="Fonction"/>
-        <LoggerCard name="Prénom" position="Fonction"/>
-        <LoggerCard name="Prénom" position="Fonction"/>
-        <LoggerCard name="Prénom" position="Fonction"/>
+    <Carousel name="loggers" visibleElements={visibleElements}>
+        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Fonction" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} />
+        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Fonction" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference}/>
+        <LoggerCard id="loggers_card_3" name="Bouchra" position="Fonction" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference}/>
+        <LoggerCard id="loggers_card_4" name="Guillaume T." position="Fonction" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference}/>
+        <LoggerCard id="loggers_card_5" name="Rayan" position="Fonction" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference}/>
+        <LoggerCard id="loggers_card_6" name="Valentin" position="Fonction" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference}/>
     </Carousel>
 </section>
