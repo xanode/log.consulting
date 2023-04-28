@@ -7,9 +7,7 @@ interface Props {
 
 const { arrows = true, name, visibleElements } = Astro.props as Props;
 
-// Transform visibleElements map to have pixel values instead of screen width names
-// Breakpoints are from https://tailwindcss.com/docs/responsive-design
-
+// Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
 const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items }) => {
   acc[breakpoint] = items;
   return acc;
@@ -30,16 +28,6 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
 
     // Define the starting index (the number of cards to display in the carousel is given by visibleElements)
     let currentIndex = 0;
-
-    // Get a subarray of the carousel array, it has to have a circular behavior
-    function* getSubArray(array, begin, offset) {
-        let counter = begin;
-        for (let i = begin; i < begin + offset; i++) {
-            yield array[i % array.length];
-            counter++;
-            if (counter >= begin + offset) break;
-        }
-    }
 
     // Define a function to update the carousel display
     const updateCarousel = (direction) => {
