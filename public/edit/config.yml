@@ -5,7 +5,7 @@ backend:
   #auth_type: pkce
   #app_id: 9c6c97a320e175cf664ff87f8c3dd1ded3894317c7aa34d5d3619a7d9f79d763 
 publish_mode: editorial_workflow
-media_folder: "static/uploads"
+media_folder: "public/uploads"
 collections:
   - name: "job"
     label: "Offre d'emploi"
@@ -31,9 +31,10 @@ collections:
     folder: "src/content/blog"
     create: true
     fields:
+      - { label: "Image", name: "image", widget: "image" }
       - { label: "Titre", name: "title", widget: "string"}
       - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Autheur", name: "author", widget: "string" }
+      - { label: "Auteur", name: "author", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Corps", name: "body", widget: "markdown" }
 

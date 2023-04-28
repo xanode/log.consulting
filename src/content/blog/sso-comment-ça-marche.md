@@ -1,4 +1,5 @@
 ---
+image: /public/uploads/developpeur-informatique.avif
 title: SSO - Comment ça marche ?
 date: 2021-02-22T00:00:00.000Z
 author: Ali Sanhaji
