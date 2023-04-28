@@ -21,6 +21,7 @@ const jobCollection = defineCollection({
 });
 const blogCollection = defineCollection({
     schema: z.object({
+        image: z.string(),
         title: z.string(),
         date: z.date(),
         author: z.string(),
