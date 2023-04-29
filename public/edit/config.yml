@@ -1,9 +1,9 @@
 backend:
-  name: github 
-  repo: xanode/log.consulting
-  branch: dev
-  #auth_type: pkce
-  #app_id: 9c6c97a320e175cf664ff87f8c3dd1ded3894317c7aa34d5d3619a7d9f79d763 
+  name: gitlab
+  repo: log-consulting/log-website
+  branch: main
+  auth_type: pkce
+  app_id: cd4f4a78f736721749e71c80847a14711db38d427f7b7a249c93b97974ed82b9
 publish_mode: editorial_workflow
 media_folder: "public/uploads"
 collections:
