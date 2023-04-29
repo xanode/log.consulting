@@ -1,0 +1,14 @@
+---
+interface Props {
+    column?: boolean
+    logSvg?: boolean
+}
+const { column = false, logSvg = false } = Astro.props as Props;
+const flexDirection = column ? 'flex-col lg:flex-row' : 'flex-row';
+const alignItems = column ? 'items-center lg:items-start' : '';
+const svgVariant = logSvg ? 'title-svg:h-12' : '';
+---
+
+<div class={`flex ${flexDirection} gap-4 ${alignItems} justify-center font-bold text-4xl tracking-wide uppercase ${svgVariant} py-8 my-8`}>
+    <slot />
+</div>
