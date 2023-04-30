@@ -13,9 +13,41 @@ const { id = "", name, position, pictureReference = "#", pictureHoverReference =
 
 <div id={id} class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
     <a class={`overflow-visible group ${bgColor} w-64 h-64 mb-10 rounded-[24px] border-2 border-black flex place-content-end items-end`} href="/les-loggers">
-        <img class="group-hover:hidden self-end" src={pictureReference} alt="Photo d'un logger">
-        <img class="hidden group-hover:block self-end z-50" src={pictureHoverReference} alt="Photo d'un logger">
+        <img id={`imgBase_${id}`} class="md:group-hover:hidden self-end" src={pictureReference} alt="Photo d'un logger">
+        <img id={`imgHover_${id}`} class="hidden md:group-hover:block self-end z-50" src={pictureHoverReference} alt="Photo d'un logger">
     </a>
     <h2 class="font-bold text-2xl">{name}</h2>
     <p class="text-xl">{position}</p>
 </div>
+
+<script define:vars={{ id }}>
+    // On small screens (max-md:, width < 768px):
+    // Display id_base image during three seconds
+    // Display id_hover image during one second
+    // This run in loop
+
+    const imgBase = document.getElementById(`imgBase_${id}`);
+    const imgHover = document.getElementById(`imgHover_${id}`);
+
+    let nIntervalId;
+    const animateLoggers = () => {
+        if (window.innerWidth < 768) {
+            imgHover.classList.add("hidden");
+            nIntervalId = setInterval(() => {
+                setTimeout(() => {
+                    imgHover.classList.remove('hidden');
+                    imgBase.classList.add('hidden');
+                }, 2000);
+                imgBase.classList.remove('hidden');
+                imgHover.classList.add('hidden');
+            }, 5000);
+        } else {
+            clearInterval(nIntervalId);
+            nIntervalId = null;
+            imgBase.classList.remove("hidden");
+            imgHover.classList.add("hidden");
+        }
+    };
+    animateLoggers();
+    window.addEventListener('resize', animateLoggers);
+</script>
