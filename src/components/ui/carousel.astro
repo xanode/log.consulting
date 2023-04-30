@@ -15,11 +15,15 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
 ---
 
 <div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    {arrows && <button id={`${name}_left`} class="text-4xl">&#11207;</button>}
+    {arrows && <button id={`${name}_left`}>
+        <svg class="h-7" viewBox="0 0 14.998 20"><path d="M.429 10.823l13 9a1 1 0 0 0 1.569-.822v-18a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"/></svg>
+    </button>}
     <div id={`${name}_grid`} class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
         <slot />
     </div>
-    {arrows && <button id={`${name}_right`} class="text-4xl">&#11208;</button>}
+    {arrows && <button id={`${name}_right`}>
+        <svg class="h-7" viewBox="0 0 15 19.999"><path d="M.536 19.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 0 1v18a1 1 0 0 0 .536.886z"/></svg>
+    </button>}
 </div>
 
 <script define:vars={{ name, visibleElementsPx }}>
