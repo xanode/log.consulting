@@ -1,43 +1,21 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Description from "@components/job/description.astro";
-import Position from "@components/job/position.astro";
 import TitleBanner from "@components/ui/title_banner.astro";
 
 interface Props {
-    frontmatter: any;
+    title: string;
+    email: string;
 }
-const { frontmatter }: Props = Astro.props;
-const description: string = frontmatter.description.join("<br /><br />");
-const profile: string = frontmatter.profile.join("<br /><br />");
+const { title, email } = Astro.props as Props;
 ---
 
 <BaseLayout title="Offre d'emploi - LOG">
-    <TitleBanner title={frontmatter.title}></TitleBanner>
+    <TitleBanner title={title}></TitleBanner>
     <div class="flex flex-col gap-24 max-w-[88rem] mx-auto mb-12 px-4 lg:px-0">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-18">
-            <Description>
-                <p class="text-2xl mb-16 text-justify" slot="description">
-                    <Fragment set:html={description} />
-                </p>
-                <p class="text-2xl text-justify" slot="profile">
-                    <Fragment set:html={profile} />
-                </p>
-            </Description>
-            <Position
-                salary={frontmatter.salary}
-                starting_date={frontmatter.starting_date}
-                experience={frontmatter.experience}
-                job_name={frontmatter.job_name}
-                job_status={frontmatter.job_status}
-                travel_area={frontmatter.travel_area}
-                job_sector={frontmatter.job_sector}
-                telework={frontmatter.telework}
-                hr_name={frontmatter.hr_name}
-                hr_email={frontmatter.hr_email}
-                hr_phone={frontmatter.hr_phone}
-            />
+            <slot name="description" />
+            <slot name="position" />
         </div>
         <div class="flex flex-col items-center">
             <div class="flex flex-row gap-4 items-center">
@@ -69,7 +47,7 @@ const profile: string = frontmatter.profile.join("<br /><br />");
                 </li>
             </ul>
             <div class="text-center">
-                <a class="bg-blue-log rounded-xl text-center font-extrabold text-white text-3xl px-28 py-3" href="mailto:email@log.consulting">Postulez</a>
+                <a class="bg-blue-log rounded-xl text-center font-extrabold text-white text-3xl px-28 py-3" href={`mailto:${email}`}>Postulez</a>
             </div>
         </div>
     </div>

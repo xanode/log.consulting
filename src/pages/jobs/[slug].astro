@@ -1,8 +1,11 @@
 ---
 import JobOfferLayout from '@layouts/JobOfferLayout.astro';
 
+import Description from '@components/job/description.astro';
+import Position from '@components/job/position.astro';
+
 import { getCollection } from 'astro:content';
-// 1. Generate a new path for every collection entry
+// Generate a new path for every collection entry
 export async function getStaticPaths() {
   const jobEntries = await getCollection('job');
   return jobEntries.map(entry => ({
@@ -14,11 +17,30 @@ export async function getStaticPaths() {
     },
   }));
 }
-// 2. When it's time to render, you can get the entry directly from the prop
+// Get entry frontmatter
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 
-<JobOfferLayout frontmatter={entry.data}>
-  <Content />
+<JobOfferLayout title={entry.data.title} email={entry.data.hr_email}>
+  <Description>
+    <p class="text-2xl mb-16 text-justify" slot="description">
+        <Fragment set:html={entry.data.description.join("<br /><br />")} />
+    </p>
+    <p class="text-2xl text-justify" slot="profile">
+        <Fragment set:html={entry.data.profile.join("<br /><br />")} />
+    </p>
+  </Description>
+  <Position
+    salary={entry.data.salary}
+    starting_date={entry.data.starting_date}
+    experience={entry.data.experience}
+    job_name={entry.data.job_name}
+    job_status={entry.data.job_status}
+    travel_area={entry.data.travel_area}
+    job_sector={entry.data.job_sector}
+    telework={entry.data.telework}
+    hr_name={entry.data.hr_name}
+    hr_email={entry.data.hr_email}
+    hr_phone={entry.data.hr_phone}
+  />
 </JobOfferLayout>
