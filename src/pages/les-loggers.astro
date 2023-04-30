@@ -3,7 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
 import CallToAction from "@components/ui/call_to_action.astro";
 import SectionTeam from "@components/homepage/section_team.astro";
-import { Color } from "@libs/types";
+import { BackgroundColor, TextColor } from "@libs/types";
 
 import LoggersBannerReference from "@static/loggers-banner.avif";
 ---
@@ -13,8 +13,9 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
         title="Les Loggers"
         subtitle="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
+        bgColor={BackgroundColor.YELLOW}
+        textColor={TextColor.YELLOW}
         image={LoggersBannerReference}
-        color={Color.YELLOW}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-4">
@@ -43,9 +44,9 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
         text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
         button="Voir les offres d'emploi"
         image="#"
-        color={Color.YELLOW}
-        button_color={Color.BLACK}
+        bgColor={BackgroundColor.YELLOW}
+        textColor={TextColor.BLACK}
         href="/nous-rejoindre"
     />
-    <SectionTeam />
+    <SectionTeam activeCarousel={false} bgCardColor={BackgroundColor.WHITE}/>
 </BaseLayout>

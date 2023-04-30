@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ArticleCard from "@components/ui/article_card.astro";
 import TitleBanner from "@components/ui/title_banner.astro";
-import { Color } from "@libs/types";
+import { BackgroundColor, BorderColor, TextColor } from "@libs/types";
 
 import { getCollection } from "astro:content";
 const allBlogEntries = await getCollection("blog");
@@ -59,8 +59,9 @@ const allBlogEntries = await getCollection("blog");
                             title={article.data.title}
                             description={article.data.description}
                             class="lg:flex"
-                            color={Color.BLUE}
-                            dark={false}
+                            bgColor={BackgroundColor.BLUE}
+                            borderColor={BorderColor.BLUE}
+                            textColor={TextColor.BLUE}
                             href={`/blog/${article.slug}`}
                         />
                     ))}

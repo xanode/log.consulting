@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
 import CallToAction from "@components/ui/call_to_action.astro";
-import { Color } from "@libs/types";
+import { BackgroundColor, TextColor } from "@libs/types";
 
 import EcosystemeTechnologiqueReference from "@static/expertise-technos.avif";
 import DatacenterReference from "@static/datacenter.avif";
@@ -14,7 +14,8 @@ import DatacenterReference from "@static/datacenter.avif";
         title="Expertises"
         subtitle="Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per."
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum regum res gestas, cum tuis nec varietate regionum nec celeritate conficiendi nec dissimilitudine bellorum posse conferri; nec vero disiunctissimas terras citius passibus."
-        color={Color.RED}
+        bgColor={BackgroundColor.RED}
+        textColor={TextColor.RED}
         image={DatacenterReference}
     />
     <section class="relative max-w-7xl mx-auto text-center">
@@ -119,7 +120,8 @@ import DatacenterReference from "@static/datacenter.avif";
         text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
         button="Bouton"
         image="#"
-        color={Color.RED}
+        bgColor={BackgroundColor.RED}
+        textColor={TextColor.WHITE}
         href="#"
     />
 </BaseLayout>

@@ -1,22 +1,23 @@
 ---
-import { Color } from '@libs/types';
+import type { BackgroundColor, BorderColor, TextColor } from '@libs/types';
 interface Props {
     image: string;
     title: string;
     description: string;
     class?: string;
-    color?: Color;
-    dark?: boolean;
+    bgColor: BackgroundColor;
+    borderColor: BorderColor;
+    textColor: TextColor;
     href?: string;
 }
-const { image, title, description, class: className = "lg:flex", color = Color.RED,  dark = true, href = "#" }: Props = Astro.props;
+const { image, title, description, class: className = "lg:flex", bgColor,  borderColor, textColor, href = "#" }: Props = Astro.props;
 ---
 
-<div class={className + ` overflow-hidden flex-col items-center text-center max-w-sm border-2 ${dark === true ? "border-black" : `border-${color}`} rounded-t-[20px] font-mono`}>
+<div class={className + ` overflow-hidden flex-col items-center text-center max-w-sm border-2 ${borderColor} rounded-t-[20px] font-mono`}>
     <a href={href}>
         <img src={image} alt="Image d'un article" />
     </a>
-    <p class={`bg-${color} border-y-2 border-y-black text-white text-2xl px-1 py-2 w-full`}>{title}</p>
+    <p class={`${bgColor} border-y-2 border-y-black text-white text-2xl px-1 py-2 w-full`}>{title}</p>
     <p class="text-xl px-4 pt-6 line-clamp-3">{description}</p>
-    <a class={`font-bold text-xl text-${color} px-4 pt-3 pb-6`} href={href}>En savoir plus</a>
+    <a class={`font-bold text-xl ${textColor} px-4 pt-3 pb-6`} href={href}>En savoir plus</a>
 </div>

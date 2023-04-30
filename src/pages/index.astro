@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { BackgroundColor } from "@libs/types";
 
 import SectionArticles from '@components/homepage/section_articles.astro';
 import SectionClients from "@components/homepage/section_clients.astro";
@@ -15,7 +16,7 @@ import SectionWeAreLog from '@components/homepage/section_wearelog.astro';
     <SectionNumbers />
     <SectionExpertise />
     <SectionClients />
-    <SectionTeam />
+    <SectionTeam bgCardColor={BackgroundColor.BLUE}/>
     <SectionRecruitment />
     <SectionArticles />
 </BaseLayout>

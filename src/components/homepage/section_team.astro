@@ -2,6 +2,7 @@
 import Carousel from "@components/ui/carousel.astro";
 import LoggerCard from "@components/ui/logger_card.astro";
 import SectionTitle from "@components/ui/section_title.astro";
+import type { BackgroundColor } from "@libs/types";
 
 import AlexandreBHoverReference from '@static/loggers/Alexandre_B_hover.avif';
 import AlexandreBReference from '@static/loggers/Alexandre_B.avif';
@@ -15,6 +16,13 @@ import RayanHoverReference from '@static/loggers/Rayan_hover.avif';
 import RayanReference from '@static/loggers/Rayan.avif';
 import ValentinHoverReference from '@static/loggers/Valentin_hover.avif';
 import ValentinReference from '@static/loggers/Valentin.avif';
+
+interface Props {
+    activeCarousel?: boolean;
+    bgCardColor: BackgroundColor;
+}
+const { activeCarousel = true, bgCardColor } = Astro.props as Props;
+
 
 // Breakpoints for the carousel, got from https://tailwindcss.com/docs/responsive-design
 const visibleElements = [ // Default is 1
@@ -35,12 +43,12 @@ const visibleElements = [ // Default is 1
             <span>gers</span>
         </h1>
     </SectionTitle>
-    <Carousel name="loggers" visibleElements={visibleElements}>
-        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Fonction" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} />
-        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Fonction" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference}/>
-        <LoggerCard id="loggers_card_3" name="Bouchra" position="Fonction" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference}/>
-        <LoggerCard id="loggers_card_4" name="Guillaume T." position="Fonction" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference}/>
-        <LoggerCard id="loggers_card_5" name="Rayan" position="Fonction" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference}/>
-        <LoggerCard id="loggers_card_6" name="Valentin" position="Fonction" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference}/>
+    <Carousel active={activeCarousel} name="loggers" visibleElements={visibleElements}>
+        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Fonction" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Fonction" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_3" name="Bouchra" position="Fonction" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_4" name="Guillaume T." position="Fonction" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_5" name="Rayan" position="Fonction" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_6" name="Valentin" position="Fonction" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
     </Carousel>
 </section>

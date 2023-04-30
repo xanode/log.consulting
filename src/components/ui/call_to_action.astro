@@ -1,16 +1,16 @@
 ---
-import { Color } from "@libs/types";
+import type { BackgroundColor, TextColor } from "@libs/types";
 
 interface Props {
     title: string;
     text: string;
     button: string;
     image: string;
-    color: Color;
-    button_color?: Color;
+    bgColor: BackgroundColor;
+    textColor: TextColor;
     href: string;
 }
-const { title, text, button, image, color, button_color = Color.WHITE, href } = Astro.props as Props;
+const { title, text, button, image, bgColor, textColor, href } = Astro.props as Props;
 ---
 
 <section class="relative w-full">
@@ -25,7 +25,7 @@ const { title, text, button, image, color, button_color = Color.WHITE, href } = 
                 <p class="font-medium text-xl">
                     <Fragment set:html={text} />
                 </p>
-                <a class={`p-4 bg-${color} rounded-xl text-xl text-${button_color} w-1/2`} href={href}>{button}</a>
+                <a class={`p-4 ${bgColor} rounded-xl text-xl ${textColor} w-1/2`} href={href}>{button}</a>
             </div>
         </div>
     </div>

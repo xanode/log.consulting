@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
 import CallToAction from "@components/ui/call_to_action.astro";
-import { Color } from "@libs/types";
+import { BackgroundColor, TextColor } from "@libs/types";
 
 import AGITReference from "@static/agit.avif";
 import LeafOnChipReference from "@static/leaf-on-chip.avif";
@@ -13,7 +13,8 @@ import LeafOnChipReference from "@static/leaf-on-chip.avif";
         title="Engagements"
         subtitle="En complément de nos valeurs d'excellence et d'expertise, l'engagement pour un numérique ayant un impact minimum sur l'environnement fait partie de l'ADN de LOG et de ses fondateurs."
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
-        color={Color.GREEN}
+        bgColor={BackgroundColor.GREEN}
+        textColor={TextColor.GREEN}
         image={LeafOnChipReference}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
@@ -41,7 +42,8 @@ import LeafOnChipReference from "@static/leaf-on-chip.avif";
         text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
         button="Bouton"
         image="#"
-        color={Color.GREEN}
+        bgColor={BackgroundColor.GREEN}
+        textColor={TextColor.WHITE}
         href="#"
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">

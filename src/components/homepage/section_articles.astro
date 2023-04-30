@@ -1,7 +1,7 @@
 ---
 import ArticleCard from "@components/ui/article_card.astro";
 import SectionTitle from "@components/ui/section_title.astro";
-import { Color } from "@libs/types";
+import { BackgroundColor, BorderColor, TextColor } from "@libs/types";
 
 import { getCollection } from "astro:content";
 const allBlogEntries = await getCollection("blog");
@@ -18,8 +18,9 @@ const allBlogEntries = await getCollection("blog");
                 title={article.data.title}
                 description={article.data.description}
                 class="lg:flex"
-                color={Color.RED}
-                dark={true}
+                bgColor={BackgroundColor.RED}
+                borderColor={BorderColor.BLACK}
+                textColor={TextColor.RED}
                 href={`/blog/${article.slug}`}
             />
         ))}
