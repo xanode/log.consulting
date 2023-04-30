@@ -30,10 +30,12 @@ const { frontmatter } = Astro.props as Props;
                     {allBlogEntries.slice(0, 3).map((entry) => {
                         return (
                             <li>
-                                <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
-                                    <img src={frontmatter.image} alt="Image article" />
-                                    <a class="bg-blue-log text-white font-bold text-xl py-2 w-full" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
-                                </div>
+                                <a href={`/blog/${entry.slug}`}>
+                                    <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
+                                        <img src={frontmatter.image} alt="Image article" />
+                                        <p class="bg-blue-log text-white font-bold text-xl py-2 w-full">{entry.data.title}</p>
+                                    </div>
+                                </a>
                             </li>
                         )
                     })}
