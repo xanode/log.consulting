@@ -48,7 +48,7 @@ const allJobEntries = await getCollection('job');
                 <div>
                     <JobCard
                         title={job.data.title}
-                        description="Soleo saepe ante oculos ponere, idque libenter crebis usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
+                        summary={job.data.summary}
                         href={`/jobs/${job.slug}`}
                     />
                 </div>
