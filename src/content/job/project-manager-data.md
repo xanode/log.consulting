@@ -12,6 +12,7 @@ telework: Partiel possible
 hr_name: Laetitia Bastiani
 hr_email: email@log.consulting
 hr_phone: +33.0.00.00.00.00
+hr_picture: ""
 description:
   - Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
   - Auditer les environnements Legacy pour définir leur évolution vers le Cloud

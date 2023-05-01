@@ -41,6 +41,8 @@ module.exports = {
 				'screen-1/2': '50vw',
 				'screen-1/24': '4.166667vw',
 				'screen-1/6': '16.666667vw',
+				'screen-3/40': '7.5vw',
+				'screen-1/5': '20vw',
 			}
 		},
 	},
@@ -48,6 +50,7 @@ module.exports = {
 		plugin(function ({ addVariant }) {
 			addVariant('title-svg', '&>*>svg')
 		}),
+		require('@tailwindcss/line-clamp'),
 		require('@tailwindcss/typography'),
 	],
 	safelist: [

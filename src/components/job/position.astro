@@ -13,6 +13,7 @@ interface Props {
     hr_name: string;
     hr_email: string;
     hr_phone: string;
+    hr_picture: string;
 }
 const {
     salary,
@@ -26,11 +27,12 @@ const {
     hr_name,
     hr_email,
     hr_phone,
+    hr_picture,
 }: Props = Astro.props;
 ---
 
 <div class="flex flex-col gap-10 lg:ml-auto">
-    <div class="overflow-hidden max-w-[480px] flex flex-col border-4 border-blue-log rounded-[42px]">
+    <div class="overflow-hidden w-screen-2/3 lg:w-screen-1/4 flex flex-col border-4 border-blue-log rounded-[42px]">
         <img class="w-full" src={PosteReference} alt="Poste de référence" />
         <h1 class="text-2xl font-bold p-4">LE POSTE</h1>
         <div class="grid grid-cols-8 content-around text-xl leading-10 p-4">
@@ -83,7 +85,12 @@ const {
         </div>
     </div>
     <a class="bg-blue-log rounded-xl text-center font-extrabold text-white text-3xl py-4" href={`mailto:${hr_email}`}>Postulez</a>
-    <div class="bg-blue-log rounded-[42px] text-center text-white font-extrabold pt-12 pb-8 px-8">
+    <div class="bg-blue-log rounded-[42px] text-center text-white font-extrabold mt-[calc(3.75vw+1rem)] pt-24 pb-8 px-8">
+        <div class="overflow-hidden absolute translate-x-[calc(23.3333vw-2rem)] lg:translate-x-[calc(8.75vw-2rem)] -translate-y-[calc(10vw+6rem)] lg:-translate-y-[calc(3.75vw+6rem)] bg-white rounded-3xl w-screen-1/5 lg:w-screen-3/40 h-screen-1/5 lg:h-screen-3/40 p-1">
+            <div class="overflow-hidden bg-gray-log rounded-3xl w-full h-full">
+                <img class="object-cover" src={hr_picture} alt="Photo du responsable de l'offre" />
+            </div>
+        </div>
         <h2 class="text-2xl mb-8">Responsable de l'offre</h2>
         <p class="text-3xl mb-8">{hr_name}</p>
         <a class="font-normal text-lg hover:underline hover:underline-offset-4" href={`tel:${hr_phone}`}>{hr_phone}</a><br />

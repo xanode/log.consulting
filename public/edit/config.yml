@@ -28,6 +28,7 @@ collections:
       - { label: "Responsable de l'offre", name: "hr_name", widget: "string" }
       - { label: "Email du responsable de l'offre", name: "hr_email", widget: "string" }
       - { label: "Téléphone du responsable de l'offre", name: "hr_phone", widget: "string" }
+      - { label: "Photo du responsable de l'offre", name: "hr_picture", widget: "image" }
       - { label: "Description du poste", name: "description", widget: "list", field: {label: "Élément descriptif", name: "decription_item", widget: "text"} }
       - { label: "Profil recherché", name: "profile", widget: "text" }
   - name: "blog"

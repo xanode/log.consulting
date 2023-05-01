@@ -1,5 +1,5 @@
 {
-	"name": "log",
+	"name": "log.consulting",
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
@@ -16,6 +16,7 @@
 		"tailwindcss": "^3.0.24"
 	},
 	"devDependencies": {
+		"@tailwindcss/line-clamp": "^0.4.4",
 		"@tailwindcss/typography": "^0.5.9"
 	}
 }
