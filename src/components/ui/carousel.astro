@@ -83,12 +83,40 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
     window.addEventListener('resize', () => {
         updateCarousel(0);
     });
+
+    // Attach swipe handler to the carousel
+    // Define variables to store the starting position
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    // Attach touchstart and touchend handlers to the carousel element
+    const carousel = document.getElementById(`${name}_grid`);
+    carousel.addEventListener('touchstart', (event) => {
+        // Store the starting touch position
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+    });
+    carousel.addEventListener('touchend', (event) => {
+        // Calculate the difference in pixels between the starting and ending touch positions
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        const deltaY = event.changedTouches[0].clientY - touchStartY;
+
+        // Determine if the user swiped horizontally or vertically
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // If the user swiped horizontally, update the carousel accordingly
+            if (deltaX > 0) {
+                updateCarousel(-1);
+            } else {
+                updateCarousel(1);
+            }
+        }
+    });
 </script>
 
 :
 
 <div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    <div id={`${name}_grid`} class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
+    <div class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
         <slot />
     </div>
 </div>
