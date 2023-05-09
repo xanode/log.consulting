@@ -14,12 +14,12 @@ const { frontmatter } = Astro.props as Props;
 <BaseLayout title={frontmatter.title}>
     <TitleBanner title={frontmatter.title} />
     <section class="relative max-w-8xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">
             <div class="flex flex-col gap-10">
                 <div class="overflow-hidden rounded-2xl max-w-4xl h-56">
                     <img src={frontmatter.image} alt="Image article" />
                 </div>
-                <article class="prose prose-neutral prose-lg lg:prose-xl text-justify lg:max-w-4xl px-3 lg:pr-0">
+                <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-4xl px-3 lg:pr-0">
                     <slot />
                 </article>
             </div>
