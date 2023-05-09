@@ -15,7 +15,7 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
 }, {});
 ---
 {active ?
-<div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+<div id={`${name}_div`} class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
     {arrows && <button id={`${name}_left`} aria-label="Left">
         <svg class="h-7" viewBox="0 0 14.998 20"><path d="M.429 10.823l13 9a1 1 0 0 0 1.569-.822v-18a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"/></svg>
     </button>}
@@ -90,7 +90,7 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
     let touchStartY = 0;
 
     // Attach touchstart and touchend handlers to the carousel element
-    const carousel = document.getElementById(`${name}_grid`);
+    const carousel = document.getElementById(`${name}_div`);
     carousel.addEventListener('touchstart', (event) => {
         // Store the starting touch position
         touchStartX = event.touches[0].clientX;
