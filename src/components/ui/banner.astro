@@ -6,7 +6,11 @@ interface Props {
     description: string;
     bgColor: BackgroundColor;
     textColor: TextColor;
-    image: string;
+    image: {
+        src: string;
+        width: number;
+        height: number;
+    };
 }
 const { title, subtitle, description, bgColor, textColor, image } = Astro.props as Props;
 ---
@@ -15,7 +19,7 @@ const { title, subtitle, description, bgColor, textColor, image } = Astro.props 
     <div class="flex flex-col lg:flex-row">
         <div class="flex basis-1/2 bg-gray-log">
             <div class={`w-screen-1/2 lg:w-screen-1/4 lg:h-[95%] ${bgColor} rounded-2xl translate-x-[calc(25vw+2rem)] lg:translate-x-[calc(25vw-2rem)] -translate-y-8`}></div>
-            <img class="w-screen-1/2 lg:w-screen-1/4 h-[95%] self-end rounded-2xl -translate-x-[25vw] lg:-translate-x-20 z-10" src={image} alt="Image" />
+            <img class="w-screen-1/2 lg:w-screen-1/4 h-[95%] self-end rounded-2xl -translate-x-[25vw] lg:-translate-x-20 z-10" src={image.src} width={image.width} height={image.height} alt="" />
         </div>
         <div class="flex bg-black basis-1/2 text-white flex-col justify-center p-10">
             <div class="flex flex-col gap-4 max-w-xl">

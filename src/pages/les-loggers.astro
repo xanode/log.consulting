@@ -6,6 +6,12 @@ import SectionTeam from "@components/homepage/section_team.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
 import LoggersBannerReference from "@static/loggers-banner.avif";
+
+const bannerImage = {
+    src: LoggersBannerReference,
+    width: 505,
+    height: 434,
+}
 ---
 
 <BaseLayout title="Les Loggers">
@@ -15,7 +21,7 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
         bgColor={BackgroundColor.YELLOW}
         textColor={TextColor.YELLOW}
-        image={LoggersBannerReference}
+        image={bannerImage}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-4">

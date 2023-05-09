@@ -6,6 +6,12 @@ import { BackgroundColor, TextColor } from "@libs/types";
 
 import EcosystemeTechnologiqueReference from "@static/expertise-technos.avif";
 import LoggersBannerReference from "@static/loggers-banner.avif";
+
+const bannerImage = {
+    src: LoggersBannerReference,
+    width: 505,
+    height: 434,
+}
 ---
 
 <BaseLayout title="Nos métiers">
@@ -15,7 +21,7 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
         bgColor={BackgroundColor.BLUE}
         textColor={TextColor.BLUE}
-        image={LoggersBannerReference}
+        image={bannerImage}
     />
     <section class="relative max-w-7xl mx-auto text-center">
         <h1 class="font-bold text-3xl uppercase">Nos savoirs-faires</h1>
@@ -110,7 +116,7 @@ import LoggersBannerReference from "@static/loggers-banner.avif";
                         Technologies adhérentes au Cloud : Réseaux, Sécurité et Data
                     </li>
                 </ul>
-                <img class="w-[500px]" src={EcosystemeTechnologiqueReference} alt="Technologies Cloud" />
+                <img class="w-[500px]" src={EcosystemeTechnologiqueReference} width="737" height="390" alt="Technologies Cloud" />
             </div>
         </div>
     </section>

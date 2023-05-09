@@ -6,6 +6,12 @@ import { BackgroundColor, TextColor } from "@libs/types";
 
 import AGITReference from "@static/agit.avif";
 import LeafOnChipReference from "@static/leaf-on-chip.avif";
+
+const bannerImage = {
+    src: LeafOnChipReference,
+    width: 717,
+    height: 667,
+};
 ---
 
 <BaseLayout title="Nos engagements">
@@ -15,7 +21,7 @@ import LeafOnChipReference from "@static/leaf-on-chip.avif";
         description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
         bgColor={BackgroundColor.GREEN}
         textColor={TextColor.GREEN}
-        image={LeafOnChipReference}
+        image={bannerImage}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-4">
@@ -23,7 +29,7 @@ import LeafOnChipReference from "@static/leaf-on-chip.avif";
             <h2 class="text-2xl">LOG est membre actif de plusieurs associations et groupements œuvrant pour un numérique reponsable.</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center mt-14">
                 <div class="flex flex-col items-center gap-4">
-                    <img class="w-auto h-20 grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} alt="Logo de l'Alliance Green IT" />
+                    <img class="w-auto h-20 grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} width="250" height="81" alt="" />
                     <p class="font-semibold text-xl">Alliance Green IT<br /><span class="font-normal">(AGIT)</span></p>
                 </div>
                 <div class="flex flex-col items-center gap-4">
