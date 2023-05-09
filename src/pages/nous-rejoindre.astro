@@ -1,5 +1,22 @@
 ---
 import JoinUsLayout from "@layouts/JoinUsLayout.astro";
+
+import JobCard from "@components/job/job_card.astro";
+
+import { getCollection } from "astro:content";
+const allJobEntries = await getCollection('job');
 ---
 
-<JoinUsLayout></JoinUsLayout>
+<JoinUsLayout>
+    <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+        {allJobEntries.map((job) => (
+            <div>
+                <JobCard
+                    title={job.data.title}
+                    summary={job.data.summary}
+                    href={`/jobs/${job.slug}`}
+                />
+            </div>
+        ))}
+    </div>
+</JoinUsLayout>
