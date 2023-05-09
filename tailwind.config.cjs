@@ -5,6 +5,10 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			borderRadius: {
+				'4xl': '2.25rem',
+				'5xl': '3rem',
+			},
 			borderWidth: {
 				'3': '3px',
 			},
@@ -22,6 +26,7 @@ module.exports = {
 					log: '#fff042',
 				},
 				gray: {
+					dark: '#ababab',
 					log: '#ededed',
 				}
 			},
@@ -44,6 +49,9 @@ module.exports = {
 				'screen-3/40': '7.5vw',
 				'screen-1/5': '20vw',
 			},
+			width: {
+				'112': '28rem',
+			}
 		},
 	},
 	plugins: [
