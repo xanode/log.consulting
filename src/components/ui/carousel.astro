@@ -71,10 +71,10 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
     // Attach click handlers to the left and right arrow buttons
     document.getElementById(`${name}_right`).addEventListener('click', () => {
         updateCarousel(1);
-    });
+    }, {passive: true});
     document.getElementById(`${name}_left`).addEventListener('click', () => {
         updateCarousel(-1);
-    });
+    }, {passive: true});
 
     // Initialize the carousel display
     updateCarousel(0);
@@ -95,7 +95,7 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
         // Store the starting touch position
         touchStartX = event.touches[0].clientX;
         touchStartY = event.touches[0].clientY;
-    });
+    }, {passive: true});
     carousel.addEventListener('touchend', (event) => {
         // Calculate the difference in pixels between the starting and ending touch positions
         const deltaX = event.changedTouches[0].clientX - touchStartX;
@@ -110,7 +110,7 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
                 updateCarousel(1);
             }
         }
-    });
+    }, {passive: true});
 </script>
 
 :

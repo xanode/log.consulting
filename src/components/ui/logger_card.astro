@@ -49,5 +49,5 @@ const { id = "", name, position, pictureReference = "#", pictureHoverReference =
         }
     };
     animateLoggers();
-    window.addEventListener('resize', animateLoggers);
+    window.addEventListener('resize', animateLoggers, {passive: true});
 </script>
