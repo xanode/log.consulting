@@ -5,6 +5,13 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), compress()],
+  integrations: [
+    tailwind(),
+    compress({
+      css: {
+        forceMediaMerge: false,
+      }
+    }),
+  ],
   site: 'https://log.consulting',
 });
