@@ -4,9 +4,10 @@ interface Props {
     arrows?: boolean;
     name: string;
     visibleElements: Array<{breakpoint: number, items: number}>;
+    offset?: number;
 }
 
-const { active = true, arrows = true, name, visibleElements } = Astro.props as Props;
+const { active = true, arrows = true, name, visibleElements, offset = 1 } = Astro.props as Props;
 
 // Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
 const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items }) => {
@@ -27,7 +28,7 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
     </button>}
 </div>
 
-<script define:vars={{ name, visibleElementsPx }}>
+<script define:vars={{ name, visibleElementsPx, offset }}>
     // Define an array of HTML elements to display in the carousel
     const cards = [...document.querySelectorAll(`[id^="${name}_card_"]`)];
 
@@ -70,10 +71,10 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
 
     // Attach click handlers to the left and right arrow buttons
     document.getElementById(`${name}_right`).addEventListener('click', () => {
-        updateCarousel(1);
+        updateCarousel(offset);
     }, {passive: true});
     document.getElementById(`${name}_left`).addEventListener('click', () => {
-        updateCarousel(-1);
+        updateCarousel(-offset);
     }, {passive: true});
 
     // Initialize the carousel display
