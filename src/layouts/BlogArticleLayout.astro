@@ -3,7 +3,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import TitleBanner from "@components/ui/title_banner.astro";
 
 import { getCollection } from "astro:content";
-const allBlogEntries = await getCollection("blog");
+const allBlogEntries = (await getCollection("blog")).sort((a, b) => {
+    return b.data.date.getTime() - a.data.date.getTime();
+});
 
 interface Props {
     frontmatter: any

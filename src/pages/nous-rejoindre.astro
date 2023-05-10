@@ -4,7 +4,9 @@ import JoinUsLayout from "@layouts/JoinUsLayout.astro";
 import JobCard from "@components/job/job_card.astro";
 
 import { getCollection } from "astro:content";
-const allJobEntries = await getCollection('job');
+const allJobEntries = (await getCollection('job')).sort((a, b) => {
+    return b.data.publish_date.getTime() - a.data.publish_date.getTime();
+});
 ---
 
 <JoinUsLayout>
