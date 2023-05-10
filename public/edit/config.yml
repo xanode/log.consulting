@@ -39,6 +39,7 @@ collections:
     fields:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Titre", name: "title", widget: "string"}
+      - { label: "Catégorie", name: "category", widget: "select", options: ["Architecture", "DevOps", "Développement"] }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Auteur", name: "author", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }

@@ -6,6 +6,28 @@ import { BackgroundColor, BorderColor, TextColor } from "@libs/types";
 
 import { getCollection } from "astro:content";
 const allBlogEntries = await getCollection("blog");
+
+const entriesByCategory = allBlogEntries.reduce((acc, entry) => {
+  const { category } = entry.data;
+
+  // If the category doesn't exist in the accumulator yet, create it
+  if (!acc[category]) {
+    acc[category] = { category: category as string, entry: [] };
+  }
+
+  // Add the current entry to the appropriate category
+  acc[category].entry.push(entry);
+
+  return acc;
+}, {} as Record<string, { category: string, entry: typeof allBlogEntries }>);
+
+// Convert the object into an array and sort the entries by date
+const sortedEntriesByCategory = Object.values(entriesByCategory).map(({ category, entry }) => ({
+  category,
+  entry: entry.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+}));
+
+// The sortedEntriesByCategory array now contains the entries grouped by category and sorted by date
 ---
 
 <BaseLayout title="Le blog">
@@ -14,38 +36,22 @@ const allBlogEntries = await getCollection("blog");
         <div class="flex flex-grow">
             <div class="hidden lg:block bg-neutral-800 text-white lg:w-[25vw] h-full px-10">
                 <ul class="flex flex-col">
-                    <li class="mt-8">
-                        <details open>
-                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
-                                <span class="hover:underline hover:underline-offset-4">Architecture</span>
-                            </summary>
-                            <ul class="space-y-2">
-                                <li>
-                                    <a class="pl-4 border-l border-neutral-700 hover:border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
-                                </li>
-                                <li>
-                                    <a class="pl-4 border-l border-neutral-700 hover:border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
-                                </li>
-                                <li>
-                                    <a class="pl-4 border-l border-neutral-700 hover:border-current hover:underline hover:underline-offset-4" href="#">Titre article blog</a>
-                                </li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li class="mt-8">
-                        <details>
-                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
-                                <span class="hover:underline hover:underline-offset-4">DevOps</span>
-                            </summary>
-                        </details>
-                    </li>
-                    <li class="mt-8">
-                        <details>
-                            <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
-                                <span class="hover:underline hover:underline-offset-4">Développement</span>
-                            </summary>
-                        </details>
-                    </li>
+                    {sortedEntriesByCategory.map((category) => (
+                        <li class="mt-8">
+                            <details open>
+                                <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
+                                    <span class="hover:underline hover:underline-offset-4">{category.category}</span>
+                                </summary>
+                                <ul class="space-y-2">
+                                    {category.entry.map((entry) => (
+                                        <li>
+                                            <a class="pl-4 border-l border-neutral-700 hover:border-current hover:underline hover:underline-offset-4" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div class="flex flex-col gap-10 items-center p-10 bg-black text-white lg:w-[75vw] h-full">

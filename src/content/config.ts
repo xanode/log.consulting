@@ -26,6 +26,7 @@ const blogCollection = defineCollection({
     schema: z.object({
         image: z.string(),
         title: z.string(),
+        category: z.enum(["Architecture", "DevOps", "Développement"]),
         date: z.date(),
         author: z.string(),
         description: z.string(),
