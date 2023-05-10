@@ -21,11 +21,11 @@ const { title, text, button, image, bgColor, textColor, href } = Astro.props as 
         </div>
         <div class="flex flex-col items-center p-8 lg:p-20 basis-3/8 bg-black text-white">
             <div class="flex flex-col gap-12 max-w-lg">
-                <h1 class="font-bold text-4xl uppercase tracking-wide">{title}</h1>
-                <p class="font-medium text-xl">
+                <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide">{title}</h1>
+                <p class="font-medium text-lg md:text-xl">
                     <Fragment set:html={text} />
                 </p>
-                <a class={`p-4 ${bgColor} rounded-xl text-xl ${textColor} w-fit`} href={href}>{button}</a>
+                <a class={`p-4 ${bgColor} rounded-xl text-lg md:text-xl ${textColor} w-fit`} href={href}>{button}</a>
             </div>
         </div>
     </div>
