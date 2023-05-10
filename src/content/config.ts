@@ -7,6 +7,7 @@ const jobCollection = defineCollection({
         summary: z.string(),
         salary: z.string(),
         starting_date: z.date(),
+        publish_date: z.date(),
         experience: z.string(),
         job_name: z.string(),
         job_status: z.string(),
