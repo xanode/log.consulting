@@ -16,8 +16,9 @@ const { frontmatter } = Astro.props as Props;
     <section class="relative max-w-8xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">
             <div class="flex flex-col gap-10">
+                <p class="text-xl">Publié le {new Date(frontmatter.date).toLocaleDateString()} par <span class="font-bold">{frontmatter.author}</span></p>
                 <div class="overflow-hidden rounded-2xl max-w-4xl h-56">
-                    <img src={frontmatter.image} alt="Image article" />
+                    <img src={frontmatter.image} alt="" />
                 </div>
                 <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-4xl px-3 lg:pr-0">
                     <slot />
@@ -32,7 +33,7 @@ const { frontmatter } = Astro.props as Props;
                             <li>
                                 <a href={`/blog/${entry.slug}`}>
                                     <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
-                                        <img src={frontmatter.image} alt="Image article" />
+                                        <img src={frontmatter.image} alt="" />
                                         <p class="bg-blue-log text-white font-bold text-xl py-2 w-full">{entry.data.title}</p>
                                     </div>
                                 </a>
