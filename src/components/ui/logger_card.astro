@@ -13,8 +13,8 @@ const { id = "", name, position, pictureReference = "#", pictureHoverReference =
 
 <div id={id} class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
     <a class={`overflow-visible group ${bgColor} w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end`} href="/les-loggers">
-        <img id={`imgBase_${id}`} class="md:group-hover:hidden self-end" width="256" height="256" src={pictureReference} alt="Photo d'un logger">
-        <img id={`imgHover_${id}`} class="hidden md:group-hover:block self-end z-50" width="256" height="384" src={pictureHoverReference} alt="Photo d'un logger">
+        <img id={`imgBase_${id}`} class="md:group-hover:hidden self-end" width="256" height="256" src={pictureReference} alt="">
+        <img id={`imgHover_${id}`} class="hidden md:group-hover:block self-end z-50" width="256" height="384" src={pictureHoverReference} alt="">
     </a>
     <h2 class="font-bold text-2xl">{name}</h2>
     <p class="text-xl">{position}</p>
