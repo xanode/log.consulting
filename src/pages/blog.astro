@@ -38,7 +38,7 @@ const sortedEntriesByCategory = Object.values(entriesByCategory).map(({ category
                 <ul class="flex flex-col">
                     {sortedEntriesByCategory.map((category) => (
                         <li class="mt-8">
-                            <details open>
+                            <details>
                                 <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
                                     <span class="hover:underline hover:underline-offset-4">{category.category}</span>
                                 </summary>
