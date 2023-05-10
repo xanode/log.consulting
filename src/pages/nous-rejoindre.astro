@@ -12,14 +12,10 @@ const allJobEntries = (await getCollection('job')).sort((a, b) => {
 <JoinUsLayout>
     <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
         {allJobEntries.map((job) => (
-            <div>
-                <JobCard
-                    title={job.data.title}
-                    summary={job.data.summary}
-                    publish_date={new Date(job.data.publish_date).toLocaleDateString()}
-                    href={`/jobs/${job.slug}`}
-                />
-            </div>
+            <JobCard
+                frontmatter={job.data}
+                href={`/jobs/${job.slug}`}
+            />
         ))}
     </div>
 </JoinUsLayout>

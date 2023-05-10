@@ -16,6 +16,7 @@ collections:
     create: true
     fields:
       - { label: "Titre", name: "title", widget: "string"}
+      - { label: "Pictogramme", name: "icon", widget: "select", options: ["developpement", "securite", "architecture", "devops"]}
       - { label: "Résumé de l'offre", name: "summary", widget: "text" }
       - { label: "Date de publication", name: "publish_date", widget: "datetime" }
       - { label: "Salaire", name: "salary", widget: "string" }

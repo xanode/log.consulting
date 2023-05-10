@@ -1,5 +1,6 @@
 ---
 title: Consultant DevOps H/F
+icon: devops
 summary: Soleo saepe ante oculos ponere, idque libenter crebis usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum.
 salary: 50 - 80 k€ brut annuel
 starting_date: 2023-02-19T00:00:00.000Z

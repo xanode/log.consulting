@@ -4,6 +4,7 @@ import { z, defineCollection } from 'astro:content';
 const jobCollection = defineCollection({
     schema: z.object({
         title: z.string(),
+        icon: z.enum(["developpement", "securite", "architecture", "devops"]),
         summary: z.string(),
         salary: z.string(),
         starting_date: z.date(),
