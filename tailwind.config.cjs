@@ -33,7 +33,11 @@ module.exports = {
 			flexBasis: {
 				'3/8': '37.5%',
 			},
+			margin: {
+				'22': '88px',
+			},
 			maxWidth: {
+				'112': '30rem',
 				'8xl': '90rem',
 			},
 			minWidth: {
@@ -49,8 +53,13 @@ module.exports = {
 				'screen-3/40': '7.5vw',
 				'screen-1/5': '20vw',
 			},
+			translate: {
+				'34': '136px',
+				'42': '168px',
+			},
 			width: {
 				'112': '28rem',
+				'120': '30rem',
 			}
 		},
 	},
