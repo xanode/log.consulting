@@ -1,11 +1,14 @@
 backend:
-  name: github 
-  repo: xanode/log.consulting
-  branch: dev
-  #auth_type: pkce
-  #app_id: 9c6c97a320e175cf664ff87f8c3dd1ded3894317c7aa34d5d3619a7d9f79d763 
+  name: gitlab
+  repo: log-consulting/log-website
+  branch: main
+  auth_type: pkce
+  app_id: cd4f4a78f736721749e71c80847a14711db38d427f7b7a249c93b97974ed82b9
 publish_mode: editorial_workflow
 media_folder: "public/uploads"
+public_folder: "/uploads"
+site_url: https://log.consulting
+logo_url: https://log.consulting/favicon.svg
 collections:
   - name: "job"
     label: "Offre d'emploi"
@@ -13,6 +16,9 @@ collections:
     create: true
     fields:
       - { label: "Titre", name: "title", widget: "string"}
+      - { label: "Pictogramme", name: "icon", widget: "select", options: ["developpement", "securite", "architecture", "devops"]}
+      - { label: "Résumé de l'offre", name: "summary", widget: "text" }
+      - { label: "Date de publication", name: "publish_date", widget: "datetime" }
       - { label: "Salaire", name: "salary", widget: "string" }
       - { label: "Prise de poste", name: "starting_date", widget: "datetime" }
       - { label: "Expérience", name: "experience", widget: "string" }
@@ -24,6 +30,7 @@ collections:
       - { label: "Responsable de l'offre", name: "hr_name", widget: "string" }
       - { label: "Email du responsable de l'offre", name: "hr_email", widget: "string" }
       - { label: "Téléphone du responsable de l'offre", name: "hr_phone", widget: "string" }
+      - { label: "Photo du responsable de l'offre", name: "hr_picture", widget: "image" }
       - { label: "Description du poste", name: "description", widget: "list", field: {label: "Élément descriptif", name: "decription_item", widget: "text"} }
       - { label: "Profil recherché", name: "profile", widget: "text" }
   - name: "blog"
@@ -33,8 +40,9 @@ collections:
     fields:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Titre", name: "title", widget: "string"}
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Catégorie", name: "category", widget: "select", options: ["Architecture", "DevOps", "Développement"] }
+      - { label: "Date de publication", name: "date", widget: "datetime" }
       - { label: "Auteur", name: "author", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
       - { label: "Corps", name: "body", widget: "markdown" }
 

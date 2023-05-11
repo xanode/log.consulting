@@ -1,26 +1,31 @@
 ---
-import type { Color } from "@libs/types";
+import type { BackgroundColor, TextColor } from "@libs/types";
 interface Props {
     title: string;
     subtitle: string;
     description: string;
-    color: Color;
-    image: string;
+    bgColor: BackgroundColor;
+    textColor: TextColor;
+    image: {
+        src: string;
+        width: number;
+        height: number;
+    };
 }
-const { title, subtitle, description, color, image } = Astro.props as Props;
+const { title, subtitle, description, bgColor, textColor, image } = Astro.props as Props;
 ---
 
 <section class="relative w-full mt-20">
     <div class="flex flex-col lg:flex-row">
         <div class="flex basis-1/2 bg-gray-log">
-            <div class={`w-screen-1/2 lg:w-screen-1/4 lg:h-[95%] bg-${color} rounded-2xl translate-x-[calc(25vw+2rem)] lg:translate-x-[calc(25vw-2rem)] -translate-y-8`}></div>
-            <img class="w-screen-1/2 lg:w-screen-1/4 h-[95%] self-end rounded-2xl -translate-x-[25vw] lg:-translate-x-20 z-10" src={image} alt="Image" />
+            <div class={`w-screen-1/2 lg:w-screen-1/4 lg:h-[95%] ${bgColor} rounded-2xl translate-x-[calc(25vw+2rem)] lg:translate-x-[calc(25vw-2rem)] -translate-y-8`}></div>
+            <img class="w-screen-1/2 lg:w-screen-1/4 h-[95%] self-end rounded-2xl -translate-x-screen-1/4 lg:-translate-x-20 z-10" src={image.src} width={image.width} height={image.height} alt="" />
         </div>
         <div class="flex bg-black basis-1/2 text-white flex-col justify-center p-10">
             <div class="flex flex-col gap-4 max-w-xl">
-                <h1 class={`font-bold text-${color} text-3xl uppercase`}>{title}</h1>
-                <h2 class="font-bold text-2xl">{subtitle}</h2>
-                <p class="text-xl">{description}</p>
+                <h1 class={`font-bold ${textColor} text-2xl md:text-3xl uppercase`}>{title}</h1>
+                <h2 class="font-bold text-xl md:text-2xl">{subtitle}</h2>
+                <p class="text-lg md:text-xl">{description}</p>
             </div>
         </div>
     </div>

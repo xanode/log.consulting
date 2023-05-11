@@ -1,5 +1,21 @@
 ---
 import JoinUsLayout from "@layouts/JoinUsLayout.astro";
+
+import JobCard from "@components/job/job_card.astro";
+
+import { getCollection } from "astro:content";
+const allJobEntries = (await getCollection('job')).sort((a, b) => {
+    return b.data.publish_date.getTime() - a.data.publish_date.getTime();
+});
 ---
 
-<JoinUsLayout></JoinUsLayout>
+<JoinUsLayout>
+    <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+        {allJobEntries.map((job) => (
+            <JobCard
+                frontmatter={job.data}
+                href={`/jobs/${job.slug}`}
+            />
+        ))}
+    </div>
+</JoinUsLayout>

@@ -1,0 +1,47 @@
+---
+
+import { BorderColor, TextColor } from "@libs/types";
+
+interface Props {
+    title: string
+    textColor: TextColor
+    borderColor: BorderColor
+};
+const { title, textColor, borderColor } = Astro.props as Props;
+
+// Map text colors like TextColor.RED (which gives text-red-log) to marker color like marker:text-red-log
+// marker:text-red-log needs to be written completely for TailwindCSS to detect it
+const mapColor = (textColor: TextColor) => {
+    switch (textColor) {
+        case TextColor.RED:
+            return "marker:text-red-log";
+        case TextColor.BLUE:
+            return "marker:text-blue-log";
+        case TextColor.GREEN:
+            return "marker:text-green-log";
+        case TextColor.YELLOW:
+            return "marker:text-yellow-log";
+        case TextColor.BLACK:
+            return "marker:text-black";
+        case TextColor.GRAY:
+            return "marker:text-gray-log";
+        case TextColor.WHITE:
+            return "marker:text-white";
+        default:
+            return "marker:text-black";
+    }
+}
+const markerColor = mapColor(textColor);
+
+---
+
+<div class="flex flex-col items-center gap-4">
+    <slot name="svg" />
+    <h2 class="font-semibold text-xl md:text-2xl uppercase mt-10">{title}</h2>
+    <div class="relative flex justify-center px-6 py-4">
+        <div class={`absolute top-0 left-0 border-t-2 border-l-2 rounded-tl-2xl ${borderColor} w-12 h-12`}></div>
+        <ul class={`flex flex-col items-start md:gap-6 ${markerColor} marker:text-3xl md:marker:text-4xl marker:align-middle list-inside list-[square] text-start text-lg md:text-xl`}>
+            <slot name="list" />
+        </ul>
+    </div>
+</div>

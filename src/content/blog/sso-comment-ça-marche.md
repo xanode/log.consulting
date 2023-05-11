@@ -1,6 +1,7 @@
 ---
-image: /public/uploads/developpeur-informatique.avif
+image: /uploads/developpeur-informatique.avif
 title: SSO - Comment ça marche ?
+category: Architecture
 date: 2021-02-22T00:00:00.000Z
 author: Ali Sanhaji
 description: Cette première partie explique les principes généraux du SSO, et son implémentation via SAML. La seconde partie abordera OAuth2/OpenID Connect, et la comparaison avec SAML.

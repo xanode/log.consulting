@@ -1,31 +1,31 @@
 ---
-import { Color } from "@libs/types";
+import type { BackgroundColor, TextColor } from "@libs/types";
 
 interface Props {
     title: string;
     text: string;
     button: string;
     image: string;
-    color: Color;
-    button_color?: Color;
+    bgColor: BackgroundColor;
+    textColor: TextColor;
     href: string;
 }
-const { title, text, button, image, color, button_color = Color.WHITE, href } = Astro.props as Props;
+const { title, text, button, image, bgColor, textColor, href } = Astro.props as Props;
 ---
 
 <section class="relative w-full">
     <div class="flex flex-col lg:flex-row place-content-center">
         <div class="relative flex basis-3/8 bg-gray-log -translate-y-8 lg:translate-y-0">
             <div class="absolute border-3 rounded-3xl border-black w-screen-2/3 lg:w-screen-1/3 translate-x-screen-1/6 lg:translate-x-screen-1/24 h-[calc(100%+4rem)] -translate-y-8"></div>
-            <img class="w-full h-full" src={image} alt="Photo" />
+            <img class="w-full h-full" src={image} width="" height="" alt="" />
         </div>
-        <div class="flex flex-col items-center p-20 basis-3/8 bg-black text-white">
+        <div class="flex flex-col items-center p-8 lg:p-20 basis-3/8 bg-black text-white">
             <div class="flex flex-col gap-12 max-w-lg">
-                <h1 class="font-bold text-4xl uppercase tracking-wide">{title}</h1>
-                <p class="font-medium text-xl">
+                <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide">{title}</h1>
+                <p class="font-medium text-lg md:text-xl">
                     <Fragment set:html={text} />
                 </p>
-                <a class={`p-4 bg-${color} rounded-xl text-xl text-${button_color} w-1/2`} href={href}>{button}</a>
+                <a class={`p-4 ${bgColor} rounded-xl text-lg md:text-xl ${textColor} w-fit`} href={href}>{button}</a>
             </div>
         </div>
     </div>

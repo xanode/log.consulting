@@ -1,7 +1,10 @@
 ---
 title: Cloud Security Architecte H/F
+icon: securite
+summary: Soleo saepe ante oculos ponere, idque libenter crebis usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum.
 salary: 50 - 80 k€ brut annuel
 starting_date: 2023-02-19T00:00:00.000Z
+publish_date: 2023-02-15T00:00:00.000Z
 experience: Minimum 3 ans
 job_name: Cloud Security Architecte
 job_status: Cadre du secteur privé
@@ -11,6 +14,7 @@ telework: Partiel possible
 hr_name: Laetitia Bastiani
 hr_email: email@log.consulting
 hr_phone: +33.0.00.00.00.00
+hr_picture: ""
 description:
   - Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
   - Auditer les environnements Legacy pour définir leur évolution vers le Cloud

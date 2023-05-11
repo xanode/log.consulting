@@ -1,11 +1,13 @@
 ---
 interface Props {
+    active?: boolean;
     arrows?: boolean;
     name: string;
     visibleElements: Array<{breakpoint: number, items: number}>;
+    offset?: number;
 }
 
-const { arrows = true, name, visibleElements } = Astro.props as Props;
+const { active = true, arrows = true, name, visibleElements, offset = 1 } = Astro.props as Props;
 
 // Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
 const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items }) => {
@@ -13,16 +15,20 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
   return acc;
 }, {});
 ---
-
-<div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    {arrows && <button id={`${name}_left`} class="text-4xl">&#11207;</button>}
+{active ?
+<div id={`${name}_div`} class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+    {arrows && <button id={`${name}_left`} aria-label="Left">
+        <svg class="h-7" viewBox="0 0 14.998 20"><path d="M.429 10.823l13 9a1 1 0 0 0 1.569-.822v-18a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"/></svg>
+    </button>}
     <div id={`${name}_grid`} class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
         <slot />
     </div>
-    {arrows && <button id={`${name}_right`} class="text-4xl">&#11208;</button>}
+    {arrows && <button id={`${name}_right`} aria-label="Right">
+        <svg class="h-7" viewBox="0 0 15 19.999"><path d="M.536 19.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 0 1v18a1 1 0 0 0 .536.886z"/></svg>
+    </button>}
 </div>
 
-<script define:vars={{ name, visibleElementsPx }}>
+<script define:vars={{ name, visibleElementsPx, offset }}>
     // Define an array of HTML elements to display in the carousel
     const cards = [...document.querySelectorAll(`[id^="${name}_card_"]`)];
 
@@ -65,11 +71,11 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
 
     // Attach click handlers to the left and right arrow buttons
     document.getElementById(`${name}_right`).addEventListener('click', () => {
-        updateCarousel(1);
-    });
+        updateCarousel(offset);
+    }, {passive: true});
     document.getElementById(`${name}_left`).addEventListener('click', () => {
-        updateCarousel(-1);
-    });
+        updateCarousel(-offset);
+    }, {passive: true});
 
     // Initialize the carousel display
     updateCarousel(0);
@@ -78,4 +84,41 @@ const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items 
     window.addEventListener('resize', () => {
         updateCarousel(0);
     });
+
+    // Attach swipe handler to the carousel
+    // Define variables to store the starting position
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    // Attach touchstart and touchend handlers to the carousel element
+    const carousel = document.getElementById(`${name}_div`);
+    carousel.addEventListener('touchstart', (event) => {
+        // Store the starting touch position
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+    }, {passive: true});
+    carousel.addEventListener('touchend', (event) => {
+        // Calculate the difference in pixels between the starting and ending touch positions
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        const deltaY = event.changedTouches[0].clientY - touchStartY;
+
+        // Determine if the user swiped horizontally or vertically
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // If the user swiped horizontally, update the carousel accordingly
+            if (deltaX > 0) {
+                updateCarousel(-1);
+            } else {
+                updateCarousel(1);
+            }
+        }
+    }, {passive: true});
 </script>
+
+:
+
+<div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+    <div class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
+        <slot />
+    </div>
+</div>
+}

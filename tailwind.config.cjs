@@ -1,8 +1,14 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./src/**/*.{astro,html,md,ts}'],
 	theme: {
 		extend: {
+			borderRadius: {
+				'4xl': '2.25rem',
+				'5xl': '3rem',
+			},
 			borderWidth: {
 				'3': '3px',
 			},
@@ -20,13 +26,18 @@ module.exports = {
 					log: '#fff042',
 				},
 				gray: {
+					dark: '#ababab',
 					log: '#ededed',
 				}
 			},
 			flexBasis: {
 				'3/8': '37.5%',
 			},
+			margin: {
+				'22': '88px',
+			},
 			maxWidth: {
+				'112': '30rem',
 				'8xl': '90rem',
 			},
 			minWidth: {
@@ -39,10 +50,23 @@ module.exports = {
 				'screen-1/2': '50vw',
 				'screen-1/24': '4.166667vw',
 				'screen-1/6': '16.666667vw',
+				'screen-3/40': '7.5vw',
+				'screen-1/5': '20vw',
+			},
+			translate: {
+				'34': '136px',
+				'42': '168px',
+			},
+			width: {
+				'112': '28rem',
+				'120': '30rem',
 			}
 		},
 	},
 	plugins: [
+		plugin(function ({ addVariant }) {
+			addVariant('title-svg', '&>*>svg')
+		}),
 		require('@tailwindcss/typography'),
 	],
 	safelist: [
@@ -51,4 +75,4 @@ module.exports = {
 			variants: ['sm', 'md', 'lg', 'xl', '2xl'],
 		}
 	]
-}
+};

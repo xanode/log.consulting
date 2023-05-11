@@ -1,22 +1,26 @@
 ---
 import ArticleCard from "@components/ui/article_card.astro";
-import { Color } from "@libs/types";
+import SectionTitle from "@components/ui/section_title.astro";
+import { BackgroundColor, BorderColor, TextColor } from "@libs/types";
 
 import { getCollection } from "astro:content";
 const allBlogEntries = await getCollection("blog");
 ---
 
 <section class="relative w-full text-center">
-    <h1 class="font-bold text-3xl py-8">NOS DERNIERS ARTICLES</h1>
-    <div class="flex flex-col lg:flex-row gap-10 justify-center items-center mx-auto max-lg:px-4 py-8">
+    <SectionTitle>
+        <h1>Nos derniers articles</h1>
+    </SectionTitle>
+    <div class="flex flex-col lg:flex-row gap-10 justify-center items-center mx-auto px-4 py-8">
         {allBlogEntries.slice(0, 3).map((article) => (
             <ArticleCard
                 image={article.data.image}
                 title={article.data.title}
                 description={article.data.description}
                 class="lg:flex"
-                color={Color.RED}
-                dark={true}
+                bgColor={BackgroundColor.RED}
+                borderColor={BorderColor.BLACK}
+                textColor={TextColor.RED}
                 href={`/blog/${article.slug}`}
             />
         ))}
