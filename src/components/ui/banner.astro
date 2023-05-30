@@ -17,9 +17,9 @@ const { title, subtitle, description, bgColor, textColor, image } = Astro.props 
 
 <section class="relative w-full mt-20">
     <div class="flex flex-col lg:flex-row">
-        <div class="flex basis-1/2 bg-gray-log">
-            <div class={`w-screen-1/2 lg:w-screen-1/4 lg:h-[95%] ${bgColor} rounded-2xl translate-x-[calc(25vw+2rem)] lg:translate-x-[calc(25vw-2rem)] -translate-y-8`}></div>
-            <img class="w-screen-1/2 lg:w-screen-1/4 h-[95%] self-end rounded-2xl -translate-x-screen-1/4 lg:-translate-x-20 z-10" src={image.src} width={image.width} height={image.height} alt="" />
+        <div class="relative flex basis-1/2 bg-gray-log">
+            <img class={`lg:absolute lg:right-0 lg:bottom-0 border w-screen-1/2 lg:w-auto lg:h-[95%] ${bgColor} rounded-2xl translate-x-[calc(25vw+2rem)] lg:-translate-x-8 -translate-y-8`} src="" width={image.width} height={image.height} alt="" />
+            <img class="lg:absolute lg:right-0 lg:bottom-0 w-screen-1/2 lg:w-auto h-[95%] rounded-2xl -translate-x-screen-1/4 lg:-translate-x-16 z-10" src={image.src} width={image.width} height={image.height} alt="" />
         </div>
         <div class="flex bg-black basis-1/2 text-white flex-col justify-center p-10">
             <div class="flex flex-col gap-4 max-w-xl">
