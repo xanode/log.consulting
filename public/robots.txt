@@ -1,0 +1,4 @@
+User-agents: *
+Allow: /
+
+Sitemap: https://log.consulting/sitemap-index.html

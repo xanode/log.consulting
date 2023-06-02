@@ -2,16 +2,10 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
 
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    compress({
-      css: {
-        forceMediaMerge: false,
-      }
-    }),
-  ],
-  site: 'https://log.consulting',
+  integrations: [tailwind(), sitemap(), compress()],
+  site: 'https://log.consulting'
 });

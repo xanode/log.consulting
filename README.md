@@ -48,7 +48,7 @@ La documentation d'Astro, très bien faite, est [disponible ici](https://docs.as
 
 ### Pourquoi TailwindCSS
 
-Notre deuxième préoccupation, après le numérique responsable, a été la maintenabilité. En effet, tout projet se doit d'être maintenable, c'est-à-dire que des personnes différentes des créatrices du projet puisse participer au projet sans dépenser énormément de temps dans sa prise en main. Cette réflexion au sujet de la maintenabilité nous poussé à utiliser l'approche dite de « l'utilité d'abord » (*utility-first* en anglais). Celle-ci consiste à construire des composants complexes à partir d'un ensemble contraint d'*utilités* primitives. TailwindCSS est un framework CSS qui permet de réaliser cela.
+Notre deuxième préoccupation, après le numérique responsable, a été la maintenabilité. En effet, tout projet se doit d'être maintenable, c'est-à-dire que des personnes différentes des créatrices du projet puissent participer au projet sans dépenser énormément de temps dans sa prise en main. Cette réflexion au sujet de la maintenabilité nous poussé à utiliser l'approche dite de « l'utilité d'abord » (*utility-first* en anglais). Celle-ci consiste à construire des composants complexes à partir d'un ensemble contraint d'*utilités* primitives. TailwindCSS est un framework CSS qui permet de réaliser cela.
 
 > **Note**<br/>
 > Beaucoup de justifications parmi celles qui suivent sont issues de la documentation de TailwindCSS.
