@@ -1,27 +1,27 @@
-# cache.appcache, your document html and data
-location ~* \.(?:manifest|appcache|html?|xml|json)$ {
-  expires -1;
+# favicon.ico
+location = /favicon.ico {
+    log_not_found off;
 }
 
-# Feed
-location ~* \.(?:rss|atom)$ {
-  expires 1h;
-  add_header Cache-Control "public";
+# robots.txt
+location = /robots.txt {
+    log_not_found off;
 }
 
-# Media: images, icons, video, audio, HTC
-location ~* \.(?:jpg|jpeg|gif|png|avif|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
-  expires 1M;
-  access_log off;
-  add_header Cache-Control "public";
+# assets, media
+location ~* \.(?:css(\.map)?|js(\.map)?|jpe?g|png|gif|ico|cur|heic|webp|tiff?|mp3|m4a|aac|ogg|midi?|wav|mp4|mov|webm|mpe?g|avi|ogv|flv|wmv)$ {
+    expires 7d;
 }
 
-# CSS and Javascript
-location ~* \.(?:css|js)$ {
-  expires 1y;
-  access_log off;
-  add_header Cache-Control "public";
+# svg, fonts
+location ~* \.(?:svgz?|ttf|ttc|otf|eot|woff2?)$ {
+    add_header Access-Control-Allow-Origin "*";
+    expires    7d;
 }
 
-# Enable gzip
-gzip on;
+# gzip
+gzip            on;
+gzip_vary       on;
+gzip_proxied    any;
+gzip_comp_level 6;
+gzip_types      text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;

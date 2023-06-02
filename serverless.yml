@@ -1,4 +1,6 @@
 service: logconsulting
+configValidationMode: off
+
 provider:
   name: scaleway
   scwToken: ${env:SCW_SECRET_KEY}
@@ -8,17 +10,14 @@ provider:
 plugins:
   - serverless-scaleway-functions
 
-package:
-  patterns:
-    - 'public/'
-
 custom:
   containers:
     logconsulting:
+      description: Site internet de LOG
       directory: .
-      minScale: 1
       maxScale: 1
       memoryLimit: 128
+      minScale: 1
       port: 80
       custom_domains:
         - log.consulting
