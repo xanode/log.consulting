@@ -1,4 +1,4 @@
-User-agents: *
+User-agent: *
 Allow: /
 
 Sitemap: https://log.consulting/sitemap-index.html
