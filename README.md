@@ -50,11 +50,13 @@ La documentation d'Astro, très bien faite, est [disponible ici](https://docs.as
 
 Notre deuxième préoccupation, après le numérique responsable, a été la maintenabilité. En effet, tout projet se doit d'être maintenable, c'est-à-dire que des personnes différentes des créatrices du projet puisse participer au projet sans dépenser énormément de temps dans sa prise en main. Cette réflexion au sujet de la maintenabilité nous poussé à utiliser l'approche dite de « l'utilité d'abord » (*utility-first* en anglais). Celle-ci consiste à construire des composants complexes à partir d'un ensemble contraint d'*utilités* primitives. TailwindCSS est un framework CSS qui permet de réaliser cela.
 
-    Beaucoup de justifications parmi celles qui suivent sont issues de la documentation de TailwindCSS.
+> **Note**<br/>
+> Beaucoup de justifications parmi celles qui suivent sont issues de la documentation de TailwindCSS.
 
 Traditionnellement, dès que l'on veut styliser un page web, on écrit du CSS.
 
-    Note: Les exemples suivent l'approche orienté composant d'Astro et la syntaxe associés. Pour plus d'information à ce sujet, vous pouvez [lire ceci](https://docs.astro.build/fr/core-concepts/astro-components/). Vous n'avez, pour le moment, juste à retenir que les feuilles de style d'un composant sont juxtaposées en-dessous de la description HTML.
+> **Note**<br/>
+> Les exemples ci-dessous suivent l'approche orienté composant d'Astro et la syntaxe associée. Pour plus d'information à ce sujet, vous pouvez [lire ceci](https://docs.astro.build/fr/core-concepts/astro-components/). Vous n'avez, pour le moment, juste à retenir que les feuilles de style d'un composant sont juxtaposées en-dessous de la description HTML.
 
 ```astro
 ---
