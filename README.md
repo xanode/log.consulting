@@ -237,7 +237,7 @@ Pour réaliser des sites web avec un contenu évolutif (blog, offres d'emploi, e
      +---------------+
 ```
 Cette architecture implique que quelque chose s'exécute côté serveur et cela a un coût en énergie ainsi qu'en performance. Dans notre cas, cette architecure n'est pas souhaitable car il est possible d'actualiser un site statique à l'aide d'une approche DevOps : on peut déclencher un déploiement lorsque du code est poussé sur une branche spécifique d'un dépôt git (hébergé sur Gitlab / GitHub).
-L'idée est la suivante : lorsque l'on souhaite modifier le site, on se rend sur une page spécifique qui propose un interface d'édition (s'exécutant côté client, ça n'est que du javascript). Lorsque la modification est publiée, elles sont poussées sur un dépôt git et cette action déclenche le re-déploiement du site. Les temps de déploiement étant courts (< 10 minutes, en pratique dans les 3 minutes) cela permet d'apliquer les modifications en quasi-temps réel.
+L'idée est la suivante : lorsque l'on souhaite modifier le site, on se rend sur une page spécifique qui propose une interface d'édition (s'exécutant côté client, ça n'est que du javascript). Lorsque la modification est publiée, elles sont poussées sur un dépôt git et cette action déclenche le re-déploiement du site. Les temps de déploiement étant courts (< 10 minutes, en pratique dans les 3 minutes) cela permet d'apliquer les modifications en quasi-temps réel.
 L'architecture est comme suit :
 ```
      +---------------+
@@ -266,7 +266,7 @@ L'architecture est comme suit :
      +---------------+
 ```
 
-Pour procéder ainsi, il faut disposer d'une application web (écrite en Javascript / WASM, elle ne doit s'exécuter uniquement côté client) qui permet de réaliser des modification et de les pousser sur un dépôt. Pour cela, il existe DecapCMS (nouveau de NetlifyCMS), qui est le système de gestion de contenu basé sur Git le plus populaire (écrit en React).
+Pour procéder ainsi, il faut disposer d'une application web (écrite en Javascript / WASM, elle ne doit s'exécuter uniquement côté client) qui permet de réaliser des modification et de les pousser sur un dépôt. Pour cela, il existe DecapCMS (nouveau nom de NetlifyCMS), qui est le système de gestion de contenu basé sur Git le plus populaire (écrit en React).
 
 La documentation est [disponible ici](https://decapcms.org/docs/intro/).
 
@@ -315,19 +315,19 @@ La structure du projet est organisée de la manière suivante :
 - `.gitignore` : Énumération des fichiers que git doit ignorer.
 - `.gitlab-ci.yml` : Chaîne de traitement Gitlab pour déployer le site.
 - `package.json` : Dépendances nécessaires à la construction du site et scripts.
-- `public/` : Tout ce qui n'est pas du code et/ou des fichiers qui n'ont pas à être traités (icônes, fichiers téléversés, etc.).
+- `public/` : Tout ce qui n'est pas du code et/ou des fichiers qui n'ont pas à être traités (icônes, fichiers téléversés, configuration de DecapCMS, etc.).
 - `README.md` : Ce fichier.
-- `serverless.yml` : Configuration du framework [Serverless](https://www.serverless.com/) pour déployer un conteneur serverless chez Scaleway.
+- `serverless.yml` : Configuration du [framework Serverless](https://www.serverless.com/) pour déployer un conteneur serverless chez Scaleway.
 - `src/` : Ce répertoire contient le code source du site web.
-  - `components/` : Composants d'interface utilisateur réutilisables utilisés dans tout le site (accessible via l'alias `@components`).
+  - `components/` : Composants d'interface utilisateur réutilisables utilisés dans tout le site (accessible avec l'alias `@components`).
   - `content/` : Collections de contenu pour les articles de blog et les offres d'emploi. Les fichiers Markdown créés par DecapCMS y sont positionnés.
-    - `blog/` : Dossier contenant l-es articles de blog au format Markdown.
+    - `blog/` : Dossier contenant les articles de blog au format Markdown.
     - `config.ts` : Définition des collections de contenu (offres d'emploi / articles de blog).
     - `job/` : Dossier contenant les offres d'emploi au format Markdown.
-  - `layouts/` : Composants de mise en page utilisés pour structurer les différentes pages (accessible via l'alias `@layouts`).
-  - `libs/types.ts` : Énumération de couleurs pour faciliter l'usage des composants (dossier parent accessible via l'alias `@libs`).
-  - `pages/` : Composants de page individuels (dossier obligatoire duquel sont générées les routes) (accessible via l'alias `@pages`).
-  - `static/` : Ressources statiques telles que des images (accessible via l'alias `@static`).
+  - `layouts/` : Composants de mise en page utilisés pour structurer les différentes pages (accessible avec l'alias `@layouts`).
+  - `libs/types.ts` : Énumération de couleurs pour faciliter l'usage des composants (dossier parent accessible avec l'alias `@libs`).
+  - `pages/` : Composants de page individuels (dossier obligatoire duquel sont générées les routes) (accessible avec l'alias `@pages`).
+  - `static/` : Ressources statiques telles que des images (accessible avec l'alias `@static`).
 - `tailwind.config.cjs` : Configuration de TailwindCSS pour personnaliser les classes utilitaires (notamment la palette de couleur).
 - `tsconfig.json` : Configuration de Typescript, contenant les alias d'importation.
 - `yarn.lock` : Verrou de Yarn, géré automatiquement par l'outil.
