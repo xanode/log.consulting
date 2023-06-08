@@ -13,6 +13,7 @@ Ce dépôt contient le code source du site web d'entreprise de LOG. Le site est 
 - [Pour commencer](#pour-commencer)
 - [Structure du projet](#structure-du-projet)
 - [Déploiement](#déploiement)
+  - [L'architecture de production](#larchitecture-de-production)
   - [L'image Docker](#limage-docker)
   - [La politique de mise en cache](#la-politique-de-mise-en-cache)
   - [La configuration du Serverless Framwork](#la-configuration-du-framework-serverless)
@@ -340,7 +341,7 @@ Pour déployer un site statique à moindre coûts, deux solutions sont possibles
 
 L'architecture de production est la suivante :
 
-[!Architecture de production](architecture_prod.png)
+![Architecture de production](architecture_prod.png)
 
 Le fichier source du diagramme est [disponible ici](architecture_prod.drawio).
 
