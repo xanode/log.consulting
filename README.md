@@ -13,6 +13,7 @@ Ce dépôt contient le code source du site web d'entreprise de LOG. Le site est 
 - [Pour commencer](#pour-commencer)
 - [Structure du projet](#structure-du-projet)
 - [Déploiement](#déploiement)
+  - [L'architecture de production](#larchitecture-de-production)
   - [L'image Docker](#limage-docker)
   - [La politique de mise en cache](#la-politique-de-mise-en-cache)
   - [La configuration du Serverless Framwork](#la-configuration-du-framework-serverless)
@@ -335,6 +336,15 @@ La structure du projet est organisée de la manière suivante :
 ## Déploiement
 
 Pour déployer un site statique à moindre coûts, deux solutions sont possibles. On peut utiliser un bucket S3 et l'exposer à Internet ou bien le déployer plus classiquement en se souciant du serveur web. La problématique du bucket S3 est de ne pas (pour le moment) permettre d'utiliser de certificat TLS personalisé pour certifier le nom de domaine et utiliser HTTPS. De fait, cette solution n'est pas souhaitable. Mais il existe une autre solution, tout aussi (voire plus) flexible, qui consiste à déployer une image docker dans un conteneur dit *serverless*. C'est cette option qui a été choisie.
+
+### L'architecture de production
+
+L'architecture de production est la suivante :
+
+![Architecture de production](architecture_prod.png)
+
+Le fichier source du diagramme est [disponible ici](architecture_prod.drawio).
+
 
 ### L'image docker
 
