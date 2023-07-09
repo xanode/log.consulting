@@ -10,12 +10,25 @@ import AlexandreMHoverReference from '@static/loggers/Alexandre_M_hover.avif';
 import AlexandreMReference from '@static/loggers/Alexandre_M.avif';
 import BouchraHoverReference from '@static/loggers/Bouchra_hover.avif';
 import BouchraReference from '@static/loggers/Bouchra.avif';
+import GuillaumeFHoverReference from '@static/loggers/Guillaume_F_hover.avif';
+import GuillaumeFReference from '@static/loggers/Guillaume_F.avif';
 import GuillaumeTHoverReference from '@static/loggers/Guillaume_T_hover.avif';
 import GuillaumeTReference from '@static/loggers/Guillaume_T.avif';
+import JoffreyHoverReference from '@static/loggers/Joffrey_R_hover.avif';
+import JoffreyReference from '@static/loggers/Joffrey_R.avif';
+import LaurentHoverReference from '@static/loggers/Laurent_Z_hover.avif';
+import LaurentReference from '@static/loggers/Laurent_Z.avif';
+import OlivierHoverReference from '@static/loggers/Olivier_R_hover.avif';
+import OlivierReference from '@static/loggers/Olivier_R.avif';
 import RayanHoverReference from '@static/loggers/Rayan_hover.avif';
 import RayanReference from '@static/loggers/Rayan.avif';
+import ThibautHoverReference from '@static/loggers/Thibaut_W_hover.avif';
+import ThibautReference from '@static/loggers/Thibaut_W.avif';
 import ValentinHoverReference from '@static/loggers/Valentin_hover.avif';
 import ValentinReference from '@static/loggers/Valentin.avif';
+import VincentHoverReference from '@static/loggers/Vincent_P_hover.avif';
+import VincentReference from '@static/loggers/Vincent_P.avif';
+
 
 interface Props {
     activeCarousel?: boolean;
@@ -44,11 +57,18 @@ const visibleElements = [ // Default is 1
         </h1>
     </SectionTitle>
     <Carousel active={activeCarousel} name="loggers" visibleElements={visibleElements}>
-        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Fonction" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Fonction" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_3" name="Bouchra" position="Fonction" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_4" name="Guillaume T." position="Fonction" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_5" name="Rayan" position="Fonction" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_6" name="Valentin" position="Fonction" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Consultant" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Consultant" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_3" name="Bouchra" position="LOG Fan" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_4" name="Guillaume F." position="Consultant" pictureReference={GuillaumeFReference} pictureHoverReference={GuillaumeFHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_5" name="Guillaume T." position="Associé" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_6" name="Joffrey" position="Mangeur & Consultant" pictureReference={JoffreyReference} pictureHoverReference={JoffreyHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_7" name="Laurent" position="Consultant" pictureReference={LaurentReference} pictureHoverReference={LaurentHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_8" name="Olivier" position="Associé" pictureReference={OlivierReference} pictureHoverReference={OlivierHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_9" name="Rayan" position="Community Manager" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_10" name="Thibaut" position="Consultant" pictureReference={ThibautReference} pictureHoverReference={ThibautHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_11" name="Valentin" position="Consultant" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard id="loggers_card_12" name="Vincent" position="Consultant" pictureReference={VincentReference} pictureHoverReference={VincentHoverReference} bgColor={bgCardColor}/>
     </Carousel>
+
 </section>
