@@ -20,10 +20,8 @@ const { id, frontmatter } = Astro.props as Props;
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">
             <div class="flex flex-col gap-10">
                 <p class="text-xl">Publié le {new Date(frontmatter.date).toLocaleDateString('fr-FR')} par <span class="font-bold">{frontmatter.author}</span></p>
-                <div class="overflow-hidden rounded-2xl max-w-4xl h-56">
-                    <img src={frontmatter.image} alt="" />
-                </div>
-                <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-4xl px-3 lg:pr-0">
+                <img class="rounded-2xl self-center w-full lg:w-auto max-w-md lg:max-w-4xl" src={frontmatter.image} alt="" />
+                <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-md lg:max-w-4xl px-3 lg:pr-0">
                     <slot />
                 </article>
             </div>
