@@ -8,9 +8,10 @@ const allBlogEntries = (await getCollection("blog")).sort((a, b) => {
 });
 
 interface Props {
+    id: string
     frontmatter: any
 }
-const { frontmatter } = Astro.props as Props;
+const { id, frontmatter } = Astro.props as Props;
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -30,12 +31,12 @@ const { frontmatter } = Astro.props as Props;
                 <a class="font-bold text-white text-2xl rounded-2xl bg-blue-log px-4 py-2" href="/blog">Voir tous les articles</a>
                 <h3 class="text-2xl font-bold mt-6">Derniers articles</h3>
                 <ul class="flex flex-col gap-2">
-                    {allBlogEntries.slice(0, 3).map((entry) => {
+                    {allBlogEntries.filter((entry) => entry.id !== id).slice(0, 3).map((entry) => {
                         return (
                             <li>
                                 <a href={`/blog/${entry.slug}`}>
                                     <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
-                                        <img src={frontmatter.image} alt="" />
+                                        <img src={entry.data.image} alt="" />
                                         <p class="bg-blue-log text-white font-bold text-xl py-2 w-full">{entry.data.title}</p>
                                     </div>
                                 </a>
