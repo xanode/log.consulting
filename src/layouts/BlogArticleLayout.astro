@@ -35,7 +35,7 @@ const { frontmatter } = Astro.props as Props;
                             <li>
                                 <a href={`/blog/${entry.slug}`}>
                                     <div class="flex flex-col items-center overflow-hidden border-2 border-blue-log rounded-2xl max-w-sm">
-                                        <img src={frontmatter.image} alt="" />
+                                        <img src={entry.data.image} alt="" />
                                         <p class="bg-blue-log text-white font-bold text-xl py-2 w-full">{entry.data.title}</p>
                                     </div>
                                 </a>
