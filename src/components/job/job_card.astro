@@ -22,20 +22,21 @@ const getIcon = () => {
 const icon = getIcon();
 ---
 
-<div class="overflow-hidden flex flex-col border-blue-log border-2 rounded-5xl bg-blue-log max-w-md">
-    <a href={href}>
-        <div class="flex flex-col text-white px-4 py-1 gap-2">
+<div class="overflow-hidden flex flex-col border-blue-log border-2 rounded-5xl max-w-md">
+    <a class="flex flex-col h-full" href={href}>
+        <div class="flex flex-col text-white px-4 py-1 gap-2 bg-blue-log">
             <div class="flex flex-row items-center gap-4">
                 <div class="flex shrink-0 items-center justify-center w-16 h-16 rounded-[50%] bg-black">
                     <Fragment set:html={icon} />
                 </div>
                 <h1 class="font-bold text-2xl md:text-3xl">{frontmatter.title}</h1>
             </div>
-            <p class="text-sm italic text-center">Publié le <span class="font-bold">{new Date(frontmatter.publish_date).toLocaleDateString()}</span></p>
+            <p class="text-sm italic text-center">Publié le <span class="font-bold">{new Date(frontmatter.publish_date).toLocaleDateString('fr-FR')}</span></p>
         </div>
-        <div class="flex flex-col items-center gap-10 bg-white py-10 h-full">
-            <p class="text-lg md:text-xl max-w-[80%]">{frontmatter.summary}</p>
-            <button class="bg-blue-log text-white font-bold text-xl md:text-2xl px-4 py-1.5">En savoir plus</button>
+        <p class="text-lg md:text-xl px-6 my-10">{frontmatter.summary}</p>
+        <div class="grow invisible"></div>
+        <div class="flex flex-col items-center justify-end mb-10">
+            <button class=" bg-blue-log text-white font-bold text-xl md:text-2xl px-4 py-1.5">En savoir plus</button>
         </div>
     </a>
 </div>
