@@ -2,14 +2,22 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
 import CallToAction from "@components/ui/call_to_action.astro";
+import InfoCard from "@components/ui/info_card.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
 import AGITReference from "@static/agit.avif";
 import LeafOnChipReference from "@static/leaf-on-chip.avif";
+import actionsConcretesReference from "@static/green_prez.avif";
 
 const bannerImage = {
     src: LeafOnChipReference,
     width: 717,
+    height: 667,
+};
+
+const actionsConcretesImage = {
+    src: actionsConcretesReference,
+    width: 400,
     height: 667,
 };
 ---
@@ -18,7 +26,7 @@ const bannerImage = {
     <Banner
         title="Engagements"
         subtitle="En complément de nos valeurs d'excellence et d'expertise, l'engagement pour un numérique ayant un impact minimum sur l'environnement fait partie de l'ADN de LOG et de ses fondateurs."
-        description="Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum."
+        description="Missions Numériques Responsables, engagements associatif, interne et public, mobilisation au sein de grandes écoles d'ingénieur... No Green washing !"
         bgColor={BackgroundColor.GREEN}
         textColor={TextColor.GREEN}
         image={bannerImage}
@@ -43,14 +51,12 @@ const bannerImage = {
             </div>
         </div>
     </section>
-    <CallToAction
-        title="Titre"
-        text="Lorem ipsum dolor sit amet. Qui excepturi soluta quo quae tempore sed modi sapiente et nobis repellendus ea voluptates debitis. Ex quae aliquid id ratione dolor eum quia iste sit reiciendis earum sit molestiae officia sit voluptatem quia id molestiae rerum.<br />33 deserunt cupiditate hic aliquid sequi est quos"
-        button="Bouton"
-        image="#"
+    <InfoCard
+        title="Des actions concrètes"
+        text="Le Numérique Responsable, ça commence par une prise de conscience. C'est pourquoi LOG déploie d'importants efforts de sensibilisation et d'éducation à ce niveau :</p><ul class='text-lg md:text-xl list-[disclosure-closed] list-inside'><li>Interventions au salon GreenTech Forum</li><li>Jury (et présidence en 2023) du concours Design4Green de l'ESAIP</li><li>Accompagnement de grandes écoles d'ingénieur (cours, interventions) pour faire découvrir le Numérique Responsable</li><li>Encadrement de stagiaires Ingénieurs NR</li><li>LOG est parrain de la chaire INTEGRATE de Telecom SudParis, pour accompagner des élèves ingénieurs vers une formation d'Ingénieur Responsable</li></ul><p class='font-medium text-lg md:text-xl'>Parce que les élèves d'aujourd'hui seront les décideurs de demain, et vivront dans le monde de demain !</p>"
         bgColor={BackgroundColor.GREEN}
         textColor={TextColor.WHITE}
-        href="#"
+        image={actionsConcretesImage}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-10">
@@ -66,6 +72,30 @@ const bannerImage = {
                     <h1 class="font-bold text-xl md:text-2xl">Missions spécifiques Numérique Responsable</h1>
                     <p class="text-lg md:text-xl">Mesure des impacts, évaluation des besoins réels métiers, orientation des projets dès les phases amont, baisse des émissions et des dépendances énergétiques, optimisation des ressources (via l'architecture, l'approche FinOps), mesure des gains</p>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative w-full bg-gray-log py-3 px-3">
+        <div class="flex flex-col items-center gap-3 max-w-8xl mx-auto">
+            <svg class="w-20 my-6" viewBox="0 0 75.942 43.299"><g transform="matrix(.156658 0 0 .156658 -8.305459 -8.621415)"><path d="M537.044 307.911c-.876-1.429-2.407-2.319-4.078-2.38 1.011-4.426.791-8.883-.679-13.321-6.561-19.804-37.096-34.45-59.399-45.149-6.176-2.964-11.51-5.521-15.4-7.734-17.554-9.986-37.028-38.214-42.702-46.822l2.471-4.181a5 5 0 0 0 .195-4.724c-27.056-55.856-58.169-83.092-59.481-84.224-1.592-1.373-3.769-1.397-5.706-.58-17.315 7.301-40.754 12.066-40.884 12.09-26.616 4.972-52.044-2.38-75.579-21.85-17.885-14.796-27.889-31.394-27.986-31.556a5 5 0 0 0-4.64-2.435c-1.806.124-6.603.452-33.414 31.339-17.881 20.598-20.644 37.7-20.373 47.204-.348.034-2.884.459-4.014 2.795l-15.239 31.493a5 5 0 0 0 2.323 6.679l100.883 48.818a5 5 0 0 0 6.679-2.323l3.307-6.834c32.924 16.521 54.346 30.076 75.004 43.34 36.024 23.129 71.398 41.575 73.17 42.433 52.774 25.537 120.487 34.027 134.943 30.774a5 5 0 0 0 3.403-2.7l7.433-15.36a5 5 0 0 0-.237-4.788zm-143.739-82.216a5 5 0 0 0 3.249-2.343l12.586-21.297c8.129 11.887 26.053 36.094 43.401 45.963 4.195 2.385 9.676 5.012 16.02 8.058 19.514 9.356 49.006 23.506 54.231 39.278 1.064 3.211 1.037 6.379-.062 9.613-16.15-1.182-49.385-4.794-83.717-15.578-10.188-3.2-21.694-7.891-34.195-13.941-23.654-11.446-45.662-25.124-60.224-34.176l-75.577-46.039c35.913-28.888 119.48 29.052 120.357 29.668a5 5 0 0 0 3.93.794zM177.316 92.938c13.774-15.868 21.151-22.893 24.781-25.946 4.345 6.279 13.517 18.266 27.08 29.54 25.572 21.26 54.565 29.631 83.855 24.219 2.455-.276 13.981-2.629 40.861-11.513 2.446 2.367 6.583 6.574 11.775 12.607l-7.474 5.505a5 5 0 0 0-1.06 6.991 4.98 4.98 0 0 0 1.844 1.534 5 5 0 0 0 5.148-.474l7.923-5.836a285.85 285.85 0 0 1 9.128 12.149l-7.736 6.131a5 5 0 0 0-.813 7.024 4.97 4.97 0 0 0 1.737 1.395 5 5 0 0 0 5.287-.581l7.199-5.705a319.11 319.11 0 0 1 8.031 12.779l-7.325 6.641c-2.045 1.855-2.2 5.018-.346 7.063a4.99 4.99 0 0 0 1.525 1.142 5 5 0 0 0 5.538-.796l5.707-5.174a333.87 333.87 0 0 1 7.297 13.92l-16.633 28.143c-19.413-12.719-95.13-58.455-130.89-23.611-7.413-4.057-15.336-8.25-23.927-12.615l-75.824-39.15c-.556-1.964-4.807-19.901 17.314-45.384zm344.682 228.388c-7.631.671-25.492-.785-47.541-5.137-28.878-5.701-56.792-14.652-78.598-25.204-1.694-.82-40.012-21.801-72.152-41.864-21.989-13.726-44.462-28.338-80.463-46.119l-.037-.018c-2.402-1.163-4.856-1.443-6.679 2.323l-3.331 6.883-91.881-44.461 10.785-22.288 79.198 40.946c51.292 26.795 105.66 61.911 108.02 63.377 14.74 9.164 37.017 23.009 61.146 34.686 12.939 6.261 24.901 11.134 35.554 14.48 37.88 11.899 73.682 15.289 88.96 16.236z"/><g fill="#61bda5" stroke="#61bda5"><g stroke-linejoin="round" stroke-width="2.164"><rect width="151.355" height="7.978" x="119.641" y="265.178" ry="3.989" rx="4.395"/><rect width="151.355" height="7.978" x="152.728" y="288.121" ry="3.989" rx="4.395"/></g><rect width="289.805" height="6.747" x="54.465" y="311.898" ry="3.01" rx="3.692" stroke-width="2.897" stroke-linejoin="round"/></g></g></svg>
+            <h1 class="font-bold text-3xl md:text-4xl text-center uppercase tracking-wide">Et au <span class="text-green-log">quotidien</span> chez LOG ?</h1>
+            <div class="">
+                <ul class="flex flex-col gap-2 list-inside list-[disc] marker:text-4xl text-xl md:text-2xl tracking-tight">
+                    Tout beau discours n'est rien si on ne commence pas par s'appliquer ses propres règles à soi-même !
+                    <li>
+                        LOG optimise son SI interne et ses règles de vie dans les locaux pour minimiser son impact environnemental
+                    </li>
+                    <li>
+                        Les consultants qui choisissent le BYOD recoivent une éco-prime mensuelle... significative
+                    </li>
+                    <li>
+                        Tous les loggers sont sensibilisés aux enjeux du Numérique Responsable afin de véhiculer un message cohérent au sein de leurs missions respectives
+                    </li>
+			        <br />
+                </ul>
+            </div>
+	        <div class="font-bold text-xl md:text-2xl items-center">
+                Chez LOG, les cordonniers Responsables sont enfin bien chaussés !
             </div>
         </div>
     </section>

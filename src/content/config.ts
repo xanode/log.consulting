@@ -7,7 +7,7 @@ const jobCollection = defineCollection({
         icon: z.enum(["developpement", "securite", "architecture", "devops"]),
         summary: z.string(),
         salary: z.string(),
-        starting_date: z.date(),
+        starting_date: z.string(),
         publish_date: z.date(),
         experience: z.string(),
         job_name: z.string(),
@@ -27,7 +27,7 @@ const blogCollection = defineCollection({
     schema: z.object({
         image: z.string(),
         title: z.string(),
-        category: z.enum(["Architecture", "DevOps", "Développement"]),
+        category: z.enum(["Architecture", "DevOps", "Développement", "Life @ Log"]),
         date: z.date(),
         author: z.string(),
         description: z.string(),

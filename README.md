@@ -542,7 +542,7 @@ Cette partie configure l'étape de déploiement du site. Elle utilise une image 
 
 De façon à ce que le site ne soit pas déployé à chaque commit poussé vers le dépôt distant et pour garder un historique relativement propre, il est recommandé de procéder ainsi pour modifier le site web :
 
-2. Créez une nouvelle branche : `git checkout -b feature/nom-de-votre-fonctionnalité`
-3. Effectuez des modifications et les valider : `git commit -am 'Ajouter une fonctionnalité'`
-4. Pousser la branche : `git push origin feature/nom-de-votre-fonctionnalité`
-5. Soumettre une demande de fusion (*merge request*).
+1. Créez une nouvelle branche : `git checkout -b feature/nom-de-votre-fonctionnalité`
+2. Effectuez des modifications et les valider : `git commit -am 'Ajouter une fonctionnalité'`
+3. Pousser la branche : `git push origin feature/nom-de-votre-fonctionnalité`
+4. Soumettre une demande de fusion (*merge request*).
