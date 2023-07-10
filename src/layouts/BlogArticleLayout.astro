@@ -19,7 +19,7 @@ const { id, frontmatter } = Astro.props as Props;
     <section class="relative max-w-8xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">
             <div class="flex flex-col gap-10">
-                <p class="text-xl">Publié le {new Date(frontmatter.date).toLocaleDateString()} par <span class="font-bold">{frontmatter.author}</span></p>
+                <p class="text-xl">Publié le {new Date(frontmatter.date).toLocaleDateString('fr-FR')} par <span class="font-bold">{frontmatter.author}</span></p>
                 <div class="overflow-hidden rounded-2xl max-w-4xl h-56">
                     <img src={frontmatter.image} alt="" />
                 </div>
