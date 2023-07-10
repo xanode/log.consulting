@@ -1,9 +1,9 @@
 ---
 title: Project Manager Data H/F
 icon: developpement
-summary: Soleo saepe ante oculos ponere, idque libenter crebis usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum.
+summary: Intéressé.e pour piloter des projets d'envergure chez des clients grand comptes, en apportant un angle technique aux projets ?
 salary: 50 - 80 k€ brut annuel
-starting_date: 2023-02-19T00:00:00.000Z
+starting_date: Juin 2023
 publish_date: 2023-02-15T00:00:00.000Z
 experience: Minimum 3 ans
 job_name: Project Manager Data
@@ -12,9 +12,9 @@ travel_area: Régionale
 job_sector: Conseil en systèmes et logiciels informatiques
 telework: Partiel possible
 hr_name: Laetitia Bastiani
-hr_email: email@log.consulting
-hr_phone: +33.0.00.00.00.00
-hr_picture: ""
+hr_email: recrutement@wearelog.fr
+hr_phone: +33 6 23 33 94 74
+hr_picture: /uploads/lba.jpg
 description:
   - Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
   - Auditer les environnements Legacy pour définir leur évolution vers le Cloud
