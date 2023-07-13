@@ -42,10 +42,10 @@ const sortedEntriesByCategory = Object.values(entriesByCategory).map(({ category
                                 <summary class="mb-3 font-semibold text-yellow-log cursor-pointer">
                                     <span class="hover:underline hover:underline-offset-4">{category.category}</span>
                                 </summary>
-                                <ul class="space-y-2">
+                                <ul class="border-l border-neutral-700 ml-[2.5px] space-y-2">
                                     {category.entry.map((entry) => (
                                         <li>
-                                            <a class="pl-4 border-l border-neutral-700 hover:border-current hover:underline hover:underline-offset-4" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
+                                            <a class="block pl-4 -ml-px border-l border-transparent hover:border-current hover:underline underline-offset-4" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
                                         </li>
                                     ))}
                                 </ul>
