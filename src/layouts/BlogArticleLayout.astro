@@ -18,10 +18,10 @@ const { id, frontmatter } = Astro.props as Props;
     <TitleBanner title={frontmatter.title} />
     <section class="relative max-w-8xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">
-            <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-10 max-w-[calc(100vw-8px)] lg:max-w-4xl">
                 <p class="text-xl">Publié le {new Date(frontmatter.date).toLocaleDateString('fr-FR')} par <span class="font-bold">{frontmatter.author}</span></p>
-                <img class="rounded-2xl self-center w-full lg:w-auto max-w-md lg:max-w-4xl" src={frontmatter.image} alt="" />
-                <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-md lg:max-w-4xl px-3 lg:pr-0">
+                <img class="rounded-2xl self-center w-full h-auto" src={frontmatter.image} alt="" />
+                <article class="prose prose-neutral prose-h1:text-5xl prose-lg lg:prose-xl md:text-justify max-w-none">
                     <slot />
                 </article>
             </div>
