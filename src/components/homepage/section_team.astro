@@ -39,6 +39,7 @@ const { activeCarousel = true, bgCardColor } = Astro.props as Props;
 
 
 // Breakpoints for the carousel, got from https://tailwindcss.com/docs/responsive-design
+/// This is the only thing that needs to be changed to change the number of items displayed at each breakpoint ///
 const visibleElements = [ // Default is 1
   { breakpoint: 1536, items: 4 }, // 2xl
   { breakpoint: 1280, items: 4 }, // xl
@@ -46,6 +47,14 @@ const visibleElements = [ // Default is 1
   { breakpoint: 768, items: 2 }, // md
   { breakpoint: 640, items: 1 } // sm
 ];
+
+// Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
+const visibleElementsPx = visibleElements.reduce<{ [breakpoint: number]: number }>((acc, { breakpoint, items }) => {
+  acc[breakpoint] = items;
+  return acc;
+}, {});
+// Generate the grid classes based on the visibleElementsPx map
+const gridClasses = ['sm', 'md', 'lg', 'xl', '2xl'].map((breakpoint, index) => `${breakpoint}:grid-cols-${Object.values(visibleElementsPx)[index]}`).join(' ');
 ---
 
 <section class="relative w-full text-center">
@@ -57,19 +66,37 @@ const visibleElements = [ // Default is 1
             <span>gers</span>
         </h1>
     </SectionTitle>
-    <Carousel active={activeCarousel} name="loggers" visibleElements={visibleElements}>
-        <LoggerCard id="loggers_card_1" name="Alexandre B." position="Consultant" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_2" name="Alexandre M." position="Consultant" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_3" name="Bouchra" position="LOG Fan" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_4" name="Guillaume F." position="Consultant" pictureReference={GuillaumeFReference} pictureHoverReference={GuillaumeFHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_5" name="Guillaume T." position="Associé" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_6" name="Joffrey" position="Mangeur & Consultant" pictureReference={JoffreyReference} pictureHoverReference={JoffreyHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_7" name="Laurent" position="Consultant" pictureReference={LaurentReference} pictureHoverReference={LaurentHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_8" name="Olivier" position="Associé" pictureReference={OlivierReference} pictureHoverReference={OlivierHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_9" name="Rayan" position="Community Manager" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_10" name="Thibaut" position="Consultant" pictureReference={ThibautReference} pictureHoverReference={ThibautHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_11" name="Valentin" position="Consultant" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
-        <LoggerCard id="loggers_card_12" name="Vincent" position="Consultant" pictureReference={VincentReference} pictureHoverReference={VincentHoverReference} bgColor={bgCardColor}/>
+    {activeCarousel ?
+    <Carousel type="logger-card" visibleElementsPx={visibleElementsPx}>
+        <LoggerCard name="Alexandre B." position="Consultant" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Alexandre M." position="Consultant" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Bouchra" position="LOG Fan" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Guillaume F." position="Consultant" pictureReference={GuillaumeFReference} pictureHoverReference={GuillaumeFHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Guillaume T." position="Associé" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Joffrey" position="Mangeur & Consultant" pictureReference={JoffreyReference} pictureHoverReference={JoffreyHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Laurent" position="Consultant" pictureReference={LaurentReference} pictureHoverReference={LaurentHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Olivier" position="Associé" pictureReference={OlivierReference} pictureHoverReference={OlivierHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Rayan" position="Community Manager" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Thibaut" position="Consultant" pictureReference={ThibautReference} pictureHoverReference={ThibautHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Valentin" position="Consultant" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
+        <LoggerCard name="Vincent" position="Consultant" pictureReference={VincentReference} pictureHoverReference={VincentHoverReference} bgColor={bgCardColor}/>
     </Carousel>
-
+    :
+    <div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
+        <div class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', gridClasses]}>
+            <LoggerCard name="Alexandre B." position="Consultant" pictureReference={AlexandreBReference} pictureHoverReference={AlexandreBHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Alexandre M." position="Consultant" pictureReference={AlexandreMReference} pictureHoverReference={AlexandreMHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Bouchra" position="LOG Fan" pictureReference={BouchraReference} pictureHoverReference={BouchraHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Guillaume F." position="Consultant" pictureReference={GuillaumeFReference} pictureHoverReference={GuillaumeFHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Guillaume T." position="Associé" pictureReference={GuillaumeTReference} pictureHoverReference={GuillaumeTHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Joffrey" position="Mangeur & Consultant" pictureReference={JoffreyReference} pictureHoverReference={JoffreyHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Laurent" position="Consultant" pictureReference={LaurentReference} pictureHoverReference={LaurentHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Olivier" position="Associé" pictureReference={OlivierReference} pictureHoverReference={OlivierHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Rayan" position="Community Manager" pictureReference={RayanReference} pictureHoverReference={RayanHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Thibaut" position="Consultant" pictureReference={ThibautReference} pictureHoverReference={ThibautHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Valentin" position="Consultant" pictureReference={ValentinReference} pictureHoverReference={ValentinHoverReference} bgColor={bgCardColor}/>
+            <LoggerCard name="Vincent" position="Consultant" pictureReference={VincentReference} pictureHoverReference={VincentHoverReference} bgColor={bgCardColor}/>
+        </div>
+    </div>
+    }
 </section>

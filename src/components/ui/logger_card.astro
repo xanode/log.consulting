@@ -1,53 +1,90 @@
 ---
 import type { BackgroundColor } from '@libs/types';
 interface Props {
-    id?: string;
     name: string;
     position: string;
     pictureReference?: string;
     pictureHoverReference?: string;
     bgColor: BackgroundColor;
 }
-const { id = "", name, position, pictureReference = "#", pictureHoverReference = pictureReference, bgColor }: Props = Astro.props;
+const { name, position, pictureReference = "#", pictureHoverReference = pictureReference, bgColor }: Props = Astro.props;
 ---
 
-<div id={id} class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
-    <a class={`overflow-visible group ${bgColor} w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end`} href="/les-loggers">
-        <img id={`imgBase_${id}`} class="md:group-hover:hidden self-end" width="256" height="256" src={pictureReference} alt="">
-        <img id={`imgHover_${id}`} class="hidden md:group-hover:block self-end z-50" width="256" height="384" src={pictureHoverReference} alt="">
-    </a>
-    <h2 class="font-bold text-2xl">{name}</h2>
-    <p class="text-xl">{position}</p>
-</div>
+<logger-card>
+    <div class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
+        <a class:list={["overflow-visible group w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end", bgColor]} href="/les-loggers">
+            <img class="md:group-hover:hidden self-end" data-name="base" width="256" height="256" src={pictureReference} alt="">
+            <img class="hidden md:group-hover:block self-end z-50" data-name="hover" width="256" height="384" src={pictureHoverReference} alt="">
+        </a>
+        <h2 class="font-bold text-2xl">{name}</h2>
+        <p class="text-xl">{position}</p>
+    </div>
+</logger-card>
 
-<script define:vars={{ id }}>
-    // On small screens (max-md:, width < 768px):
-    // Display id_base image during three seconds
-    // Display id_hover image during one second
-    // This run in loop
+<script>
+    class LoggerCard extends HTMLElement {
+        imgBase: HTMLElement | null;
+        imgHover: HTMLElement | null;
+        nTimeoutId: NodeJS.Timeout | undefined;
+        nIntervalId: NodeJS.Timer | undefined;
 
-    const imgBase = document.getElementById(`imgBase_${id}`);
-    const imgHover = document.getElementById(`imgHover_${id}`);
-
-    let nIntervalId;
-    const animateLoggers = () => {
-        if (window.innerWidth < 768) {
-            imgHover.classList.add("hidden");
-            nIntervalId = setInterval(() => {
-                setTimeout(() => {
-                    imgHover.classList.remove('hidden');
-                    imgBase.classList.add('hidden');
-                }, 2000);
-                imgBase.classList.remove('hidden');
-                imgHover.classList.add('hidden');
-            }, 5000);
-        } else {
-            clearInterval(nIntervalId);
-            nIntervalId = null;
-            imgBase.classList.remove("hidden");
-            imgHover.classList.add("hidden");
+        constructor() {
+            super();
+            this.imgBase = null;
+            this.imgHover = null;
+            this.nTimeoutId = undefined;
+            this.nIntervalId = undefined;
         }
-    };
-    animateLoggers();
-    window.addEventListener('resize', animateLoggers, {passive: true});
+
+        connectedCallback() {
+            this.imgBase = this.querySelector('[data-name="base"]');
+            this.imgHover = this.querySelector('[data-name="hover"]');
+
+            this.setupListeners();
+            this.animateLoggers();
+        }
+
+        disconnectedCallback() {
+            this.clearIntervalAndTimeout();
+        }
+
+        setupListeners() {
+            window.addEventListener("resize", this.onWindowResize);
+        }
+
+        animateLoggers() {
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                if (this.nTimeoutId) {
+                    clearTimeout(this.nTimeoutId);
+                }
+                this.imgHover?.classList.add("hidden");
+
+                this.nIntervalId = setInterval(() => {
+                    this.imgBase?.classList.toggle("hidden");
+                    this.imgHover?.classList.toggle("hidden");
+                }, 5000);
+            } else {
+                this.clearIntervalAndTimeout();
+                this.imgBase?.classList.remove("hidden");
+                this.imgHover?.classList.add("hidden");
+            }
+        }
+
+        onWindowResize = () => {
+            if (this.nTimeoutId) {
+                clearTimeout(this.nTimeoutId);
+            }
+            this.clearIntervalAndTimeout();
+            this.animateLoggers();
+        };
+
+        clearIntervalAndTimeout() {
+            if (this.nIntervalId) {
+                clearInterval(this.nIntervalId);
+                this.nIntervalId = undefined;
+            }
+        }
+    }
+
+    customElements.define("logger-card", LoggerCard);
 </script>

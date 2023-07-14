@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
-import CallToAction from "@components/ui/call_to_action.astro";
 import Icon from "@components/ui/icon.astro";
 import InfoCard from "@components/ui/info_card.astro";
+import SectionTitle from "@components/ui/section_title.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
 import AGITReference from "@static/agit.avif";
@@ -33,36 +33,61 @@ const actionsConcretesImage = {
         image={bannerImage}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
-        <div class="flex flex-col items-center gap-4">
-            <h1 class="font-bold text-3xl md:text-4xl text-green-log uppercase tracking-wide">Le numérique responsable</h1>
+        <div class="flex flex-col items-center">
+            <SectionTitle column={true}>
+                <span class="text-green-log">
+                    Le numérique responsable
+                </span>
+            </SectionTitle>
             <h2 class="text-xl md:text-2xl">LOG est membre actif de plusieurs associations et groupements œuvrant pour un numérique reponsable.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center mt-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center my-14">
                 <div class="flex flex-col items-center gap-4">
-                    <img class="w-auto h-20 grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} width="250" height="81" alt="" />
+                    <img class="w-auto h-20 md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} width="250" height="81" alt="" />
                     <p class="font-semibold text-lg md:text-xl">Alliance Green IT<br /><span class="font-normal">(AGIT)</span></p>
                 </div>
                 <div class="flex flex-col items-center gap-4">
-                    <Icon className="w-auto h-20 grayscale hover:grayscale-0 duration-150 ease-in-out" name="numeum" />
+                    <Icon className="w-auto h-20 md:grayscale hover:grayscale-0 duration-150 ease-in-out" name="numeum" />
                     <p class="text-lg md:text-xl">La section numérique et environnement de <span class="font-bold">Numeum</span><br />(ex Syntec Numérique)</p>
                 </div>
                 <div class="flex flex-col items-center gap-4">
-                    <Icon className="w-auto h-20 grayscale hover:grayscale-0 duration-150 ease-in-out" name="planettechcare" />
+                    <Icon className="w-auto h-20 md:grayscale hover:grayscale-0 duration-150 ease-in-out" name="planettechcare" />
                     <p class="text-lg md:text-xl"><span class="font-bold">Planet Tech'Care</span> via la signature du manifeste associé</p>
                 </div>
             </div>
         </div>
     </section>
-    <InfoCard
-        title="Des actions concrètes"
-        text="Le Numérique Responsable, ça commence par une prise de conscience. C'est pourquoi LOG déploie d'importants efforts de sensibilisation et d'éducation à ce niveau :</p><ul class='text-lg md:text-xl list-[disclosure-closed] list-inside'><li>Interventions au salon GreenTech Forum</li><li>Jury (et présidence en 2023) du concours Design4Green de l'ESAIP</li><li>Accompagnement de grandes écoles d'ingénieur (cours, interventions) pour faire découvrir le Numérique Responsable</li><li>Encadrement de stagiaires Ingénieurs NR</li><li>LOG est parrain de la chaire INTEGRATE de Telecom SudParis, pour accompagner des élèves ingénieurs vers une formation d'Ingénieur Responsable</li></ul><p class='font-medium text-lg md:text-xl'>Parce que les élèves d'aujourd'hui seront les décideurs de demain, et vivront dans le monde de demain !</p>"
-        bgColor={BackgroundColor.GREEN}
-        textColor={TextColor.WHITE}
-        image={actionsConcretesImage}
-    />
+    <InfoCard title="Des actions concrètes" bgColor={BackgroundColor.GREEN} textColor={TextColor.WHITE} image={actionsConcretesImage}>
+        <p class="font-medium text-lg md:text-xl">
+            Le Numérique Responsable, ça commence par une prise de conscience.
+            C'est pourquoi LOG déploie d'importants efforts de sensibilisation et d'éducation à ce niveau&nbsp;:
+        </p>
+        <ul class='text-lg md:text-xl list-[disclosure-closed] ml-3 space-y-2'>
+            <li>
+                Interventions au salon GreenTech Forum
+            </li>
+            <li>
+                Jury (et présidence en 2023) du concours Design4Green de l'ESAIP
+            </li>
+            <li>
+                Accompagnement de grandes écoles d'ingénieur (cours, interventions) pour faire découvrir le Numérique Responsable
+            </li>
+            <li>
+                Encadrement de stagiaires Ingénieurs NR
+            </li>
+            <li>
+                LOG est parrain de la chaire INTEGRATE de Télécom SudParis, pour accompagner des élèves ingénieurs vers une formation d'Ingénieur Responsable
+            </li>
+        </ul>
+        <p class='font-medium text-lg md:text-xl'>
+            Parce que les élèves d'aujourd'hui seront les décideurs de demain, et vivront dans le monde de demain !
+        </p>
+    </InfoCard>
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-10">
-            <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide"><span class="text-green-log">Le numérique responsable</span> dans nos offres</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <SectionTitle column={true}>
+                <span class="text-green-log">Le numérique responsable</span> dans nos offres
+            </SectionTitle>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
                 <div class="flex flex-col items-center gap-10">
                     <Icon className="w-auto h-20" name="checklist" />
                     <h1 class="font-bold text-xl md:text-2xl">Prise en compte des aspects Numérique Responsable dans toutes les missions</h1>
@@ -76,26 +101,28 @@ const actionsConcretesImage = {
             </div>
         </div>
     </section>
-    <section class="relative w-full bg-gray-log py-3 px-3">
+    <section class="relative w-full bg-gray-log">
         <div class="flex flex-col items-center gap-3 max-w-8xl mx-auto">
-            <Icon className="w-20 my-6" name="shoes" />
-            <h1 class="font-bold text-3xl md:text-4xl text-center uppercase tracking-wide">Et au <span class="text-green-log">quotidien</span> chez LOG ?</h1>
-            <div class="">
-                <ul class="flex flex-col gap-2 list-inside list-[disc] marker:text-4xl text-xl md:text-2xl tracking-tight">
-                    Tout beau discours n'est rien si on ne commence pas par s'appliquer ses propres règles à soi-même !
-                    <li>
-                        LOG optimise son SI interne et ses règles de vie dans les locaux pour minimiser son impact environnemental
-                    </li>
-                    <li>
-                        Les consultants qui choisissent le BYOD recoivent une éco-prime mensuelle... significative
-                    </li>
-                    <li>
-                        Tous les loggers sont sensibilisés aux enjeux du Numérique Responsable afin de véhiculer un message cohérent au sein de leurs missions respectives
-                    </li>
-			        <br />
-                </ul>
-            </div>
-	        <div class="font-bold text-xl md:text-2xl items-center">
+            <Icon className="w-20 mt-6" name="shoes" />
+            <SectionTitle column={true}>
+                Et au <span class="text-green-log">quotidien</span> chez LOG ?
+            </SectionTitle>
+            <p class="text-xl md:text-2xl tracking-tight self-start">
+                Tout beau discours n'est rien si on ne commence pas par s'appliquer ses propres règles à soi-même !
+            </p>
+            <ul class="flex flex-col gap-2 ml-9 list-[disc] marker:text-4xl text-xl md:text-2xl tracking-tight">
+                <li>
+                    LOG optimise son SI interne et ses règles de vie dans les locaux pour minimiser son impact environnemental
+                </li>
+                <li>
+                    Les consultants qui choisissent le BYOD recoivent une éco-prime mensuelle... significative
+                </li>
+                <li>
+                    Tous les loggers sont sensibilisés aux enjeux du Numérique Responsable afin de véhiculer un message cohérent au sein de leurs missions respectives
+                </li>
+                <br />
+            </ul>
+	        <div class="font-bold text-xl md:text-2xl items-center mb-6">
                 Chez LOG, les cordonniers Responsables sont enfin bien chaussés !
             </div>
         </div>

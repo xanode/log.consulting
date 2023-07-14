@@ -2,8 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/ui/banner.astro";
 import CallToAction from "@components/ui/call_to_action.astro";
-import Icon from "@components/ui/icon.astro";
 import SectionTeam from "@components/homepage/section_team.astro";
+import SectionTitle from "@components/ui/section_title.astro";
+import ValueCard from "@components/ui/value_card.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
 import LoggersBannerReference from "@static/loggers-1.avif";
@@ -27,34 +28,35 @@ const bannerImage = {
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-4 mb-20">
-            <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide">Nos valeurs</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center mt-14">
-                <div class="flex flex-col items-center gap-4">
-                    <Icon className="w-auto h-20" name="lamp" />
-                    <h1 class="font-bold text-xl md:text-2xl">Esprit d’équipe</h1>
-                    <p class="text-lg md:text-xl">Le Logger sait qu’il peut soulever des montagnes, car il n’est pas seul. L’ensemble de la société est en permanence en soutien de chacun de ses consultants. L’esprit d’équipe est particulièrement fort et se retrouve dans la notion de tribu de Loggers.</p>
-                </div>
-                <div class="flex flex-col items-center gap-4">
-                    <Icon className="w-auto h-20" name="lamp" />
-                    <h1 class="font-bold text-xl md:text-2xl">Engagement</h1>
-                    <p class="text-lg md:text-xl">Le Logger s’engage pleinement dans ses missions, que ce soit en interne de la société ou pour ses clients. L’engagement est aussi éthique, sociétal et environnemental. Globalement, le Logger ne fait pas les choses à moitié.</p>
-                </div>
-                <div class="flex flex-col items-center gap-4">
-                    <Icon className="w-auto h-20" name="lamp" />
-                    <h1 class="font-bold text-xl md:text-2xl">Technicité</h1>
-                    <p class="text-lg md:text-xl">Le métier de Log est technique. Le Logger revendique haut et fort sa technicité Cloud et DevOps.Le goût pour la technique, l’envie de comprendre comment cela fonctionne, la résolution de problèmes complexes, le plaisir de se former et de se certifier... Tout cela se retrouve dans cette valeur.</p>
-                </div>
+            <SectionTitle>
+                Nos valeurs
+            </SectionTitle>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+                <ValueCard icon="lamp" title="Esprit d'équipe">
+                    Le Logger sait qu’il peut soulever des montagnes, car il n’est pas seul.
+                    L’ensemble de la société est en permanence en soutien de chacun de ses consultants.
+                    L’esprit d’équipe est particulièrement fort et se retrouve dans la notion de tribu de Loggers.
+                </ValueCard>
+                <ValueCard icon="lamp" title="Engagement">
+                    Le Logger s’engage pleinement dans ses missions, que ce soit en interne de la société ou pour ses clients.
+                    L’engagement est aussi éthique, sociétal et environnemental.
+                    Globalement, le Logger ne fait pas les choses à moitié.
+                </ValueCard>
+                <ValueCard icon="lamp" title="Technicité">
+                    Le métier de Log est technique. Le Logger revendique haut et fort sa technicité Cloud et DevOps.
+                    Le goût pour la technique, l’envie de comprendre comment cela fonctionne, la résolution de problèmes complexes, le plaisir de se former et de se certifier...
+                    Tout cela se retrouve dans cette valeur.
+                </ValueCard>
             </div>
         </div>
     </section>
-    <CallToAction
-        title="Pourquoi rejoindre LOG ?"
-        text="Rejoindre Log, c’est avant tout l’assurance de réaliser des grands projets dans votre domaine de spécialité : le Cloud Computing et le DevOps. <br /><br /> Vous disposerez pour cela d’un encadrement de proximité assuré par des Managers Coach, qui vous permettra progresser selon vos objectifs. Le Manager Coach est lui aussi un consultant Log. <br /><br /> Rejoindre Log c’est également profiter d’un environnement startup motivant  (croissance, entreprise à taille humaine, agilité administrative) synonyme de nombreuses opportunités. Le Télétravail est un engagement fort de la société et l’ambiance de travail est motivante et décontractée. Bref, Log est un lieu ou vous pourrez sans difficultés équilibrer votre vie pro et perso"
-        button="Voir les offres d'emploi"
-        image={WhyReference}
-        bgColor={BackgroundColor.YELLOW}
-        textColor={TextColor.BLACK}
-        href="/nous-rejoindre"
-    />
+    <CallToAction title="Pourquoi rejoindre LOG ?" button="Voir les offres d'emploi" href="/nous-rejoindre" image={WhyReference} bgColor={BackgroundColor.YELLOW} textColor={TextColor.BLACK}>
+        Rejoindre Log, c’est avant tout l’assurance de réaliser des grands projets dans votre domaine de spécialité : le Cloud Computing et le DevOps.<br /><br />
+        Vous disposerez pour cela d’un encadrement de proximité assuré par des Managers Coach, qui vous permettra de progresser selon vos objectifs.
+        Le Manager Coach est lui aussi un consultant Log.<br /><br />
+        Rejoindre Log c’est également profiter d’un environnement startup motivant (croissance, entreprise à taille humaine, agilité administrative) synonyme de nombreuses opportunités.
+        Le Télétravail est un engagement fort de la société et l’ambiance de travail est motivante et décontractée.
+        Bref, Log est un lieu ou vous pourrez sans difficultés équilibrer votre vie pro et perso.
+    </CallToAction>
     <SectionTeam activeCarousel={false} bgCardColor={BackgroundColor.BLUE}/>
 </BaseLayout>

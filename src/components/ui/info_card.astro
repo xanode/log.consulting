@@ -3,7 +3,6 @@ import type { BackgroundColor, TextColor } from "@libs/types";
 
 interface Props {
     title: string;
-    text: string;
     bgColor: BackgroundColor;
     textColor: TextColor;
     image: {
@@ -12,7 +11,7 @@ interface Props {
         height: number;
     };
 }
-const { title, text, image, bgColor, textColor } = Astro.props as Props;
+const { title, image, bgColor, textColor } = Astro.props as Props;
 ---
 
 <section class="relative w-full mt-20">
@@ -24,9 +23,7 @@ const { title, text, image, bgColor, textColor } = Astro.props as Props;
         <div class="flex flex-col border-3 rounded-2xl items-center p-8 lg:p-20  lg:h-[95%] basis-3/2 bg-black text-white">
             <div class="flex flex-col gap-12 max-w-lg">
                 <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide">{title}</h1>
-                <p class="font-medium text-lg md:text-xl">
-                    <Fragment set:html={text} />
-                </p>
+                <slot />
             </div>
         </div>
     </div>
