@@ -2,125 +2,115 @@
 import Icon from '@components/ui/icon.astro';
 
 interface Props {
-    active?: boolean;
-    arrows?: boolean;
-    name: string;
-    visibleElements: Array<{breakpoint: number, items: number}>;
+    type: string;
+    visibleElementsPx: { [breakpoint: number]: number };
     offset?: number;
 }
 
-const { active = true, arrows = true, name, visibleElements, offset = 1 } = Astro.props as Props;
+const { type, visibleElementsPx, offset = 1 } = Astro.props as Props;
 
-// Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
-const visibleElementsPx = visibleElements.reduce<any>((acc, { breakpoint, items }) => {
-  acc[breakpoint] = items;
-  return acc;
-}, {});
+// Generate the grid classes based on the visibleElementsPx map
+const gridClasses = ['sm', 'md', 'lg', 'xl', '2xl'].map((breakpoint, index) => `${breakpoint}:grid-cols-${Object.values(visibleElementsPx)[index]}`).join(' ');
 ---
-{active ?
-<div id={`${name}_div`} class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    {arrows && <button id={`${name}_left`} aria-label="Left">
+
+<carousel-component class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0" data-type={type} data-visibleelementspx={JSON.stringify(visibleElementsPx)} data-offset={offset}>
+    <button aria-label="Left">
         <Icon className="h-7" name="left-arrow" />
-    </button>}
-    <div id={`${name}_grid`} class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
+    </button>
+    <div class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', gridClasses]}>
         <slot />
     </div>
-    {arrows && <button id={`${name}_right`} aria-label="Right">
+    <button aria-label="Right">
         <Icon className="h-7" name="right-arrow" />
-    </button>}
-</div>
+    </button>
+</carousel-component>
 
-<script define:vars={{ name, visibleElementsPx, offset }}>
-    // Define an array of HTML elements to display in the carousel
-    const cards = [...document.querySelectorAll(`[id^="${name}_card_"]`)];
+<script>
+    class Carousel extends HTMLElement {
+        cards: Element[] | null;
+        currentIndex: number;
+        touchStartX: number;
+        touchStartY: number;
+        visibleElementsPx: { [breakpoint: number]: number };
 
-    // Define the starting index (the number of cards to display in the carousel is given by visibleElements)
-    let currentIndex = 0;
+        constructor() {
+            super();
+            this.cards = [...this.querySelectorAll(`${this.dataset.type}`)];
+            this.currentIndex = 0;
+            this.touchStartX = 0;
+            this.touchStartY = 0;
+            this.visibleElementsPx = JSON.parse(this.dataset.visibleelementspx as string);
+        }
 
-    // Define a function to update the carousel display
-    const updateCarousel = (direction) => {
-        let maxVisibleWidth = 0;
-        let visibleElementCount = 1;
+        connectedCallback() {
+            // Attach click handlers to the left and right arrows buttons if they exist
+            const leftArrow = this.querySelector('[aria-label="Left"]');
+            const rightArrow = this.querySelector('[aria-label="Right"]');
 
-        // Loop through each entry in the visibleElements map
-        for (const [width, count] of Object.entries(visibleElementsPx)) {
-            const widthNum = parseInt(width, 10);
-            if (window.innerWidth >= widthNum && widthNum > maxVisibleWidth) {
-                // If the screen width is greater than or equal to the current map width
-                // and the map width is greater than the previous maximum, set the visible element count
-                maxVisibleWidth = widthNum;
-                visibleElementCount = count;
+            if (leftArrow) leftArrow.addEventListener('click', () => this.updateCarousel(-parseInt(this.dataset.offset ? this.dataset.offset : '0', 10)));
+            if (rightArrow) rightArrow.addEventListener('click', () => this.updateCarousel(parseInt(this.dataset.offset ? this.dataset.offset : '0', 10)));
+
+            // Initialize the carousel
+            this.updateCarousel(0);
+
+            // Attach a resize handler to the window
+            window.addEventListener('resize', () => this.updateCarousel(0));
+
+            // Attach a swipe handler to the carousel
+            this.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+            this.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+        }
+
+        handleTouchStart(e: TouchEvent): void {
+            this.touchStartX = e.touches[0].clientX;
+            this.touchStartY = e.touches[0].clientY;
+        }
+
+        handleTouchEnd(e: TouchEvent): void {
+            // Calculate the difference in pixels between the starting and ending touch positions
+            const deltaX = e.changedTouches[0].clientX - this.touchStartX;
+            const deltaY = e.changedTouches[0].clientY - this.touchStartY;
+
+            // Determine if the user swiped horizontally or vertically
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // If the user swiped horizontally, update the carousel accordingly
+                this.updateCarousel(deltaX > 0 ? -1 : 1);
             }
         }
 
-        // Update the current index based on the direction
-        if (currentIndex + direction >= 0 && currentIndex + direction + visibleElementCount <= cards.length) {
-            currentIndex += direction;
-        }
+        updateCarousel(direction: number): void {
+            let maxVisibleWidth = 0;
+            let visibleElementCount = 1;
 
-        // Get the subarray of cards to display in the carousel, limited by the current index and the visible element count
-        const displayCards = cards.slice(currentIndex, currentIndex + visibleElementCount);
-        
-        // Set the display style of the cards
-        cards.forEach((card, index) => {
-            if (displayCards.includes(card)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
+            // Loop though each entry in the visibleElementsPs map;
+            for (const [width, count] of Object.entries(this.visibleElementsPx)) {
+                const widthNum = parseInt(width, 10);
+                if (window.innerWidth >= widthNum && widthNum > maxVisibleWidth) {
+                    // If the screen width is greater than or equal to the current map width
+                    // and the map width is greater than the previous maximum, set the visible element count
+                    maxVisibleWidth = widthNum;
+                    visibleElementCount = count;
+                }
             }
-        });
+
+            // Update the current index based on the direction
+            if (this.currentIndex + direction >= 0 && this.currentIndex + direction + visibleElementCount <= this.cards!.length) {
+                this.currentIndex += direction;
+            }
+
+            // Get the subarray of cards to display in the carousel, limited by the current index and the visible element count
+            const displayCards = this.cards?.slice(this.currentIndex, this.currentIndex + visibleElementCount);
+
+            // Set the display style of the cards
+            this.cards?.forEach((card, index) => {
+                if (displayCards?.includes(card)) {
+                    (card as HTMLElement).style.display = 'block';
+                } else {
+                    (card as HTMLElement).style.display = 'none';
+                }
+            });
+        }
     }
 
-    // Attach click handlers to the left and right arrow buttons
-    document.getElementById(`${name}_right`).addEventListener('click', () => {
-        updateCarousel(offset);
-    }, {passive: true});
-    document.getElementById(`${name}_left`).addEventListener('click', () => {
-        updateCarousel(-offset);
-    }, {passive: true});
-
-    // Initialize the carousel display
-    updateCarousel(0);
-
-    // Attach a resize handler to the window
-    window.addEventListener('resize', () => {
-        updateCarousel(0);
-    });
-
-    // Attach swipe handler to the carousel
-    // Define variables to store the starting position
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    // Attach touchstart and touchend handlers to the carousel element
-    const carousel = document.getElementById(`${name}_div`);
-    carousel.addEventListener('touchstart', (event) => {
-        // Store the starting touch position
-        touchStartX = event.touches[0].clientX;
-        touchStartY = event.touches[0].clientY;
-    }, {passive: true});
-    carousel.addEventListener('touchend', (event) => {
-        // Calculate the difference in pixels between the starting and ending touch positions
-        const deltaX = event.changedTouches[0].clientX - touchStartX;
-        const deltaY = event.changedTouches[0].clientY - touchStartY;
-
-        // Determine if the user swiped horizontally or vertically
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            // If the user swiped horizontally, update the carousel accordingly
-            if (deltaX > 0) {
-                updateCarousel(-1);
-            } else {
-                updateCarousel(1);
-            }
-        }
-    }, {passive: true});
+    customElements.define('carousel-component', Carousel);
 </script>
-
-:
-
-<div class="overflow-y-visible flex flex-row gap-6 justify-center items-center mx-auto py-8 shrink-0">
-    <div class:list={['overflow-y-visible snap-center snap-mandatory scroll-smooth grid grid-cols-1 gap-12 max-w-7xl', `sm:grid-cols-${visibleElementsPx[640]}`, `md:grid-cols-${visibleElementsPx[768]}`, `lg:grid-cols-${visibleElementsPx[1024]}`, `xl:grid-cols-${visibleElementsPx[1280]}`, `2xl:grid-cols-${visibleElementsPx[1536]}`]}>
-        <slot />
-    </div>
-</div>
-}
