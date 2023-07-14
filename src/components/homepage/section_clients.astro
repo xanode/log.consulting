@@ -13,7 +13,9 @@ import TransdevLogoReference from '@static/clients/transdev.avif';
 import BDFLogoReference from '@static/clients/BDF.avif';
 import RATPLogoReference from '@static/clients/RATP.avif';
 
+
 // Breakpoints for the carousel, got from https://tailwindcss.com/docs/responsive-design
+/// This is the only thing that needs to be changed to change the number of items displayed at each breakpoint ///
 const visibleElements = [ // Default is 1
   { breakpoint: 1536, items: 5 }, // 2xl
   { breakpoint: 1280, items: 5 }, // xl
@@ -21,6 +23,12 @@ const visibleElements = [ // Default is 1
   { breakpoint: 768, items: 3 }, // md
   { breakpoint: 640, items: 1 } // sm
 ];
+
+// Convert the visibleElements array into a map of breakpoint widths to the number of items to display at that width
+const visibleElementsPx = visibleElements.reduce<{ [breakpoint: number]: number }>((acc, { breakpoint, items }) => {
+  acc[breakpoint] = items;
+  return acc;
+}, {});
 ---
 
 <section class="relative w-full pb-10 bg-gray-log text-center">
@@ -36,15 +44,15 @@ const visibleElements = [ // Default is 1
         </SectionTitle>
         <Icon className="hidden lg:block h-20" name="rocket" />
     </div>
-    <Carousel arrows={true} name="clients" visibleElements={visibleElements}>
-        <img id="clients_card_1" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={HermesLogoReference} width="120" height="57" alt="Hermès">
-        <img id="clients_card_2" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={TransdevLogoReference} width="160" height="80" alt="Transderv">
-        <img id="clients_card_3" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={BDFLogoReference} width="160" height="100" alt="Banque de France">
-        <img id="clients_card_4" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={CarrefourLogoReference} width="120" height="96" alt="Carrefour">
-        <img id="clients_card_5" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={RATPLogoReference} width="160" height="60" alt="RATP">
-        <img id="clients_card_6" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={SaintGobainLogoReference} width="160" height="57" alt="Saint-Gobain">
-        <img id="clients_card_7" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={ChristianDiorCoutureLogoReference} width="120" height="26" alt="Christian Dior Couture">
-        <img id="clients_card_8" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={EuroAssistanceLogoReference} width="120" height="72" alt="Euro Assistance">
-        <img id="clients_card_9" class="my-auto grayscale hover:grayscale-0 duration-150 ease-in-out" src={DinumLogoReference} width="100" height="100" alt="DINUM">
+    <Carousel type="img" visibleElementsPx={visibleElementsPx}>
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={HermesLogoReference} width="120" height="57" alt="Hermès">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={TransdevLogoReference} width="160" height="80" alt="Transderv">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={BDFLogoReference} width="160" height="100" alt="Banque de France">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={CarrefourLogoReference} width="120" height="96" alt="Carrefour">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={RATPLogoReference} width="160" height="60" alt="RATP">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={SaintGobainLogoReference} width="160" height="57" alt="Saint-Gobain">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={ChristianDiorCoutureLogoReference} width="120" height="26" alt="Christian Dior Couture">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={EuroAssistanceLogoReference} width="120" height="72" alt="Euro Assistance">
+        <img class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={DinumLogoReference} width="100" height="100" alt="DINUM">
     </Carousel>
 </section>
