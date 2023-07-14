@@ -1,0 +1,18 @@
+---
+import Icon from '@components/ui/icon.astro';
+import type { IconsDict } from '@libs/icons';
+
+interface Props {
+    icon: keyof typeof IconsDict;
+    title: string;
+}
+const { icon, title } = Astro.props as Props;
+---
+
+<div class="flex flex-col items-center gap-6">
+    <Icon className="w-auto h-20" name={icon} />
+    <h1 class="font-bold text-xl md:text-2xl">{title}</h1>
+    <p class="text-lg md:text-xl">
+        <slot />
+    </p>
+</div>
