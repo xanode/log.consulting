@@ -3,14 +3,13 @@ import type { BackgroundColor, TextColor } from "@libs/types";
 
 interface Props {
     title: string;
-    text: string;
     button: string;
     image: string;
     bgColor: BackgroundColor;
     textColor: TextColor;
     href: string;
 }
-const { title, text, button, image, bgColor, textColor, href } = Astro.props as Props;
+const { title, button, image, bgColor, textColor, href } = Astro.props as Props;
 ---
 
 <section class="relative w-full">
@@ -23,7 +22,7 @@ const { title, text, button, image, bgColor, textColor, href } = Astro.props as 
             <div class="flex flex-col gap-12 max-w-lg">
                 <h1 class="font-bold text-3xl md:text-4xl uppercase tracking-wide">{title}</h1>
                 <p class="font-medium text-lg md:text-xl">
-                    <Fragment set:html={text} />
+                    <slot />
                 </p>
                 <a class={`p-4 ${bgColor} rounded-xl text-lg md:text-xl ${textColor} w-fit`} href={href}>{button}</a>
             </div>
