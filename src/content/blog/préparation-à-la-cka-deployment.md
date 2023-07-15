@@ -1,5 +1,5 @@
 ---
-image: /uploads/cka.jpg
+image: ~/assets/uploads/cka.jpg
 title: Préparation à la CKA - Deployment
 category: DevOps
 date: 2023-06-23T08:34:50.729Z

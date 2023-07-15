@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    clientLogoReference: ImageMetadata;
+    clientName: string;
+}
+const { clientLogoReference, clientName } = Astro.props as Props;
+---
+
+<client-card class="relative w-32 h-32">
+    <Image class="absolute top-1/2 -translate-y-1/2 md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={clientLogoReference} alt={clientName} />
+</client-card>

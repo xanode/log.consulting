@@ -1,5 +1,5 @@
 ---
-image: /uploads/articleolivier.jpg
+image: ~/assets/uploads/articleolivier.jpg
 title: Comment le télétravail a rapproché les consultants de Log
 category: Life @ Log
 date: 2023-06-28T11:58:38.320Z

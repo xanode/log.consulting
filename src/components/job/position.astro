@@ -1,7 +1,10 @@
 ---
 import Icon from '@components/ui/icon.astro';
 
-import PosteReference from '@static/AdobeStock_482164643.avif';
+import { Image } from 'astro:assets';
+import PosteReference from '@assets/AdobeStock_482164643.webp';
+
+import type { ImageMetadata } from 'astro';
 
 interface Props {
     salary: string;
@@ -15,7 +18,7 @@ interface Props {
     hr_name: string;
     hr_email: string;
     hr_phone: string;
-    hr_picture: string;
+    hr_picture: ImageMetadata;
 }
 const {
     salary,
@@ -35,7 +38,7 @@ const {
 
 <div class="flex flex-col gap-10">
     <div class="overflow-hidden max-w-112 xl:w-120 flex flex-col border-4 border-blue-log rounded-4xl">
-        <img class="w-full" src={PosteReference} width="472" height="261" alt="" />
+        <Image class="w-full" src={PosteReference} alt="" />
         <h1 class="text-xl md:text-2xl font-bold p-4">LE POSTE</h1>
         <ul class="flex flex-col gap-4 text-lg md:text-xl p-4">
             <li class="inline-flex gap-2">
@@ -76,7 +79,7 @@ const {
     <div class="bg-blue-log rounded-4xl text-center text-white font-extrabold mt-22 pt-24 pb-8 px-8">
         <div class="overflow-hidden absolute left-0 xl:left-auto right-0 xl:right-auto mx-auto xl:mx-0 xl:translate-x-34 -translate-y-42 bg-white rounded-3xl w-36 h-36 p-1">
             <div class="overflow-hidden bg-gray-log rounded-3xl w-full h-full">
-                <img class="object-cover" src={hr_picture} alt="" />
+                <Image class="object-cover" src={hr_picture} alt="" />
             </div>
         </div>
         <h2 class="text-xl md:text-2xl mb-8">Responsable de l'offre</h2>

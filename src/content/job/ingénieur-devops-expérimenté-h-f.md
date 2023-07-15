@@ -14,7 +14,7 @@ telework: Télétravail 2 à 4 jours par semaine
 hr_name: Laetitia Bastiani
 hr_email: recrutement@wearelog.fr
 hr_phone: +33 6 23 33 94 74
-hr_picture: /uploads/lba.jpg
+hr_picture: ../../assets/uploads/lba.jpg
 description:
   - Développer et maintenir le code d'infrastructure en utilisant des langages
     tels que Terraform et Azure Resource Manager, ainsi que des outils de

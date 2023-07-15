@@ -14,7 +14,7 @@ telework: Partiel possible
 hr_name: Laetitia Bastiani
 hr_email: recrutement@wearelog.fr
 hr_phone: +33 6 23 33 94 74
-hr_picture: /uploads/lba.jpg
+hr_picture: ../../assets/uploads/lba.jpg
 description:
   - Piloter les projets de transformation Cloud de nos clients et favoriser l'adoption de la culture DevOps au sein de leurs organisations
   - Auditer les environnements Legacy pour définir leur évolution vers le Cloud

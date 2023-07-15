@@ -1,20 +1,22 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import type { BackgroundColor } from '@libs/types';
 interface Props {
     name: string;
     position: string;
-    pictureReference?: string;
-    pictureHoverReference?: string;
+    pictureReference: ImageMetadata;
+    pictureHoverReference?: ImageMetadata;
     bgColor: BackgroundColor;
 }
-const { name, position, pictureReference = "#", pictureHoverReference = pictureReference, bgColor }: Props = Astro.props;
+const { name, position, pictureReference, pictureHoverReference = pictureReference, bgColor }: Props = Astro.props;
 ---
 
 <logger-card>
     <div class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
         <a class:list={["overflow-visible group w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end", bgColor]} href="/les-loggers">
-            <img class="md:group-hover:hidden self-end" data-name="base" width="256" height="256" src={pictureReference} alt="">
-            <img class="hidden md:group-hover:block self-end z-50" data-name="hover" width="256" height="384" src={pictureHoverReference} alt="">
+            <Image class="md:group-hover:hidden self-end" data-name="base" src={pictureReference} alt="" />
+            <Image class="hidden md:group-hover:block self-end z-50" data-name="hover" src={pictureHoverReference} alt="" />
         </a>
         <h2 class="font-bold text-2xl">{name}</h2>
         <p class="text-xl">{position}</p>

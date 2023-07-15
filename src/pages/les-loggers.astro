@@ -7,14 +7,8 @@ import SectionTitle from "@components/ui/section_title.astro";
 import ValueCard from "@components/ui/value_card.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
-import LoggersBannerReference from "@static/loggers-1.avif";
-import WhyReference from "@static/Laetitia.avif";
-
-const bannerImage = {
-    src: LoggersBannerReference,
-    width: 1249,
-    height: 781,
-}
+import LoggersBannerReference from "@assets/loggers-1.webp";
+import WhyReference from "@assets/Laetitia.webp";
 ---
 
 <BaseLayout title="Les Loggers">
@@ -24,7 +18,7 @@ const bannerImage = {
         description="Les Loggers se regroupent souvent autour d’un Meetup Technique, d’une soirée thématique (vin, jeux…) ou tout simplement lors d’un afterwork improvisé et festif. Les locaux dans le marais sont le point de ralliement ou la tribu se retrouve pour travailler, échanger, progresser et tout simplement passer du bon temps ensemble."
         bgColor={BackgroundColor.YELLOW}
         textColor={TextColor.YELLOW}
-        image={bannerImage}
+        image={LoggersBannerReference}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center gap-4 mb-20">

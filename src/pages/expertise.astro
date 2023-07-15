@@ -4,14 +4,9 @@ import Banner from "@components/ui/banner.astro";
 import Icon from "@components/ui/icon.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
-import EcosystemeTechnologiqueReference from "@static/expertise-technos.avif";
-import DatacenterReference from "@static/expertise-1.avif";
-
-const bannerImage = {
-    src: DatacenterReference,
-    width: 980,
-    height: 980,
-}
+import { Image } from "astro:assets";
+import EcosystemeTechnologiqueReference from "@assets/expertise-technos.webp";
+import DatacenterReference from "@assets/expertise-1.webp";
 ---
 
 <BaseLayout title="Notre expertise">
@@ -21,7 +16,7 @@ const bannerImage = {
         description="Cloud Providers, Hyperscalers, Orchestration, Conteneurisation, Automatisation. C’est le quotidien de LOG !"
         bgColor={BackgroundColor.RED}
         textColor={TextColor.RED}
-        image={bannerImage}
+        image={DatacenterReference}
     />
     <section class="relative w-full bg-gray-log py-10 px-3">
         <div class="flex flex-col items-center gap-10 max-w-8xl mx-auto">
@@ -43,7 +38,7 @@ const bannerImage = {
                         Technologies adhérentes au Cloud&nbsp;: Réseaux, Sécurité et Data
                     </li>
                 </ul>
-                <img class="w-[500px]" src={EcosystemeTechnologiqueReference} width="737" height="390" alt="Technologies Cloud" />
+                <Image class="w-[500px]" src={EcosystemeTechnologiqueReference} alt="Technologies Cloud" />
             </div>
         </div>
     </section>

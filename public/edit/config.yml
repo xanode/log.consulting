@@ -5,8 +5,8 @@ backend:
   auth_type: pkce
   app_id: cd4f4a78f736721749e71c80847a14711db38d427f7b7a249c93b97974ed82b9
 publish_mode: editorial_workflow
-media_folder: "public/uploads"
-public_folder: "/uploads"
+media_folder: "src/assets/uploads"
+public_folder: "~/assets/uploads"
 site_url: https://log.consulting
 logo_url: https://log.consulting/favicon.svg
 collections:

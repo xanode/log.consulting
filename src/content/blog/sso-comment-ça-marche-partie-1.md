@@ -1,5 +1,5 @@
 ---
-image: /uploads/developpeur-informatique.avif
+image: ~/assets/uploads/developpeur-informatique.avif
 title: SSO - Comment ça marche ? -Partie 1
 category: Architecture
 date: 2023-06-23T13:24:57.458Z
@@ -32,7 +32,7 @@ Dans cette histoire, il y a trois partis :
 
 Voilà ce qui se passe quand un utilisateur veut accéder au Service Provider :
 
-![](/uploads/imageali4.png)
+![](~/assets/uploads/imageali4.png)
 
 1. L’utilisateur demande à accéder à une application (Service Provider)
 2. Le SP ne le connaît pas, il le redirige vers l’IdP

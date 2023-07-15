@@ -2,7 +2,7 @@
 interface Props {
     title: string
 }
-const { title }: Props = Astro.props;
+const { title } = Astro.props as Props;
 ---
 
 <header class="relative flex flex-row items-end w-full h-fit lg:h-28">
