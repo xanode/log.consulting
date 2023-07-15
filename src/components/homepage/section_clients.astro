@@ -1,5 +1,6 @@
 ---
 import Carousel from "@components/ui/carousel.astro";
+import ClientCard from "@components/ui/client_card.astro";
 import Icon from "@components/ui/icon.astro";
 import SectionTitle from "@components/ui/section_title.astro";
 
@@ -45,15 +46,17 @@ const visibleElementsPx = visibleElements.reduce<{ [breakpoint: number]: number 
         </SectionTitle>
         <Icon className="hidden lg:block h-20" name="rocket" />
     </div>
-    <Carousel type="img" visibleElementsPx={visibleElementsPx}>
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={HermesLogoReference} alt="Hermès">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={TransdevLogoReference} alt="Transderv">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={BDFLogoReference} alt="Banque de France">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={CarrefourLogoReference} alt="Carrefour">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={RATPLogoReference} alt="RATP">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={SaintGobainLogoReference} alt="Saint-Gobain">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={ChristianDiorCoutureLogoReference} alt="Christian Dior Couture">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={EuroAssistanceLogoReference} alt="Euro Assistance">
-        <Image class="my-auto md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={DinumLogoReference} alt="DINUM">
-    </Carousel>
+    <div class="max-w-7xl mx-auto">
+        <Carousel type="client-card" visibleElementsPx={visibleElementsPx}>
+            <ClientCard clientLogoReference={HermesLogoReference} clientName="Hermès" />
+            <ClientCard clientLogoReference={TransdevLogoReference} clientName="Transdev" />
+            <ClientCard clientLogoReference={BDFLogoReference} clientName="Banque de France" />
+            <ClientCard clientLogoReference={CarrefourLogoReference} clientName="Carrefour" />
+            <ClientCard clientLogoReference={RATPLogoReference} clientName="RATP" />
+            <ClientCard clientLogoReference={SaintGobainLogoReference} clientName="Saint-Gobain" />
+            <ClientCard clientLogoReference={ChristianDiorCoutureLogoReference} clientName="Christian Dior Couture" />
+            <ClientCard clientLogoReference={EuroAssistanceLogoReference} clientName="Euro Assistance" />
+            <ClientCard clientLogoReference={DinumLogoReference} clientName="DINUM" />
+        </Carousel>
+    </div>
 </section>
