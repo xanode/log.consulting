@@ -39,8 +39,8 @@ const markerColor = mapColor(textColor);
     <slot name="svg" />
     <h2 class="font-semibold text-xl md:text-2xl uppercase mt-5">{title}</h2>
     <div class="relative flex justify-center px-4 py-2">
-        <div class={`absolute top-0 left-0 border-t-2 border-l-2 rounded-tl-2xl ${borderColor} w-12 h-12`}></div>
-        <ul class={`flex flex-col items-start md:gap-6 ${markerColor} marker:text-3xl md:marker:text-4xl marker:align-middle ml-10 list-[square] text-start text-lg md:text-xl`}>
+        <div class:list={["absolute top-0 left-0 border-t-2 border-l-2 rounded-tl-2xl w-12 h-12", borderColor]}></div>
+        <ul class:list={["flex flex-col items-start md:gap-6 marker:text-3xl md:marker:text-4xl marker:align-middle ml-10 list-[square] text-start text-lg md:text-xl", markerColor]}>
             <slot name="list" />
         </ul>
     </div>

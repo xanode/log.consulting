@@ -5,13 +5,7 @@ import Icon from "@components/ui/icon.astro";
 import ListCard from "@components/ui/list_card.astro";
 import { BackgroundColor, BorderColor, TextColor } from "@libs/types";
 
-import LoggersBannerReference from "@static/metiers-1.avif";
-
-const bannerImage = {
-    src: LoggersBannerReference,
-    width: 1249,
-    height: 980,
-}
+import LoggersBannerReference from "@assets/metiers-1.webp";
 ---
 
 <BaseLayout title="Nos métiers">
@@ -21,7 +15,7 @@ const bannerImage = {
         description="Audits, Stratégie, Roadmap, FinOps ? Conception, Architecture ? Gestion de projets techniques ? Automatisation, CI/CD ? C’est le métier de LOG !"
         bgColor={BackgroundColor.BLUE}
         textColor={TextColor.BLUE}
-        image={bannerImage}
+        image={LoggersBannerReference}
     />
     <section class="relative max-w-7xl mx-auto text-center">
         <h1 class="font-bold text-3xl uppercase">Nos savoir-faire</h1>

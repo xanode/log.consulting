@@ -6,21 +6,10 @@ import InfoCard from "@components/ui/info_card.astro";
 import SectionTitle from "@components/ui/section_title.astro";
 import { BackgroundColor, TextColor } from "@libs/types";
 
-import AGITReference from "@static/agit.avif";
-import LeafOnChipReference from "@static/leaf-on-chip.avif";
-import actionsConcretesReference from "@static/green_prez.avif";
-
-const bannerImage = {
-    src: LeafOnChipReference,
-    width: 717,
-    height: 667,
-};
-
-const actionsConcretesImage = {
-    src: actionsConcretesReference,
-    width: 400,
-    height: 667,
-};
+import { Image } from "astro:assets";
+import AGITReference from "@assets/agit.webp";
+import LeafOnChipReference from "@assets/leaf-on-chip.webp";
+import actionsConcretesReference from "@assets/green_prez.webp";
 ---
 
 <BaseLayout title="Nos engagements">
@@ -30,7 +19,7 @@ const actionsConcretesImage = {
         description="Missions Numériques Responsables, engagements associatif, interne et public, mobilisation au sein de grandes écoles d'ingénieur... No Green washing !"
         bgColor={BackgroundColor.GREEN}
         textColor={TextColor.GREEN}
-        image={bannerImage}
+        image={LeafOnChipReference}
     />
     <section class="relative max-w-7xl mx-auto text-center px-3">
         <div class="flex flex-col items-center">
@@ -42,7 +31,7 @@ const actionsConcretesImage = {
             <h2 class="text-xl md:text-2xl">LOG est membre actif de plusieurs associations et groupements œuvrant pour un numérique reponsable.</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center my-14">
                 <div class="flex flex-col items-center gap-4">
-                    <img class="w-auto h-20 md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} width="250" height="81" alt="" />
+                    <Image class="w-auto h-20 md:grayscale hover:grayscale-0 duration-150 ease-in-out" src={AGITReference} alt="" />
                     <p class="font-semibold text-lg md:text-xl">Alliance Green IT<br /><span class="font-normal">(AGIT)</span></p>
                 </div>
                 <div class="flex flex-col items-center gap-4">
@@ -56,7 +45,7 @@ const actionsConcretesImage = {
             </div>
         </div>
     </section>
-    <InfoCard title="Des actions concrètes" bgColor={BackgroundColor.GREEN} textColor={TextColor.WHITE} image={actionsConcretesImage}>
+    <InfoCard title="Des actions concrètes" bgColor={BackgroundColor.GREEN} image={actionsConcretesReference}>
         <p class="font-medium text-lg md:text-xl">
             Le Numérique Responsable, ça commence par une prise de conscience.
             C'est pourquoi LOG déploie d'importants efforts de sensibilisation et d'éducation à ce niveau&nbsp;:
