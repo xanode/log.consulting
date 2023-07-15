@@ -1,5 +1,5 @@
 ---
-image: /uploads/cka.jpg
+image: ~/assets/uploads/cka.jpg
 title: Préparation à la CKA - Lancement d’un Pod
 category: DevOps
 date: 2023-06-23T07:48:27.069Z

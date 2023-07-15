@@ -1,5 +1,5 @@
 ---
-image: /uploads/developpeur-informatique.avif
+image: ~/assets/uploads/developpeur-informatique.avif
 title: SSO - Comment ça marche ? -Partie 2
 category: Architecture
 date: 2021-02-22T00:00:00.000Z
@@ -62,7 +62,7 @@ Ici la Client application veut accéder à des ressources qui appartiennent à l
 
 Voilà ce qui se passe dans l’authorization code flow du début à la fin :
 
-![](/uploads/imageali3.png)
+![](~/assets/uploads/imageali3.png)
 
 1. L’utilisateur accède à l’application Client qui veut avoir accès à des ressources de l’utilisateur (contacts Facebook, channels Slack, repos GitHub)
 2. Le Client redirige (HTTP 302) vers l’auth server en demandant le scope approprié, et demandant un authorization code
@@ -211,7 +211,7 @@ Comme décrit plus haut, l’Implicit flow sert aux applications qui n’ont pas
 
 C’est la même chose que l’authorization code flow, mais avec quelques étapes en plus pour vérifier l’identité de la Client application.
 
-![](/uploads/imageali1.png)
+![](~/assets/uploads/imageali1.png)
 
 1. L’utilisateur accède à l’application Client qui veut avoir accès à des ressources de l’utilisateur (contacts Facebook, channels Slack, repos GitHub)
 2. Le Client redirige vers l’auth server en demandant le scope approprié, et demandant un authorization code. Il génère un code_verifier et il inclut dans la requête un code_challenge.
@@ -288,7 +288,7 @@ OpenID Connect a sa propre terminologie que nous allons mettre ici, mais pour si
 
 Ici nous allons présenter le flow OpenID Connect qui se base sur l’Authorization Code Flow d’oAuth2.
 
-![](/uploads/imageali2.png)
+![](~/assets/uploads/imageali2.png)
 
 1. L’utilisateur accède au Service Provider qui lui demande de s’authentifier
 2. Le Service Provider redirige vers l’Identity Provider en demandant le scope "openid", et demandant un authorization code
@@ -323,7 +323,7 @@ Comme nous avions fait pour SAML dans le premier article, nous pouvons répondre
 
 **4.1 – Comparaison des objets, des termes et du fonctionnemen**
 
-![](/uploads/tabali.png)
+![](~/assets/uploads/tabali.png)
 
 * XML est plus lourd que JWT.
 * SAML passe par le browser pour envoyer l’assertion (moins sécurisé). Pour OpenIDConnect (auth code flow), il y a un back channel.

@@ -1,5 +1,5 @@
 ---
-image: /uploads/cka.jpg
+image: ~/assets/uploads/cka.jpg
 title: Préparation à la CKA - 00 - Installation d'un cluster
 category: DevOps
 date: 2023-06-23T08:14:45.491Z
