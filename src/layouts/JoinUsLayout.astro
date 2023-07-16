@@ -7,10 +7,10 @@ import { Image } from "astro:assets";
 import HommeClavierReference from "@assets/Alex_loggez-vous.webp";
 ---
 
-<BaseLayout title="Rejoignez-nous">
+<BaseLayout title="Rejoignez-nous" description="Les offres d'emploi de LOG">
     <section class="relative w-full">
         <div class="absolute h-[32rem] top-[160px] lg:top-auto lg:bottom-0 left-[calc(50vw-170px)] lg:left-[calc(50vw-140px)]">
-            <Image class="h-full w-auto" src={HommeClavierReference} alt="Homme avec un clavier" />
+            <Image class="h-full w-auto" loading="eager" src={HommeClavierReference} alt="Homme avec un clavier" />
         </div>
         <div class="flex flex-col lg:flex-row min-h-[34rem]">
             <div class="flex w-full justify-center lg:justify-end items-center bg-black text-white">
