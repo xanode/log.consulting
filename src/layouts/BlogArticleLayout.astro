@@ -16,7 +16,7 @@ interface Props {
 const { id, frontmatter } = Astro.props as Props;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
     <TitleBanner title={frontmatter.title} />
     <section class="relative max-w-8xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center lg:items-start gap-20 max-w-8xl px-1">

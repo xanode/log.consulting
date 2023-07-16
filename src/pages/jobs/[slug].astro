@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<JobOfferLayout title={entry.data.title} email={entry.data.hr_email}>
+<JobOfferLayout title={entry.data.title} email={entry.data.hr_email} description={`Offre d'emploi pour un ${entry.data.title}`}>
   <Description slot="description">
     <p class="text-xl md:text-2xl mb-16 text-justify" slot="description">
         <Fragment set:html={entry.data.description.join("<br /><br />")} />
