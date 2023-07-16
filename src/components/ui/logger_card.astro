@@ -14,7 +14,7 @@ const { name, position, pictureReference, pictureHoverReference = pictureReferen
 
 <logger-card>
     <div class="overflow-visible snap-start shrink-0 origin-center scale-100 transition-transform duration-500 flex flex-col">
-        <a class:list={["overflow-visible group w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end", bgColor]} href="/les-loggers">
+        <a class:list={["overflow-visible group w-64 h-64 mb-10 rounded-3xl border-2 border-black flex place-content-end items-end", bgColor]} aria-label="Les loggers" href="/les-loggers">
             <Image class="md:group-hover:hidden self-end" data-name="base" src={pictureReference} alt="" />
             <Image class="hidden md:group-hover:block self-end z-50" data-name="hover" src={pictureHoverReference} alt="" />
         </a>
